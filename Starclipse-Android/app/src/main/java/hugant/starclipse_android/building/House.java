@@ -57,8 +57,8 @@ public class House extends hugant.starclipse_android.Building {
 				super.setResidents("0", "10");
 				super.setName("Small House");
 				super.setBuildTimer(Timer.SECOND * 1, "Start");
-				super.setIncomeTimer(Timer.SECOND * 3, "Claim");
-				super.setIncome(new Resources(Subject.RESIDENTS, "3", Subject.MONEY, "25"));
+				super.setIncomeTimer(Timer.SECOND * 1, "Claim");
+				super.setIncome(new Resources(Subject.RESIDENTS, "3ZaZ", Subject.MONEY, "25ZaZ"));
 				super.setExpenses(new Resources(Subject.STONE,  "12", 
 												Subject.TREE,   "6", 
 											  	Subject.MONEY,  "125",
