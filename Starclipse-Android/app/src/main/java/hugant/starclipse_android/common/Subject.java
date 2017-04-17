@@ -315,6 +315,12 @@ public class Subject {
 		return (this.type == null ? "no type" : this.type) + " " + this.getNumber();
 	}
 
+
+	/**
+	 * Return cloned <b>Subject</b>
+	 *
+	 * @return Subject
+	 */
 	@Override
 	public Subject clone() throws CloneNotSupportedException {
 		return new Subject(this.type, this.getNumber(), this.getMaxValue());
