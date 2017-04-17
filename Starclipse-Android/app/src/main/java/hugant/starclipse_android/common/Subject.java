@@ -316,7 +316,7 @@ public class Subject {
 	}
 
 	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
+	public Subject clone() throws CloneNotSupportedException {
+		return new Subject(this.type, this.getNumber(), this.getMaxValue());
 	}
 }
