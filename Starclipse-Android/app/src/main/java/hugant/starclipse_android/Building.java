@@ -1,6 +1,8 @@
 package hugant.starclipse_android;
 
 
+import android.view.View;
+
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Timer;
@@ -32,7 +34,23 @@ public class Building {
 	private Resources expenses = null;
 	
 	private boolean start = false;
-	
+
+	View.OnClickListener buttonOnClick = new View.OnClickListener() {
+		@Override
+		public void onClick(View e) {
+			try {
+				if (getStatus().equals("Start")) {
+					startWork();
+				} else if (getStatus().equals("Claim")) {
+					//res.add(claim());
+					android.util.Log.i("Hugant", "Something");
+				}
+			} catch (UnsupportedOperationException ex) {
+				build();
+			}
+		}
+	};
+
 	/**
 	 * Begins to build the <b>Building</b>.
 	 */
