@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         residents = (TextView) findViewById(R.id.residents);
         money = (TextView) findViewById(R.id.money);
         try {
-            residents.setText("Residents: " + res.get(Subject.RESIDENTS).getNumber());
+            residents.setText(" " + res.get(Subject.RESIDENTS).getNumber());
         } catch (Exception e) {
-            residents.setText("Residents: 0");
+            residents.setText(" 0");
         }
 
         try {
-            money.setText("Money: " + res.get(Subject.MONEY).getNumber());
+            money.setText(" " + res.get(Subject.MONEY).getNumber());
         } catch (Exception e) {
-            money.setText("Money: 0");
+            money.setText(" 0");
         }
 
 
@@ -59,16 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 try {
-                    residents.setText("Residents: " + res.get(Subject.RESIDENTS).getNumber());
+                    residents.setText(" " + res.get(Subject.RESIDENTS).getNumber());
                 } catch (Exception e) {
-                    residents.setText("Residents: 0");
+                    residents.setText(" 0");
                 }
 
 
                 try {
-                    money.setText("Money: " + res.get(Subject.MONEY).getNumber());
+                    money.setText(" " + res.get(Subject.MONEY).getNumber());
                 } catch (Exception e) {
-                    money.setText("Money: 0");
+                    money.setText(" 0");
                 }
             }
         });
