@@ -1,5 +1,6 @@
 package hugant.starclipse_android;
 
+
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Timer;
@@ -60,7 +61,7 @@ public class Building {
 		if (incomeTimer != null) {
 			incomeTimer.start();
 		}
-		return income;
+		return this.income;
 	}
 	
 	public void upgrade() {
@@ -178,6 +179,7 @@ public class Building {
 	 * @param income is <b>Resources</b> which will be obtained
 	 */
 	public void setIncome(Resources income) {
+		android.util.Log.i("House", "Used setIncome");
 		this.income = income;
 	}
 
@@ -189,5 +191,9 @@ public class Building {
 	 */
 	public void setExpenses(Resources expenses) {
 		this.expenses = expenses;
+	}
+
+	public Resources getIncome() {
+		return this.income;
 	}
 }

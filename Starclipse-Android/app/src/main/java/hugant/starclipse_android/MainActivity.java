@@ -1,10 +1,11 @@
 package hugant.starclipse_android;
 
+import android.os.AsyncTask;
 import android.os.PersistableBundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        house.build();
         planetName = (TextView) findViewById(R.id.planetName);
         planetName.setText("Hugant's planet");
         residents = (TextView) findViewById(R.id.residents);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
-            money.setText("Residents: " + res.get(Subject.MONEY).getNumber());
+            money.setText("Money: " + res.get(Subject.MONEY).getNumber());
         } catch (Exception e) {
             money.setText("Money: 0");
         }
@@ -57,43 +57,41 @@ public class MainActivity extends AppCompatActivity {
                 } catch (UnsupportedOperationException e) {
                     house.build();
                 }
-                button.setText(house.getStatus());
+
                 try {
                     residents.setText("Residents: " + res.get(Subject.RESIDENTS).getNumber());
                 } catch (Exception e) {
                     residents.setText("Residents: 0");
                 }
 
+
                 try {
-                    money.setText("Residents: " + res.get(Subject.MONEY).getNumber());
+                    money.setText("Money: " + res.get(Subject.MONEY).getNumber());
                 } catch (Exception e) {
                     money.setText("Money: 0");
                 }
             }
         });
 
-        class Updater extends Thread {
-            public void run() {
-                while(true) {
-                    button.setText("Hugant");
-                   // button.setText(getHouse().getStatus());
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (Exception e) {}
+        class Updater extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... unused) {
+                while (true) {
+                    publishProgress();
+                    SystemClock.sleep(1000);
                 }
+               // return (null);
+            }
+
+            @Override
+            protected void onProgressUpdate(Void... values) {
+                try {
+                    button.setText(house.getStatus());
+//                    android.util.Log.i("Main", house.getIncome().get(Subject.RESIDENTS).toString());
+                } catch (UnsupportedOperationException e) {}
             }
         }
 
-        Updater up = new Updater();
-        up.start();
-    }
-
-    public Button getButton() {
-        return this.button;
-    }
-
-    public Building getHouse() {
-        return this.house;
+        new Updater().execute();
     }
 }

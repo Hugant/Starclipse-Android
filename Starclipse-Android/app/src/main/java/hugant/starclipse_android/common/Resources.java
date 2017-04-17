@@ -97,12 +97,18 @@ public class Resources {
 	 * @return this
 	 */
 	public Resources add(Subject sub) {
+		Subject temp;
+		try {
+			temp = (Subject) sub.clone();
+		} catch (CloneNotSupportedException e) {
+			temp = null;
+		}
 		if (subjects.contains(sub)) {
-			subjects.get(subjects.indexOf(sub)).add(sub);
+			subjects.get(subjects.indexOf(sub)).add(temp);
 		} else {
 			subjects.add(sub);
+			this.length++;
 		}
-		this.length++;
 		return this;
 	}
 	

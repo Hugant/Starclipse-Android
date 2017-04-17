@@ -130,7 +130,7 @@ public class Subject {
 		
 		return this;
 	}
-	
+
 	/**
 	 * Take a <b>Subject</b> to the <b>Subject</b>.
 	 * If the have a different type will generate
@@ -311,5 +311,10 @@ public class Subject {
 	@Override
 	public String toString() {
 		return (this.type == null ? "no type" : this.type) + " " + this.getNumber();
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 }
