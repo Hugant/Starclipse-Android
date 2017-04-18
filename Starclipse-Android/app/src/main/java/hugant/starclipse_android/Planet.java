@@ -20,6 +20,6 @@ public class Planet {
 	public Planet(String name, Resources effect) {
 		this.name = name;
 		this.effect = effect;
-		this.infrastructure[0] = new House("Small House");
+		//this.infrastructure[0] = new House("Small House");
 	}
 }
