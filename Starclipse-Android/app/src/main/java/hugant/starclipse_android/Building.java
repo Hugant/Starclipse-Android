@@ -20,6 +20,7 @@ import hugant.starclipse_android.common.Subject;
  * @see hugant.starclipse_android.building.House
  */
 public class Building {
+	private Resources globalRes;
 	private String name = "";
 	private String status = "";
 	
@@ -35,19 +36,28 @@ public class Building {
 	
 	private boolean start = false;
 
-	View.OnClickListener buttonOnClick = new View.OnClickListener() {
+	public void setGlobalRes(Resources res) {
+		this.globalRes = res;
+	}
+
+	public Resources getGlobalRes() {
+		return this.globalRes;
+	}
+
+	public View.OnClickListener buttonOnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
 			try {
 				if (getStatus().equals("Start")) {
 					startWork();
 				} else if (getStatus().equals("Claim")) {
-					//res.add(claim());
-					android.util.Log.i("Hugant", "Something");
+					globalRes.add(claim());
 				}
 			} catch (UnsupportedOperationException ex) {
 				build();
 			}
+
+
 		}
 	};
 

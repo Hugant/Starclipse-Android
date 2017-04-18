@@ -1,5 +1,8 @@
 package hugant.starclipse_android.building;
 
+import android.widget.Button;
+import android.widget.TextView;
+
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
@@ -22,16 +25,16 @@ public class House extends hugant.starclipse_android.Building {
 	 * of <b>House</b>.
 	 * @param type is type of <b>House</b>
 	 */
-	public House(String type) {
+	public House(String type, Resources globalRes) {
 		switch (type.toLowerCase()) {
 			case "big":
 				super.setResidents("0", "100");
 				super.setName("Big House");
 				super.setBuildTimer(Timer.MINUTE * 30, "Start");
 				super.setIncomeTimer(Timer.SECOND * 20, "Claim");
+				super.setGlobalRes(globalRes);
 				super.setIncome(new Resources(Subject.RESIDENTS, "10", Subject.MONEY, "100"));
-
-				super.setExpenses(new Resources(Subject.STONE,  "100", 
+				super.setExpenses(new Resources(Subject.STONE,  "100",
 											  	Subject.TREE,   "50", 
 											  	Subject.MONEY,  "1000", 
 											  	Subject.IRON,   "10",  
@@ -44,6 +47,7 @@ public class House extends hugant.starclipse_android.Building {
 				super.setName("Average House");
 				super.setBuildTimer(Timer.MINUTE * 5, "Start");
 				super.setIncomeTimer(Timer.SECOND * 20, "Claim");
+				super.setGlobalRes(globalRes);
 				super.setIncome(new Resources(Subject.RESIDENTS, "5", Subject.MONEY, "50"));
 				super.setExpenses(new Resources(Subject.STONE,  "50", 
 											  	Subject.TREE,   "25", 
@@ -58,6 +62,7 @@ public class House extends hugant.starclipse_android.Building {
 				super.setName("Small House");
 				super.setBuildTimer(Timer.SECOND * 1, "Start");
 				super.setIncomeTimer(Timer.SECOND * 1, "Claim");
+				super.setGlobalRes(globalRes);
 				super.setIncome(new Resources(Subject.RESIDENTS, "3ZaZ", Subject.MONEY, "25ZaZ"));
 				super.setExpenses(new Resources(Subject.STONE,  "12", 
 												Subject.TREE,   "6", 

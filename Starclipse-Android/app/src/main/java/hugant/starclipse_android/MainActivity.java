@@ -9,69 +9,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.TreeMap;
 
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 
 public class MainActivity extends AppCompatActivity {
-    public Resources res = new Resources();
-    public Button button;
-    public TextView planetName;
-    public TextView residents;
-    public TextView money;
-    public House house = new House("small");
+    private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
+
+    private Resources res = new Resources();
+    private Button button;
+    private Button button2;
+    private TextView planetName;
+
+    private House house = new House("small", res);
+    private House house2 = new House("small", res);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        planetName = (TextView) findViewById(R.id.planetName);
-        planetName.setText("Hugant's planet");
-        residents = (TextView) findViewById(R.id.residents);
-        money = (TextView) findViewById(R.id.money);
-        try {
-            residents.setText(" " + res.get(Subject.RESIDENTS).getNumber());
-        } catch (Exception e) {
-            residents.setText(" 0");
-        }
+        initTextViews();
+        initButtons();
 
-        try {
-            money.setText(" " + res.get(Subject.MONEY).getNumber());
-        } catch (Exception e) {
-            money.setText(" 0");
-        }
-
-
-        button = (Button) findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                try {
-                    if (house.getStatus().equals("Start")) {
-                        house.startWork();
-                    } else if (house.getStatus().equals("Claim")) {
-                        res.add(house.claim());
-                    }
-                } catch (UnsupportedOperationException e) {
-                    house.build();
-                }
-
-                try {
-                    residents.setText(" " + res.get(Subject.RESIDENTS).getNumber());
-                } catch (Exception e) {
-                    residents.setText(" 0");
-                }
-
-
-                try {
-                    money.setText(" " + res.get(Subject.MONEY).getNumber());
-                } catch (Exception e) {
-                    money.setText(" 0");
-                }
-            }
-        });
+        button.setOnClickListener(house.buttonOnClick);
+        button2.setOnClickListener(house2.buttonOnClick);
 
         class Updater extends AsyncTask<Void, Void, Void> {
             @Override
@@ -80,18 +44,62 @@ public class MainActivity extends AppCompatActivity {
                     publishProgress();
                     SystemClock.sleep(1000);
                 }
-               // return (null);
             }
 
             @Override
             protected void onProgressUpdate(Void... values) {
+                updateResources();
+
                 try {
                     button.setText(house.getStatus());
+                    button2.setText(house2.getStatus());
 //                    android.util.Log.i("Main", house.getIncome().get(Subject.RESIDENTS).toString());
                 } catch (UnsupportedOperationException e) {}
             }
         }
 
         new Updater().execute();
+    }
+
+    public void updateResources() {
+//        for (String i : res.asTypeArray()) {
+//            try {
+//
+//            }
+//        }
+        try {
+            textViews.get(Subject.RESIDENTS).setText(" " + res.get(Subject.RESIDENTS).getNumber());
+        } catch (Exception e) {
+            textViews.get(Subject.RESIDENTS).setText(" 0");
+        }
+
+        try {
+            textViews.get(Subject.MONEY).setText(" " + res.get(Subject.MONEY).getNumber());
+        } catch (Exception e) {
+            textViews.get(Subject.MONEY).setText(" 0");
+        }
+    }
+
+    private void initTextViews() {
+        planetName = (TextView) findViewById(R.id.planetName);
+        planetName.setText("Hugant's planet");
+
+        textViews.put(Subject.RESIDENTS,(TextView) findViewById(R.id.residents));
+        textViews.put(Subject.OXYGEN,   (TextView) findViewById(R.id.oxygen));
+        textViews.put(Subject.ENERGY,   (TextView) findViewById(R.id.energy));
+        textViews.put(Subject.MONEY,    (TextView) findViewById(R.id.money));
+        textViews.put(Subject.WATER,    (TextView) findViewById(R.id.water));
+        textViews.put(Subject.STONE,    (TextView) findViewById(R.id.stone));
+        textViews.put(Subject.GOLD,     (TextView) findViewById(R.id.gold));
+        textViews.put(Subject.IRON,     (TextView) findViewById(R.id.iron));
+        textViews.put(Subject.COAL,     (TextView) findViewById(R.id.coal));
+        textViews.put(Subject.TREE,     (TextView) findViewById(R.id.tree));
+        textViews.put(Subject.SOIL,     (TextView) findViewById(R.id.soil));
+        textViews.put(Subject.FOOD,     (TextView) findViewById(R.id.food));
+    }
+
+    private void initButtons() {
+        button = (Button) findViewById(R.id.button);
+        button2 = (Button) findViewById(R.id.button2);
     }
 }
