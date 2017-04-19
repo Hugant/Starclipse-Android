@@ -25,7 +25,7 @@ public class House extends hugant.starclipse_android.Building {
 	 * of <b>House</b>.
 	 * @param type is type of <b>House</b>
 	 */
-	public House(String type, Resources globalRes) {
+	public House(String type, Resources globalRes, Button button, TextView textView) {
 		switch (type.toLowerCase()) {
 			case "big":
 				super.setResidents("0", "100");
@@ -63,6 +63,8 @@ public class House extends hugant.starclipse_android.Building {
 				super.setBuildTimer(Timer.SECOND * 1, "Start");
 				super.setIncomeTimer(Timer.SECOND * 1, "Claim");
 				super.setGlobalRes(globalRes);
+				super.setButton(button);
+				super.setTextView(textView);
 				super.setIncome(new Resources(Subject.RESIDENTS, "3ZaZ", Subject.MONEY, "25ZaZ"));
 				super.setExpenses(new Resources(Subject.STONE,  "12", 
 												Subject.TREE,   "6", 

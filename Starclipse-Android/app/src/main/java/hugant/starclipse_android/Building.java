@@ -2,6 +2,8 @@ package hugant.starclipse_android;
 
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
@@ -44,7 +46,7 @@ public class Building {
 		return this.globalRes;
 	}
 
-	public View.OnClickListener buttonOnClick = new View.OnClickListener() {
+	public View.OnClickListener OnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
 			try {
@@ -56,8 +58,6 @@ public class Building {
 			} catch (UnsupportedOperationException ex) {
 				build();
 			}
-
-
 		}
 	};
 

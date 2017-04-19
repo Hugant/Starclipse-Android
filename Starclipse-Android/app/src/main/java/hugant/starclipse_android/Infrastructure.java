@@ -12,8 +12,12 @@ public class Infrastructure {
 		infrastructure = new ArrayList<Building>();
 	}
 	
-	public Building addBuilding(Building building) {
-		this.infrastructure.add(building);
+	public Building add(Building building) {
+		infrastructure.add(building);
 		return building;
+	}
+
+	public ArrayList<Building> getInfrastructure() {
+        return infrastructure;
 	}
 }

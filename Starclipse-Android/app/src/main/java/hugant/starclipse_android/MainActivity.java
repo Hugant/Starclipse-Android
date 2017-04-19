@@ -11,20 +11,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.TreeMap;
 
+
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 
 public class MainActivity extends AppCompatActivity {
     private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
+    private static final Infrastructure infrastructure = new Infrastructure();
 
     private Resources res = new Resources();
     private Button button;
     private Button button2;
     private TextView planetName;
 
-    private House house = new House("small", res);
-    private House house2 = new House("small", res);
+    private House house;
+    private House house2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
         initTextViews();
         initButtons();
 
-        button.setOnClickListener(house.buttonOnClick);
-        button2.setOnClickListener(house2.buttonOnClick);
+        house = new House("small", res, button, planetName);
+        house2 = new House("small", res, button2, planetName);
+
+        button.setOnClickListener(house.OnClick);
+        button2.setOnClickListener(house2.OnClick);
 
         class Updater extends AsyncTask<Void, Void, Void> {
             @Override
