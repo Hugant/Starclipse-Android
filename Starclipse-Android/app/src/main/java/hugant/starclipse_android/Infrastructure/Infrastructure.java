@@ -1,6 +1,8 @@
-package hugant.starclipse_android;
+package hugant.starclipse_android.Infrastructure;
 
 import java.util.ArrayList;
+
+import hugant.starclipse_android.Building;
 import hugant.starclipse_android.building.*;
 import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Subject;
