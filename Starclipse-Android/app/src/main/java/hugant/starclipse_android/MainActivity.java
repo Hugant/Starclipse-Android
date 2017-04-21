@@ -1,9 +1,8 @@
 package hugant.starclipse_android;
 
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.PersistableBundle;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 import java.util.TreeMap;
 
 
+import hugant.starclipse_android.Infrastructure.Infrastructure;
+import hugant.starclipse_android.Infrastructure.InfrastructureActivity;
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
@@ -21,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private static final Infrastructure infrastructure = new Infrastructure();
 
     private Resources res = new Resources();
-    private Button button;
+    private Button infrastructureButton;
     private Button button2;
     private TextView planetName;
+
 
     private House house;
     private House house2;
@@ -34,20 +36,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initTextViews();
-        initButtons();
 
-        house = new House("small", res, button, planetName);
-        house2 = new House("small", res, button2, planetName);
 
-        button.setOnClickListener(house.OnClick);
-        button2.setOnClickListener(house2.OnClick);
+        infrastructureButton = (Button) findViewById(R.id.infrastructureButton);
+        button2 = (Button) findViewById(R.id.button2);
+//
+
+//        house2 = new House("small");
+
+//        button2.setOnClickListener(house2.OnClick);
+
+        infrastructureButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View e) {
+                Intent intent = new Intent(MainActivity.this, InfrastructureActivity.class);
+                startActivity(intent);
+            }
+        });
 
         class Updater extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... unused) {
                 while (true) {
                     publishProgress();
-                    SystemClock.sleep(1000);
+                    SystemClock.sleep(250);
                 }
             }
 
@@ -56,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 updateResources();
 
                 try {
-                    button.setText(house.getStatus());
-                    button2.setText(house2.getStatus());
+//                    button2.setText(house2.getStatus());
 //                    android.util.Log.i("Main", house.getIncome().get(Subject.RESIDENTS).toString());
                 } catch (UnsupportedOperationException e) {}
             }
@@ -101,10 +111,5 @@ public class MainActivity extends AppCompatActivity {
         textViews.put(Subject.TREE,     (TextView) findViewById(R.id.tree));
         textViews.put(Subject.SOIL,     (TextView) findViewById(R.id.soil));
         textViews.put(Subject.FOOD,     (TextView) findViewById(R.id.food));
-    }
-
-    private void initButtons() {
-        button = (Button) findViewById(R.id.button);
-        button2 = (Button) findViewById(R.id.button2);
     }
 }
