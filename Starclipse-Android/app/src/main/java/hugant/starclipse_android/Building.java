@@ -201,7 +201,6 @@ public abstract class Building {
 	 * @param income is <b>Resources</b> which will be obtained
 	 */
 	public void setIncome(Resources income) {
-		android.util.Log.i("House", "Used setIncome");
 		this.income = income;
 	}
 
