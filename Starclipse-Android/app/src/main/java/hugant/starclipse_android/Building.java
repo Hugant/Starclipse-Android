@@ -82,7 +82,10 @@ public abstract class Building {
 		}
 		return this.income;
 	}
-	
+
+	/**
+	 *
+	 */
 	public void upgrade() {
 		this.residents.addToMaxValue("");
 		this.expenses = expenses.multiply("");
