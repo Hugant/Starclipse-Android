@@ -140,7 +140,10 @@ public abstract class Building {
 		return "";
 	}
 	
-	
+	public String getStatus() {
+		return status;
+	}
+
 	/**
 	 * Sets the name of <b>Building</b>.
 	 * @param name is name of <b>Building</b>
