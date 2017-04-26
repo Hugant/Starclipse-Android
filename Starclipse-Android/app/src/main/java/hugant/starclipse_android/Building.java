@@ -37,14 +37,6 @@ public abstract class Building {
 	
 	private boolean start = false;
 
-	public void setGlobalRes(Resources res) {
-		this.globalRes = res;
-	}
-
-	public Resources getGlobalRes() {
-		return this.globalRes;
-	}
-
 	public View.OnClickListener OnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
