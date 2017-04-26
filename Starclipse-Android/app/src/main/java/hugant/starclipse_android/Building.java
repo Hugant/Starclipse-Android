@@ -214,8 +214,4 @@ public abstract class Building {
 	public void setExpenses(Resources expenses) {
 		this.expenses = expenses;
 	}
-
-	public Resources getIncome() {
-		return this.income;
-	}
 }
