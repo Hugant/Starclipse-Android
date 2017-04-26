@@ -25,7 +25,7 @@ public class House extends hugant.starclipse_android.Building {
 	 * of <b>House</b>.
 	 * @param type is type of <b>House</b>
 	 */
-	public House(String type) {
+	public House(String type, Resources globalResources) {
 		switch (type.toLowerCase()) {
 			case "big":
 				super.setResidents("0", "100");
