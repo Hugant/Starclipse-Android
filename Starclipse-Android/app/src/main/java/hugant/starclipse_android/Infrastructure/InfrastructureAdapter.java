@@ -40,7 +40,7 @@ public class InfrastructureAdapter extends BaseAdapter {
             protected Void doInBackground(Void... unused) {
                 while (true) {
                     publishProgress();
-                    SystemClock.sleep(1000);
+                    SystemClock.sleep(250);
                 }
             }
 
@@ -103,8 +103,9 @@ public class InfrastructureAdapter extends BaseAdapter {
                 try {
                     button.setText(building.getTimer());
                 } catch (UnsupportedOperationException ex) {}
+
                 MainActivity.updateResources();
-                InfrastructureAdapter.super.notifyDataSetInvalidated();
+                notifyDataSetChanged();
             }
         });
 

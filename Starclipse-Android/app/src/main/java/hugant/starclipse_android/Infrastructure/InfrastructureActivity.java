@@ -36,9 +36,6 @@ public class InfrastructureActivity extends Activity {
         adapter = new InfrastructureAdapter(this, buildings);
         ListView listView = (ListView) findViewById(R.id.adapter);
         listView.setAdapter(adapter);
-
-
-        android.util.Log.i("Hugant", "fuckx2");
     }
 
 
