@@ -41,10 +41,10 @@ public abstract class Building {
 		@Override
 		public void onClick(View e) {
 			try {
-				if (getStatus().equals("Start")) {
+				if (getTimer().equals("Start")) {
 					startWork();
-				} else if (getStatus().equals("Claim")) {
-					globalRes.add(claim());
+				} else if (getTimer().equals("Claim")) {
+					MainActivity.GLOBAL_RESOURCES.add(claim());
 				}
 			} catch (UnsupportedOperationException ex) {
 				build();
@@ -130,7 +130,7 @@ public abstract class Building {
 	 * 
 	 * @see hugant.starclipse_android.common.Timer
 	 */
-	public String getStatus() {
+	public String getTimer() {
 		if (buildTimer != null && incomeTimer != null) {
 			if (((buildTimer.isWork() || incomeTimer.isWork()) || !incomeTimer.isWork()) && start) {
 				return incomeTimer.toString();
