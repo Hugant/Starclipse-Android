@@ -22,7 +22,6 @@ import hugant.starclipse_android.common.Subject;
  * @see hugant.starclipse_android.building.House
  */
 public class Building {
-	private Resources globalRes;
 	private String name = "";
 	private String status = "";
 	
