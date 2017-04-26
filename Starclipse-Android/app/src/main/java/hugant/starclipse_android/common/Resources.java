@@ -240,4 +240,7 @@ public class Resources {
 	public ScaleNumber getVolume() {
 		return volume;
 	}
+	public ArrayList<Subject> getSubjects() {
+		return this.subjects;
+	}
 }
