@@ -13,6 +13,7 @@ import java.util.TreeMap;
 
 import hugant.starclipse_android.Infrastructure.Infrastructure;
 import hugant.starclipse_android.Infrastructure.InfrastructureActivity;
+import hugant.starclipse_android.Infrastructure.InfrastructureAdapter;
 import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
@@ -21,13 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
     private static final Infrastructure infrastructure = new Infrastructure();
 
-    private Resources res = new Resources();
+    public static Resources GLOBAL_RESOURCES = new Resources();
     private Button infrastructureButton;
     private Button button2;
     private TextView planetName;
 
 
-    private House house;
     private House house2;
 
     @Override
@@ -42,9 +42,27 @@ public class MainActivity extends AppCompatActivity {
         button2 = (Button) findViewById(R.id.button2);
 //
 
-//        house2 = new House("small");
+        house2 = new House("small", GLOBAL_RESOURCES);
 
-//        button2.setOnClickListener(house2.OnClick);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View e) {
+                try {
+                    if (house2.getTimer().equals("Start")) {
+                        house2.startWork();
+                    } else if (house2.getTimer().equals("Claim")) {
+                        GLOBAL_RESOURCES.add(house2.claim());
+                    }
+                } catch (UnsupportedOperationException ex) {
+                    house2.build();
+                }
+
+                try {
+                    button2.setText(house2.getTimer());
+                } catch (UnsupportedOperationException ex) {}
+                updateResources();
+            }
+        });
 
         infrastructureButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View e) {
@@ -53,45 +71,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        class Updater extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... unused) {
-                while (true) {
-                    publishProgress();
-                    SystemClock.sleep(250);
-                }
-            }
-
-            @Override
-            protected void onProgressUpdate(Void... values) {
-                updateResources();
-
-                try {
-//                    button2.setText(house2.getStatus());
-//                    android.util.Log.i("Main", house.getIncome().get(Subject.RESIDENTS).toString());
-                } catch (UnsupportedOperationException e) {}
-            }
-        }
-
-        new Updater().execute();
-    }
-
-    public void updateResources() {
-//        for (String i : res.asTypeArray()) {
-//            try {
+//        class Updater extends AsyncTask<Void, Void, Void> {
+//            @Override
+//            protected Void doInBackground(Void... unused) {
+//                while (true) {
+//                    publishProgress();
+//                    SystemClock.sleep(1000);
+//                }
+//            }
 //
+//            @Override
+//            protected void onProgressUpdate(Void... values) {
+//                updateResources();
+//                try {
+//                    button2.setText(house2.getTimer());
+//                } catch (UnsupportedOperationException e) {}
 //            }
 //        }
-        try {
-            textViews.get(Subject.RESIDENTS).setText(" " + res.get(Subject.RESIDENTS).getNumber());
-        } catch (Exception e) {
-            textViews.get(Subject.RESIDENTS).setText(" 0");
-        }
+//
+//        new Updater().execute();
+    }
 
-        try {
-            textViews.get(Subject.MONEY).setText(" " + res.get(Subject.MONEY).getNumber());
-        } catch (Exception e) {
-            textViews.get(Subject.MONEY).setText(" 0");
+    public static void updateResources() {
+        for (Subject i : GLOBAL_RESOURCES.getSubjects()) {
+            try {
+                textViews.get(i.getType()).setText(" " + GLOBAL_RESOURCES.get(i.getType()).getNumber());
+            } catch (Exception e) {
+                textViews.get(i.getType()).setText(" 0");
+            }
         }
     }
 

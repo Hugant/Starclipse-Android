@@ -1,9 +1,12 @@
 package hugant.starclipse_android.Infrastructure;
 
+import android.widget.Button;
+
 import java.util.ArrayList;
 
 import hugant.starclipse_android.Building;
 import hugant.starclipse_android.building.*;
+import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Subject;
 

@@ -1,7 +1,9 @@
 package hugant.starclipse_android.Infrastructure;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import hugant.starclipse_android.Building;
+import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.House;
 
@@ -34,12 +37,16 @@ public class InfrastructureActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.adapter);
         listView.setAdapter(adapter);
 
+
+        android.util.Log.i("Hugant", "fuckx2");
     }
 
+
+
     private void fill() {
-        buildings.add(new House("small"));
-        buildings.add(new House("big"));
-        buildings.add(new House("average"));
+        buildings.add(new House("small", MainActivity.GLOBAL_RESOURCES));
+        buildings.add(new House("big", MainActivity.GLOBAL_RESOURCES));
+        buildings.add(new House("average", MainActivity.GLOBAL_RESOURCES));
 
     }
 }

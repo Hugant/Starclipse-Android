@@ -2,6 +2,7 @@ package hugant.starclipse_android.Infrastructure;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import hugant.starclipse_android.Building;
+import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
 
 /**
@@ -25,7 +27,6 @@ public class InfrastructureAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Map<Building, Button> buildingsMap = new HashMap<Building, Button>();
     private ArrayList<Building> buildings;
-    Updater updater = new Updater();
     private boolean inWork = false;
 
     public InfrastructureAdapter(Context context, ArrayList<Building> buildings) {
@@ -33,7 +34,23 @@ public class InfrastructureAdapter extends BaseAdapter {
         this.buildings = buildings;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.inWork = true;
-        updater.execute();
+
+        class Updater extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... unused) {
+                while (true) {
+                    publishProgress();
+                    SystemClock.sleep(1000);
+                }
+            }
+
+            @Override
+            protected void onProgressUpdate(Void... values) {
+                notifyDataSetChanged();
+            }
+        }
+
+        new Updater().execute();
     }
 
     @Override
@@ -65,7 +82,7 @@ public class InfrastructureAdapter extends BaseAdapter {
         final Button button = (Button) view.findViewById(R.id.button);
 
         try {
-            button.setText(building.getStatus());
+            button.setText(building.getTimer());
         } catch (UnsupportedOperationException e) {
             button.setText("Build");
         }
@@ -74,18 +91,20 @@ public class InfrastructureAdapter extends BaseAdapter {
             @Override
             public void onClick(View e) {
                 try {
-                    if (building.getStatus().equals("Start")) {
+                    if (building.getTimer().equals("Start")) {
                         building.startWork();
-                    } else if (building.getStatus().equals("Claim")) {
-                        building.claim();
+                    } else if (building.getTimer().equals("Claim")) {
+                        MainActivity.GLOBAL_RESOURCES.add(building.claim());
                     }
                 } catch (UnsupportedOperationException ex) {
                     building.build();
                 }
 
                 try {
-                    button.setText(building.getStatus());
+                    button.setText(building.getTimer());
                 } catch (UnsupportedOperationException ex) {}
+                MainActivity.updateResources();
+                InfrastructureAdapter.super.notifyDataSetInvalidated();
             }
         });
 
@@ -94,27 +113,6 @@ public class InfrastructureAdapter extends BaseAdapter {
         }
 
         return view;
-    }
-
-    private class Updater extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            while (inWork) {
-                publishProgress();
-                android.os.SystemClock.sleep(1000);
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            for (Map.Entry<Building, Button> entry : buildingsMap.entrySet()) {
-                try {
-                    entry.getValue().setText(entry.getKey().getStatus());
-                } catch (UnsupportedOperationException e) {}
-            }
-        }
     }
 
     @Override
