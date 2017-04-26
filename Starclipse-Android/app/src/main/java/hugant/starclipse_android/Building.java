@@ -21,7 +21,7 @@ import hugant.starclipse_android.common.Subject;
  * @see hugant.starclipse_android.common.Resources
  * @see hugant.starclipse_android.building.House
  */
-public class Building {
+public abstract class Building {
 	private String name = "";
 	private String status = "";
 	
