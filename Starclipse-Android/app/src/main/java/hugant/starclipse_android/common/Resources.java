@@ -115,7 +115,7 @@ public class Resources {
 	 * @param res is a <b>Resources</b> which you want to take
 	 * @return this
 	 */
-	public Resources minus(Resources res) {
+	public Resources subtract(Resources res) {
 		if (res != null) {
 			for (Subject i : res.subjects) {
 				this.minus(i);
@@ -131,7 +131,7 @@ public class Resources {
 	 * @param sub is a <b>Subject</b> which you want to take
 	 * @return this
 	 */
-	public Resources minus(Subject sub) {
+	public Resources subtract(Subject sub) {
 		if (subjects.contains(sub)) {
 			subjects.get(subjects.indexOf(sub)).minus(sub);
 			this.length--;

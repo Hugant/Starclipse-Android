@@ -106,8 +106,8 @@ public class Starship {
 		 * <b>Subject</b>.
 		 * @param sub is a <b>Subject</b> which you will to take
 		 */
-		public void minus(Subject sub) {
-			this.resources.minus(sub);
+		public void subtract(Subject sub) {
+			this.resources.subtract(sub);
 		}
 		
 		/**

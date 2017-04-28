@@ -34,12 +34,12 @@ public class Warehouse extends hugant.starclipse_android.Building {
 	}
 	
 	public Subject takeFromStore(Subject sub) {
-		store.minus(sub);
+		store.subtract(sub);
 		return sub;
 	}
 	
 	public Resources takeFromStore(Resources res) {
-		store.minus(res);
+		store.subtract(res);
 		return res;
 	}
 	
