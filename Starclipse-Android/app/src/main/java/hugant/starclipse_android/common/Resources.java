@@ -118,7 +118,13 @@ public class Resources {
 	public Resources subtract(Resources res) {
 		if (res != null) {
 			for (Subject i : res.subjects) {
-				this.minus(i);
+				if (!subjects.contains(i.getType())) {
+					throw new ArithmeticException("No such element exists: " + i.getType());
+				}
+			}
+
+			for (Subject i : res.subjects) {
+				this.subtract(i);
 			}
 		}
 		return this;
