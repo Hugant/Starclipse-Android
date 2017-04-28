@@ -242,9 +242,14 @@ public class Resources {
 	}
 
 	/**
-	 *
+	 * Return list of <b>Subject</b>'s.
 	 */
 	public ArrayList<Subject> getSubjects() {
 		return this.subjects;
 	}
+
+	/**
+	 * Return true if <b>Subject</b> with specified type is present
+	 * in the <b>Resources</b>, otherwise return false.
+	 */
 }
