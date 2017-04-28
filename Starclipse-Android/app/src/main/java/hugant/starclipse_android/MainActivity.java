@@ -16,15 +16,11 @@ import hugant.starclipse_android.common.Subject;
 
 public class MainActivity extends AppCompatActivity {
     private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
-    private static final Infrastructure infrastructure = new Infrastructure();
 
     public static Resources GLOBAL_RESOURCES = new Resources();
     private Button infrastructureButton;
-    private Button button2;
+    private Button travelButton;
     private TextView planetName;
-
-
-    private House house2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         initTextViews();
 
-
         infrastructureButton = (Button) findViewById(R.id.infrastructureButton);
-        button2 = (Button) findViewById(R.id.button2);
-//
+        travelButton = (Button) findViewById(R.id.travel);
 
-        house2 = new House("small", GLOBAL_RESOURCES);
-
-        button2.setOnClickListener(new View.OnClickListener() {
+        travelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e) {
-                try {
-                    if (house2.getTimer().equals("Start")) {
-                        house2.startWork();
-                    } else if (house2.getTimer().equals("Claim")) {
-                        GLOBAL_RESOURCES.add(house2.claim());
-                    }
-                } catch (UnsupportedOperationException ex) {
-                    house2.build();
-                }
-
-                try {
-                    button2.setText(house2.getTimer());
-                } catch (UnsupportedOperationException ex) {}
-                updateResources();
+                Intent intent = new Intent(MainActivity.this, Infrastructure.class);
+                startActivity(intent);
             }
         });
 
