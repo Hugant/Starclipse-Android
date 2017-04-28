@@ -252,4 +252,10 @@ public class Resources {
 	 * Return true if <b>Subject</b> with specified type is present
 	 * in the <b>Resources</b>, otherwise return false.
 	 */
+	public boolean hasSubject(String type) {
+		if (subjects.contains(new Subject(type, "0"))) {
+			return true;
+		}
+		return false;
+	}
 }
