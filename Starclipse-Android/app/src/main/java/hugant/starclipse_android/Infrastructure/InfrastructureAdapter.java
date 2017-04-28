@@ -1,6 +1,7 @@
 package hugant.starclipse_android.Infrastructure;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -86,6 +87,14 @@ public class InfrastructureAdapter extends BaseAdapter {
         } catch (UnsupportedOperationException e) {
             button.setText("Build");
         }
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View e) {
+//                Intent intent = new Intent(, InfrastructureActivity.class);
+//                startActivity(intent);
+            }
+        });
 
         button.setOnClickListener( new View.OnClickListener() {
             @Override
