@@ -5,25 +5,41 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/nameOfBuilding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "Name of building"
-            android:textSize = "25dp"
-            android:layout_margin = "20dp"
-            android:id = "@+id/nameOfBuilding"
-            android:onClick="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:text="Name of building"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin = "10dp"
-            android:text="Button"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/upgradeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="90dp"
+            android:layout_marginRight="90dp"
+            android:text="Upgrade"
+            android:layout_alignBaseline="@+id/button"
+            android:layout_alignBottom="@+id/button"
+            android:layout_alignRight="@+id/button"
+            android:layout_alignEnd="@+id/button" />
+
 
     </RelativeLayout>
 </LinearLayout>
