@@ -1,8 +1,6 @@
 package hugant.starclipse_android;
 
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +11,6 @@ import java.util.TreeMap;
 
 import hugant.starclipse_android.Infrastructure.Infrastructure;
 import hugant.starclipse_android.Infrastructure.InfrastructureActivity;
-import hugant.starclipse_android.Infrastructure.InfrastructureAdapter;
-import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 
