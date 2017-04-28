@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nameOfBuilding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp"
+        android:text="Name of Building" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nameOfBuilding"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="18dp"
+        app:srcCompat="@android:drawable/ic_menu_mapmode" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:text = "some text, a;slkdjfa;slkjfas;lkdfja;sldkjfsaljdf;lsakjdflsdjfl;sakjdf;lsakjdf;laskdjf;alsjdkfsl;aa;sldkfja;lsdfja;sldkfja;sdlfkjas;ldfkjas;ldkjfas;lkfjasl;kfjas;ldkfjasl;kdjfasl;dkjfasl;dkfjsaldkfjas;lfjas;ldkfjas;lkjfas;ldkjfas;ldkjfas;ldkjfasl;dkjfasl;dkjfas;ldkjfasl;dkjf;slkjfa;sljkfa;lsjfd;alsjf"
+                android:layout_weight="0.31" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
