@@ -52,6 +52,19 @@ public abstract class Building {
 		}
 	};
 
+	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
+		@Override
+		public void onClick(View e) {
+			try {
+				MainActivity.GLOBAL_RESOURCES.subtract(expenses);
+				upgrade();
+			} catch (ArithmeticException ex) {
+
+			}
+
+		}
+	};
+
 	/**
 	 * Begins to build the <b>Building</b>.
 	 */
