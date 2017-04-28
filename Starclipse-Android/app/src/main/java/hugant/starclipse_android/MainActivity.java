@@ -66,26 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-//        class Updater extends AsyncTask<Void, Void, Void> {
-//            @Override
-//            protected Void doInBackground(Void... unused) {
-//                while (true) {
-//                    publishProgress();
-//                    SystemClock.sleep(1000);
-//                }
-//            }
-//
-//            @Override
-//            protected void onProgressUpdate(Void... values) {
-//                updateResources();
-//                try {
-//                    button2.setText(house2.getTimer());
-//                } catch (UnsupportedOperationException e) {}
-//            }
-//        }
-//
-//        new Updater().execute();
     }
 
     public static void updateResources() {
