@@ -100,8 +100,8 @@ public abstract class Building {
 	 *
 	 */
 	public void upgrade() {
-		this.residents.addToMaxValue("");
-		this.expenses = expenses.multiply("");
+		this.residents.addToMaxValue("10");
+		this.expenses = expenses.multiply("2");
 		this.income = income.multiply(level * k + "");
 	}
 	
