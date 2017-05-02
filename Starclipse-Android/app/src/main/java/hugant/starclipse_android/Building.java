@@ -37,21 +37,6 @@ public abstract class Building {
 	
 	private boolean start = false;
 
-	public View.OnClickListener OnClick = new View.OnClickListener() {
-		@Override
-		public void onClick(View e) {
-			try {
-				if (getTimer().equals("Start")) {
-					startWork();
-				} else if (getTimer().equals("Claim")) {
-					MainActivity.GLOBAL_RESOURCES.add(claim());
-				}
-			} catch (UnsupportedOperationException ex) {
-				build();
-			}
-		}
-	};
-
 	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
