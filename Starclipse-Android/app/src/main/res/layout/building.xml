@@ -13,51 +13,96 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="24dp"
-        android:text="Name of Building" />
+        android:text="Name of Building"
+        android:textSize="24sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/nameOfBuilding"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="18dp"
-        app:srcCompat="@android:drawable/ic_menu_mapmode" />
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_alignBottom="@+id/imageView">
+        android:layout_height="200dp"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:id="@+id/preview">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-            <TextView
-                android:id="@+id/textView6"
+        <ScrollView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"
-                android:textAlignment="center"/>
+                android:orientation="vertical"
+                android:weightSum="1">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp"
-                android:text = "some text, a;slkdjfa;slkjfas;lkdfja;sldkjfsaljdf;lsakjdflsdjfl;sakjdf;lsakjdf;laskdjf;alsjdkfsl;aa;sldkfja;lsdfja;sldkfja;sdlfkjas;ldfkjas;ldkjfas;lkfjasl;kfjas;ldkfjasl;kdjfasl;dkjfasl;dkfjsaldkfjas;lfjas;ldkfjas;lkjfas;ldkjfas;ldkjfas;ldkjfasl;dkjfasl;dkjfas;ldkjfasl;dkjf;slkjfa;sljkfa;lsjfd;alsjf"
-                android:layout_weight="0.31" />
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Description"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="sometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometextsometext" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/ButtonsLayout"
+        android:layout_below="@+id/preview">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Values"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ButtonsLayout"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/upgradeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Upgrade" />
+
+        <Button
+            android:id="@+id/ClaimButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Claim" />
+    </RelativeLayout>
+
 
 </RelativeLayout>
