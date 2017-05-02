@@ -35,15 +35,13 @@ public class MainActivity extends AppCompatActivity {
         travelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e) {
-                Intent intent = new Intent(MainActivity.this, Infrastructure.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Infrastructure.class));
             }
         });
 
         infrastructureButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View e) {
-                Intent intent = new Intent(MainActivity.this, InfrastructureActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, InfrastructureActivity.class));
             }
         });
     }
