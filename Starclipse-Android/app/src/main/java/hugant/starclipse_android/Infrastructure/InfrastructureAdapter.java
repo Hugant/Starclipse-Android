@@ -93,8 +93,9 @@ public class InfrastructureAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e) {
-//                Intent intent = new Intent(, InfrastructureActivity.class);
-//                startActivity(intent);
+//                Intent intent = new Intent(context, BuildingActivity.class);
+//                intent.putExtra(Building.class.getCanonicalName(), );
+                e.getContext().startActivity(new Intent(context, BuildingActivity.class));
             }
         });
 
