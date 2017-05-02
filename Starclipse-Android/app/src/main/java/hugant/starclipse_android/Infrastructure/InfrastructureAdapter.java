@@ -29,7 +29,7 @@ public class InfrastructureAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Map<Building, Button> buildingsMap = new HashMap<Building, Button>();
     private ArrayList<Building> buildings;
-    private boolean inWork = false;
+    protected boolean inWork = false;
 
     public InfrastructureAdapter(Context context, ArrayList<Building> buildings) {
         this.context = context;
