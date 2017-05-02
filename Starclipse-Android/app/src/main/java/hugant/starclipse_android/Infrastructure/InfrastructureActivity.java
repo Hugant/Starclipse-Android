@@ -32,13 +32,71 @@ public class InfrastructureActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infrastructure);
+
         fill();
         adapter = new InfrastructureAdapter(this, buildings);
         ListView listView = (ListView) findViewById(R.id.adapter);
         listView.setAdapter(adapter);
+        android.util.Log.i("Hugant", "onCreate");
+
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        android.util.Log.i("Hugant", "onPostCreate");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        android.util.Log.i("Hugant", "onResume");
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        android.util.Log.i("Hugant", "onPostResume");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        android.util.Log.i("Hugant", "onRestore");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        android.util.Log.i("Hugant", "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        android.util.Log.i("Hugant", "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        adapter.inWork = false;
+        android.util.Log.i("Hugant", "onDestroy");
     }
 
 
+
+    @Override
+    protected void onStart() {
+        android.util.Log.i("Hugant", "onStart");
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 
     private void fill() {
         buildings.add(new House("small", MainActivity.GLOBAL_RESOURCES));
