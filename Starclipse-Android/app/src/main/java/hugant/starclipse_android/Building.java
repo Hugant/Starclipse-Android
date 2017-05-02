@@ -46,7 +46,6 @@ public abstract class Building {
 			} catch (ArithmeticException ex) {
 
 			}
-
 		}
 	};
 
