@@ -14,11 +14,18 @@ import hugant.starclipse_android.building.House;
 
 public class BuildingActivity extends Activity {
     Building building;
+    TextView name;
+    TextView description;
+	ImageView image;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.building);
+
+	    name = (TextView) findViewById(R.id.name);
+	    description = (TextView) findViewById(R.id.description);
+	    image = (ImageView) findViewById(R.id.imageView);
 
     }
 
