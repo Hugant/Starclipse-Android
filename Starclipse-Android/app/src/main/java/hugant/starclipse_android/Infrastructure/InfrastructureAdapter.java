@@ -75,7 +75,7 @@ public class InfrastructureAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.infrastructure_item, parent, false);
+            view = layoutInflater.inflate(R.layout.infrastructure_adapter_item, parent, false);
         }
 
         final Building building = getItem(position);
