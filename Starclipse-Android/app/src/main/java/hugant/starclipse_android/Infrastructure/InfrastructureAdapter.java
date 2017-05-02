@@ -40,10 +40,11 @@ public class InfrastructureAdapter extends BaseAdapter {
         class Updater extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... unused) {
-                while (true) {
+                while (inWork) {
                     publishProgress();
-                    SystemClock.sleep(250);
+                    SystemClock.sleep(1000);
                 }
+                return null;
             }
 
             @Override
