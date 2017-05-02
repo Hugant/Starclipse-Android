@@ -40,7 +40,7 @@
         android:layout_marginRight="178dp"
         android:layout_marginEnd="178dp"
         android:layout_below="@+id/resourcesName"
-        android:layout_above="@+id/button2">
+        android:layout_above="@+id/travel">
 
         <TextView
             android:text=" 0"
