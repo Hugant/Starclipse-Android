@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import hugant.starclipse_android.Building;
+import hugant.starclipse_android.BuildingActivity;
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
 
