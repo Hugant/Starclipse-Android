@@ -124,9 +124,4 @@ public class InfrastructureAdapter extends BaseAdapter {
 
         return view;
     }
-
-    @Override
-    protected void finalize() throws Throwable {
-        this.inWork = false;
-    }
 }
