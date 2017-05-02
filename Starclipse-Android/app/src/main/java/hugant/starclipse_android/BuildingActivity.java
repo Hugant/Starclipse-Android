@@ -3,10 +3,8 @@ package hugant.starclipse_android;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.ListView;
-
-import hugant.starclipse_android.Infrastructure.InfrastructureAdapter;
-import hugant.starclipse_android.building.House;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Hugant on 28.04.2017.
