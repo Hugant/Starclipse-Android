@@ -1,5 +1,6 @@
 package hugant.starclipse_android;
 
+import hugant.starclipse_android.Infrastructure.Infrastructure;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.building.House;
