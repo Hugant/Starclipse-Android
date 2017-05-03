@@ -15,14 +15,10 @@ public class Warehouse extends hugant.starclipse_android.Building {
 	private Resources store;
 	
 	public Warehouse(ScaleNumber volume, String... cells) {
-		if (cells.length != 6) {
-			throw new IllegalArgumentException("The number of elements in the string array must be equal to 6");
-		} else {
-			this.store = new Resources(volume, cells);
-			super.setName("Warehouse");
-			super.setResidents("10", "70");
-			super.setExpenses(new Resources());
-		}
+		this.store = new Resources(volume == null ? this.volume : volume, cells);
+		super.setName("Warehouse");
+		super.setResidents("10", "70");
+		super.setExpenses(new Resources());
 	}
 	
 	public void addToStore(Subject sub) {
