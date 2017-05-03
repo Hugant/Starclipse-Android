@@ -1,11 +1,8 @@
 package hugant.starclipse_android.building;
 
-import android.widget.Button;
-import android.widget.TextView;
-
 import hugant.starclipse_android.common.Timer;
-import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
+import hugant.starclipse_android.common.Resources;
 
 /**
  * This class implements an object <b>House</b> that has three types:

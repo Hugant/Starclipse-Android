@@ -1,8 +1,9 @@
 package hugant.starclipse_android.building.industry;
 
 import hugant.starclipse_android.common.Subject;
-import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.ScaleNumber;
+
 
 /**
  * Allows you to create a <b>Starship</b> with certain

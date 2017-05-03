@@ -1,8 +1,8 @@
 package hugant.starclipse_android.building.industry;
 
-import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.Timer;
+import hugant.starclipse_android.common.Subject;
+import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.ScaleNumber;
 
 public class ResourcesFactory extends hugant.starclipse_android.Building {

@@ -5,9 +5,10 @@ import android.os.Parcelable;
 import android.view.View;
 import android.os.Parcel;
 
-import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Subject;
+import hugant.starclipse_android.common.Resources;
+
 
 /**
  * This is class the parents for buildings:

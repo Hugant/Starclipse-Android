@@ -1,7 +1,7 @@
 package hugant.starclipse_android.building.industry;
 
-import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Timer;
+import hugant.starclipse_android.common.Resources;
 
 public class StarshipsFactory extends hugant.starclipse_android.Building {
 	private String name = "Starships Factory";
