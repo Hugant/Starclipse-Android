@@ -74,7 +74,7 @@ public class Resources {
 		}
 		isStorage = new Boolean(false);
 	}
-	
+
 	/**
 	 * Adds to the current <b>Resources</b> another <b>Resources</b>.
 	 * @param res is a <b>Resources</b> which you want to add
