@@ -11,16 +11,23 @@ import java.util.TreeMap;
 
 import hugant.starclipse_android.Infrastructure.Infrastructure;
 import hugant.starclipse_android.Infrastructure.InfrastructureActivity;
+import hugant.starclipse_android.Travel.TravelActivity;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 
 public class MainActivity extends AppCompatActivity {
     private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
 
-    public static Resources GLOBAL_RESOURCES = new Resources();
+	private Planet planet;
+
+    private static Resources GLOBAL_RESOURCES = new Resources();
     private Button infrastructureButton;
     private Button travelButton;
     private TextView planetName;
+
+    public static Resources getRes() {
+	    return GLOBAL_RESOURCES;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +42,15 @@ public class MainActivity extends AppCompatActivity {
         travelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e) {
-                startActivity(new Intent(MainActivity.this, Infrastructure.class));
+                startActivity(new Intent(MainActivity.this, TravelActivity.class));
+				// travel date in Intent
             }
         });
 
         infrastructureButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View e) {
                 startActivity(new Intent(MainActivity.this, InfrastructureActivity.class));
+	            // infrastructure date in Intent
             }
         });
     }
