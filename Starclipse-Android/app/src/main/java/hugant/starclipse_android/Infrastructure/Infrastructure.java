@@ -26,4 +26,9 @@ public class Infrastructure {
 	public ArrayList<Building> getInfrastructure() {
         return infrastructure;
 	}
+
+	public Resources getResources() {
+		// Always first element this is warehouse, bug or feature
+		return ((Warehouse) infrastructure.get(0)).getStore();
+	}
 }
