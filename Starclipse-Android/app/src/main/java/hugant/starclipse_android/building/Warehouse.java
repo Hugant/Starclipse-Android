@@ -42,4 +42,8 @@ public class Warehouse extends hugant.starclipse_android.Building {
 	public void fill() {
 		store.fill();
 	}
+
+	public Resources getStore() {
+		return store;
+	}
 }
