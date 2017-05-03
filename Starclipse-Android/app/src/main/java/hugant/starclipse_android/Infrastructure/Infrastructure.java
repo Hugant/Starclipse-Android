@@ -15,6 +15,7 @@ public class Infrastructure {
 	
 	public Infrastructure() {
 		infrastructure = new ArrayList<Building>();
+		infrastructure.add(new Warehouse(null, Subject.ALL_RESOURCES));
 	}
 	
 	public Building add(Building building) {
