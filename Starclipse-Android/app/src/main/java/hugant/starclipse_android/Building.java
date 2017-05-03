@@ -1,11 +1,10 @@
 package hugant.starclipse_android;
 
 
+import android.os.Parcelable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.os.Parcel;
 
-import hugant.starclipse_android.building.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Subject;
@@ -21,7 +20,7 @@ import hugant.starclipse_android.common.Subject;
  * @see hugant.starclipse_android.common.Resources
  * @see hugant.starclipse_android.building.House
  */
-public abstract class Building {
+public abstract class Building /*implements Parcelable */{
 	private String name = "";
 	private String status = "";
 	
@@ -37,11 +36,19 @@ public abstract class Building {
 	
 	private boolean start = false;
 
+
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//		dest.writeString(name);
+//		dest.writeString(status);
+//		dest.write
+//	}
+
 	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
 			try {
-				MainActivity.GLOBAL_RESOURCES.subtract(expenses);
+				MainActivity.getRes().subtract(expenses);
 				upgrade();
 			} catch (ArithmeticException ex) {
 
