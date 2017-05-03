@@ -67,7 +67,6 @@ public class House extends hugant.starclipse_android.Building {
 											  	Subject.IRON,   "1" , 
 											  	Subject.WATER,  "1", 
 											  	Subject.ENERGY, "1"  ));
-				return;
 		}
 	}
 }
