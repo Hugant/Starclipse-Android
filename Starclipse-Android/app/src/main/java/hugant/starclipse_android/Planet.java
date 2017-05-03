@@ -9,10 +9,8 @@ public class Planet {
 	private Resources resources;
 	private Resources effect;
 	
-	//private Infrastructure infrastructure;
-	
-	private Building[] infrastructure = new Building[5];
-	private Subject residents;
+	private Infrastructure infrastructure;
+	private Subject freeResidents;
 	
 	private String name;
 	private boolean defend = false;
