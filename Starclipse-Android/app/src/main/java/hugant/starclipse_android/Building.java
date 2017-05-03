@@ -30,6 +30,7 @@ public abstract class Building /*implements Parcelable */{
 	private Subject residents = null;
 	private int level = 0;
 	private float k = 1.5f;
+
 	
 	private Resources income = null;
 	private Resources expenses = null;
