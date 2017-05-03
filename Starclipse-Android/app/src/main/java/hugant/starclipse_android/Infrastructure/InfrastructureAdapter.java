@@ -20,6 +20,8 @@ import hugant.starclipse_android.BuildingActivity;
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
 
+
+
 /**
  * Created by Hugant on 21.04.2017.
  */
@@ -106,7 +108,7 @@ public class InfrastructureAdapter extends BaseAdapter {
                     if (building.getTimer().equals("Start")) {
                         building.startWork();
                     } else if (building.getTimer().equals("Claim")) {
-                        MainActivity.GLOBAL_RESOURCES.add(building.claim());
+                        MainActivity.getRes().add(building.claim());
                     }
                 } catch (UnsupportedOperationException ex) {
                     building.build();
