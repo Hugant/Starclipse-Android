@@ -99,9 +99,9 @@ public class InfrastructureActivity extends Activity {
     }
 
     private void fill() {
-        buildings.add(new House("small", MainActivity.GLOBAL_RESOURCES));
-        buildings.add(new House("big", MainActivity.GLOBAL_RESOURCES));
-        buildings.add(new House("average", MainActivity.GLOBAL_RESOURCES));
+        buildings.add(new House("small"));
+        buildings.add(new House("big"));
+        buildings.add(new House("average"));
 
     }
 }
