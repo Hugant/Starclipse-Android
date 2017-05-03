@@ -36,7 +36,9 @@ public class Subject {
 	public final static String FOOD = "food";
 	public final static String MONEY = "money";
 	public final static String SOIL = "soil";
-	
+
+	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
+													ENERGY, FOOD, MONEY, SOIL};
 
 	public final static String RESIDENTS = "residents";
 
