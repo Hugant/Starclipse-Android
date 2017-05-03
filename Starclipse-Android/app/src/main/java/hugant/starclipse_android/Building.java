@@ -90,7 +90,9 @@ public abstract class Building /*implements Parcelable */{
 	}
 
 	/**
-	 *
+	 * Upgrade the <b>Building</b>, it also increase
+	 * maximum number of residents, expenses <b>Resources</b> for next upgrade
+	 * and income <b>Resources</b>
 	 */
 	public void upgrade() {
 		this.residents.addToMaxValue("10");
@@ -148,7 +150,11 @@ public abstract class Building /*implements Parcelable */{
 		}
 		return "";
 	}
-	
+
+	/**
+	 * Return current status of this <b>Building</b>.
+	 * @return one of the string: locked, unlocked
+	 */
 	public String getStatus() {
 		return status;
 	}

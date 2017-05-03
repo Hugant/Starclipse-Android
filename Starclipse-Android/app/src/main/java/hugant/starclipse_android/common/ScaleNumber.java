@@ -219,7 +219,12 @@ public class ScaleNumber {
 		this.checkingValidity();
 		return this;
 	}
-	
+
+	/**
+	 * Transfer the <b>ScaleNumber</b> to specified system(prefix).
+	 * @param system
+	 * @return <b>ScaleNumber</b> in the specified system(prefix)
+	 */
 	private BigDecimal transferTo(String system) {
 		// number * 10^(this.postfix - system) * 3
 		this.prefix = this.prefix.multiply(
@@ -258,8 +263,17 @@ public class ScaleNumber {
 		}
 		return 0;
 	}
-	
 
+	/**
+	 * Transfer the <b>ScaleNumber</b> to form NNN.DDD+.
+	 * <p>
+	 * <strong>Example: </strong>
+	 * <br>
+	 * <pre>
+	 *     new ScaleNumber("0.32M").checkingValidity();// 320.00T
+	 *     new ScaleNumber("1.12T").checkingValidity();// 1.12T
+	 * <br>
+	 */
 	private void checkingValidity() {
 		while (this.prefix.abs().compareTo(BigDecimal.valueOf(1)) == -1 && !this.postfix.equals("")) {
 			this.prefix = this.prefix.multiply(BigDecimal.valueOf(1000));
@@ -331,7 +345,11 @@ public class ScaleNumber {
 	public String toString() {
 		return this.prefix + this.postfix;
 	}
-	
+
+	/**
+	 * Patterns for regular expressions.
+	 * @return
+	 */
 	private static String getPrefixPattern() {
 		String out = "";
 		for (String i : POSTFIX_MAS) {
@@ -341,7 +359,11 @@ public class ScaleNumber {
 		}
 		return out;
 	}
-	
+
+	/**
+	 * Patterns for regular expressions.
+	 * @return
+	 */
 	private static String getPostfixPattern() {
 		String out = "";
 		for (String i : POSTFIX_MAS) {
