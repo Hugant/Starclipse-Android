@@ -22,5 +22,20 @@ public class Planet {
 		this.infrastructure = new Infrastructure();
 		this.resources = infrastructure.getResources();
 	}
+
+	public boolean isDefend() {
+		return defend;
+	}
+
+	public Resources getResources() {
+		return resources;//may be clone
+	}
+
+	public Subject getFreeResidents() {
+		return freeResidents;//may be clone
+	}
+
+	public String getName() {
+		return name;//may be clone
 	}
 }
