@@ -25,7 +25,6 @@ import java.math.BigDecimal;
  * @see hugant.starclipse_android.common.ScaleNumber
  */
 public class Subject {
-	public final static String RESIDENTS = "residents";
 	public final static String GOLD = "gold";
 	public final static String IRON = "iron";
 	public final static String COAL = "coal";
@@ -38,6 +37,9 @@ public class Subject {
 	public final static String MONEY = "money";
 	public final static String SOIL = "soil";
 	
+
+	public final static String RESIDENTS = "residents";
+
 	private ScaleNumber value = null;
 	private ScaleNumber maxValue = null;
 	private String type = null;
