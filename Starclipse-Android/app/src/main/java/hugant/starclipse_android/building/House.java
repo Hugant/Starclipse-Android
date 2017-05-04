@@ -30,7 +30,7 @@ public class House extends hugant.starclipse_android.Building {
 				super.setName("Big House");
 				super.setBuildTimer(Timer.MINUTE * 30, "Start");
 				super.setIncomeTimer(Timer.SECOND * 20, "Claim");
-//				super.setGlobalRes(globalRes);
+//				super.setDescription(R.string.building_small_house_description);
 				super.setIncome(new Resources(Subject.RESIDENTS, "10", Subject.MONEY, "100"));
 				super.setExpenses(new Resources(Subject.STONE,  "100",
 											  	Subject.TREE,   "50", 
@@ -45,7 +45,7 @@ public class House extends hugant.starclipse_android.Building {
 				super.setName("Average House");
 				super.setBuildTimer(Timer.MINUTE * 5, "Start");
 				super.setIncomeTimer(Timer.SECOND * 20, "Claim");
-//				super.setGlobalRes(globalRes);
+				super.setDescription(R.string.building_small_house_description);
 				super.setIncome(new Resources(Subject.RESIDENTS, "5", Subject.MONEY, "50"));
 				super.setExpenses(new Resources(Subject.STONE,  "50", 
 											  	Subject.TREE,   "25", 
@@ -60,7 +60,7 @@ public class House extends hugant.starclipse_android.Building {
 				super.setName("Small House");
 				super.setBuildTimer(Timer.SECOND * 10, "Start");
 				super.setIncomeTimer(Timer.SECOND * 5, "Claim");
-//				super.setGlobalRes(globalRes);
+				super.setDescription(R.string.building_small_house_description);
 				super.setIncome(new Resources(Subject.RESIDENTS, "3ZaZ", Subject.MONEY, "25ZaZ"));
 				super.setExpenses(new Resources(Subject.STONE,  "12", 
 												Subject.TREE,   "6", 
