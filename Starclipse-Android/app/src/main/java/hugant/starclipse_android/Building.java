@@ -43,14 +43,6 @@ public abstract class Building implements Serializable {
 	
 	private boolean start = false;
 
-
-//	@Override
-//	public void writeToParcel(Parcel dest, int flags) {
-//		dest.writeString(name);
-//		dest.writeString(status);
-//		dest.write
-//	}
-
 	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View e) {
