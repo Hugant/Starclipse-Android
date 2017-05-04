@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static hugant.starclipse_android.Infrastructure.InfrastructureAdapter.BUILDING_INTENT;
+
 /**
  * Created by Hugant on 28.04.2017.
  */
@@ -21,7 +23,7 @@ public class BuildingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.building);
 
-	    building = (Building) getIntent().getSerializableExtra("building");
+	    building = (Building) getIntent().getSerializableExtra(BUILDING_INTENT);
 
 	    name = (TextView) findViewById(R.id.name);
 	    description = (TextView) findViewById(R.id.description);
