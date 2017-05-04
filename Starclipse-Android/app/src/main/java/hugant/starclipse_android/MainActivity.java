@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.TreeMap;
 
 
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
         infrastructureButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View e) {
+	            Intent intent = new Intent(MainActivity.this, InfrastructureActivity.class);
+	            intent.putExtra("BuildingsArray", planet.getInfrastructure().getBuildings());
+//	            intent.putParcelableArrayListExtra("BuildingArray", planet.getInfrastructure().getBuildings());
                 startActivity(new Intent(MainActivity.this, InfrastructureActivity.class));
 	            // infrastructure date in Intent
             }
