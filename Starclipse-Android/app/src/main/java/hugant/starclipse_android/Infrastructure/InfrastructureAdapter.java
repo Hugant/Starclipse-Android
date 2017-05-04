@@ -29,7 +29,9 @@ import hugant.starclipse_android.common.Subject;
  */
 
 public class InfrastructureAdapter extends BaseAdapter {
-    private Context context;
+    public final static String BUILDING_INTENT = "Building";
+
+	private Context context;
     private LayoutInflater layoutInflater;
     private Map<Building, Button> buildingsMap = new HashMap<Building, Button>();
     private ArrayList<Building> buildings;
@@ -98,7 +100,7 @@ public class InfrastructureAdapter extends BaseAdapter {
             @Override
             public void onClick(View e) {
                 Intent intent = new Intent(context, BuildingActivity.class);
-                intent.putExtra("building", building);
+                intent.putExtra(BUILDING_INTENT, building);
                 e.getContext().startActivity(intent);
             }
         });
