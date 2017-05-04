@@ -25,7 +25,7 @@ import java.math.BigDecimal;
  * <br>
  * @author Hugant MD
  */
-public class ScaleNumber {
+public class ScaleNumber implements Serializable {
 	/**
 	* <b>Contains the names of large numbers: <br></b>
 	* K = 1000, <br>
