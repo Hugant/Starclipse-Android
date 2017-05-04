@@ -1,5 +1,6 @@
 package hugant.starclipse_android.building;
 
+import hugant.starclipse_android.R;
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.Resources;
