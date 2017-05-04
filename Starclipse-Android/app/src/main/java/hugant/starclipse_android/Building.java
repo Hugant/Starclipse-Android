@@ -26,7 +26,10 @@ import hugant.starclipse_android.common.Resources;
 public abstract class Building implements Serializable {
 	private String name = "";
 	private String status = "";
-	
+
+	private int descriptionId = -1;
+	private int imageId = -1;
+
 	private Timer buildTimer = null;
 	private Timer incomeTimer = null;
 	
