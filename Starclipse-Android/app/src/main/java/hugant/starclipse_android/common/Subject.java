@@ -25,7 +25,7 @@ import java.math.BigDecimal;
  * 
  * @see hugant.starclipse_android.common.ScaleNumber
  */
-public class Subject {
+public class Subject implements Serializable {
 	public final static String GOLD = "gold";
 	public final static String IRON = "iron";
 	public final static String COAL = "coal";
