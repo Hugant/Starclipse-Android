@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import android.view.View;
 import android.os.Parcel;
 
+import java.io.Serializable;
+
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.Resources;
