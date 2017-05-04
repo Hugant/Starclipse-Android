@@ -7,7 +7,7 @@ import java.io.Serializable;
  * <br>
  * @author Hugant MD
  */
-public class Timer {
+public class Timer implements Serializable {
 
 	/**The number of milliseconds in the day {@value #DAY}ms*/
 	public static final long DAY = 86400000L;
