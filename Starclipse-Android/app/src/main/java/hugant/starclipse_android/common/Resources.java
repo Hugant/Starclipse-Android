@@ -1,5 +1,6 @@
 package hugant.starclipse_android.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
