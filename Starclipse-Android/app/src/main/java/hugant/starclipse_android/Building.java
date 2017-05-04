@@ -43,17 +43,17 @@ public abstract class Building implements Serializable {
 	
 	private boolean start = false;
 
-	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
-		@Override
-		public void onClick(View e) {
-			try {
-				MainActivity.getRes().subtract(expenses);
-				upgrade();
-			} catch (ArithmeticException ex) {
-
-			}
-		}
-	};
+//	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
+//		@Override
+//		public void onClick(View e) {
+//			try {
+//				MainActivity.getRes().subtract(expenses);
+//				upgrade();
+//			} catch (ArithmeticException ex) {
+//
+//			}
+//		}
+//	};
 
 	/**
 	 * Begins to build the <b>Building</b>.
