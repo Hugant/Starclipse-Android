@@ -11,24 +11,24 @@ import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Subject;
 
 public class Infrastructure {
-	private ArrayList<Building> infrastructure;
+	private ArrayList<Building> buildings;
 	
 	public Infrastructure() {
-		infrastructure = new ArrayList<Building>();
-		infrastructure.add(new Warehouse(null, Subject.ALL_RESOURCES));
+		buildings = new ArrayList<Building>();
+		buildings.add(new Warehouse(null, Subject.ALL_RESOURCES));
 	}
 	
 	public Building add(Building building) {
-		infrastructure.add(building);
+		buildings.add(building);
 		return building;
 	}
 
-	public ArrayList<Building> getInfrastructure() {
-        return infrastructure;
+	public ArrayList<Building> getBuildings() {
+        return buildings;
 	}
 
 	public Resources getResources() {
 		// Always first element this is warehouse, bug or feature
-		return ((Warehouse) infrastructure.get(0)).getStore();
+		return ((Warehouse) buildings.get(0)).getStore();
 	}
 }
