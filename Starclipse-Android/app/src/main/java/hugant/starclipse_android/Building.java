@@ -225,4 +225,21 @@ public abstract class Building implements Serializable {
 	public void setExpenses(Resources expenses) {
 		this.expenses = expenses;
 	}
+	public void setDescription(int descriptionId) {
+		this.descriptionId = descriptionId;
+	}
+
+	public int getDescription() {
+		if (descriptionId == -1) {
+			return R.string.building_description_not_found;
+		}
+		return descriptionId;
+	}
+	public void setImage(int imageId) {
+		this.imageId = imageId;
+	}
+
+	public int getImage() {
+		return imageId;
+	}
 }
