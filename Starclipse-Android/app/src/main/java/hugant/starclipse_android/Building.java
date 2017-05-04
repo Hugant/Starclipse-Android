@@ -23,7 +23,7 @@ import hugant.starclipse_android.common.Resources;
  * @see hugant.starclipse_android.common.Resources
  * @see hugant.starclipse_android.building.House
  */
-public abstract class Building /*implements Parcelable */{
+public abstract class Building implements Serializable {
 	private String name = "";
 	private String status = "";
 	
