@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  *@see hugant.starclipse_android.common.Subject
  */
-public class Resources {
+public class Resources implements Serializable {
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
@@ -75,6 +75,7 @@ public class Resources {
 		}
 		isStorage = new Boolean(false);
 	}
+
 
 	/**
 	 * Adds to the current <b>Resources</b> another <b>Resources</b>.
