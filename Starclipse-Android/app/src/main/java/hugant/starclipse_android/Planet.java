@@ -38,4 +38,8 @@ public class Planet {
 	public String getName() {
 		return name;//may be clone
 	}
+
+	public Infrastructure getInfrastructure() {
+		return infrastructure;
+	}
 }
