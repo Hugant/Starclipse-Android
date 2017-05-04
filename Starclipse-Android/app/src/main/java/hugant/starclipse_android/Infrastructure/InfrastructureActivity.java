@@ -25,7 +25,6 @@ import hugant.starclipse_android.building.House;
  */
 
 public class InfrastructureActivity extends Activity {
-    ArrayList<Building> buildings = new ArrayList<Building>();
     InfrastructureAdapter adapter;
 
     @Override
@@ -33,7 +32,8 @@ public class InfrastructureActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infrastructure);
 
-        adapter = new InfrastructureAdapter(this, buildings);
+        adapter = new InfrastructureAdapter(this,
+                (ArrayList) getIntent().getSerializableExtra("BuildingsArray"));
         ListView listView = (ListView) findViewById(R.id.adapter);
         listView.setAdapter(adapter);
         android.util.Log.i("Hugant", "onCreate");
