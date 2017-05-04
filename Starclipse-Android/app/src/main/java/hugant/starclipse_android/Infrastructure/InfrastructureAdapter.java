@@ -19,7 +19,9 @@ import hugant.starclipse_android.Building;
 import hugant.starclipse_android.BuildingActivity;
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
-
+import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.ScaleNumber;
+import hugant.starclipse_android.common.Subject;
 
 
 /**
