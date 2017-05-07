@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="building_small_house_description">Текущее описание здания</string>
+    <string name="build_button">Построить</string>
+    <string name="claim_button">Собрать</string>
+    <string name="start_button">Начать работу</string>
+    <string name="building_title_description">Описание</string>
+    <string name="building_image_content_description">Изображение здания</string>
+    <string name="upgrade_button">Улучшить</string>
+    <string name="building_title_value">Значение</string>
+    <string name="building_subtitle_current">Текущие значения</string>
+    <string name="building_subtitle_upgraded">Будущие значения</string>
+    <string name="building_description_not_found">Нет описания</string>
+</resources>
