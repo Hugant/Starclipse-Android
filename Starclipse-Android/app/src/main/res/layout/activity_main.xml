@@ -1,186 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="hugant.starclipse_android.MainActivity">
 
-    <TextView
-        android:text="Planet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textAllCaps="true"
-        android:textSize = "20dp"
-        android:id="@+id/planetName" />
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
 
-    <TextView
-        android:text="Resources"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/resourcesName"
-        android:textSize = "24dp"
-        android:layout_marginTop = "10dp"
-        android:layout_below = "@+id/planetName"
-        android:textAlignment = "center"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignRight="@+id/resourcesName"
-        android:layout_alignEnd="@+id/resourcesName"
-        android:layout_marginRight="178dp"
-        android:layout_marginEnd="178dp"
-        android:layout_below="@+id/resourcesName"
-        android:layout_above="@+id/travel">
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/man"
-            android:id="@+id/residents" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/gold1"
-            android:id="@+id/iron" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/coal"
-            android:id="@+id/coal" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/nature3"
-            android:id="@+id/tree" />
-
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/stack"
-            android:id="@+id/stone" />
-
-        <TextView
-            android:text=" 999.99BaM"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/cutlery"
-            android:id="@+id/food" />
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/resourcesName"
-        android:layout_alignLeft="@+id/resourcesName"
-        android:layout_alignStart="@+id/resourcesName"
-        android:layout_marginLeft="178dp"
-        android:layout_marginStart="178dp"
-        android:layout_above="@+id/button">
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/gold"
-            android:id="@+id/gold" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/waterdrop"
-            android:id="@+id/water" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/nature1"
-            android:id="@+id/oxygen" />
-
-        <TextView
-            android:text=" 999.99"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/technology"
-            android:id="@+id/energy" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/grass"
-            android:id="@+id/soil" />
-
-        <TextView
-            android:text=" 0"
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding = "8dp"
-            android:drawableLeft = "@drawable/money1"
-            android:id="@+id/money" />
-    </LinearLayout>
-
-    <Button
-        android:text="Travel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/travel"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Infrastructure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/infrastructureButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+</LinearLayout>

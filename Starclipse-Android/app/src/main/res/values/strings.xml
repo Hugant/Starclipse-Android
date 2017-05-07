@@ -1,16 +1,10 @@
 <resources>
-    <string name="app_name" translatable="false">Starclipse</string>
+    <string name="app_name">Starclipse-Android</string>
+    <string name="navigation_title_travel">Travel</string>
+    <string name="navigation_title_planet">Planet</string>
+    <string name="navigation_title_infrastructure">Infrastructure</string>
+    <string name="navigation_title_settings">Settings</string>
 
-    <string name="building_small_house_description">Current description of the building</string>
-    <string name="building_image_content_description">Image of the building</string>
-    <string name="building_title_description">Description</string>
-    <string name="building_title_value">Value</string>
-
-    <string name="claim_button">Claim</string>
-    <string name="build_button">Build</string>
-    <string name="start_button">Start</string>
-    <string name="upgrade_button">Upgrade</string>
-    <string name="building_subtitle_current">Current</string>
-    <string name="building_subtitle_upgraded">Upgraded</string>
-    <string name="building_description_not_found">No description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

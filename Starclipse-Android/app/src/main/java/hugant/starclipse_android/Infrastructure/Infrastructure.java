@@ -1,13 +1,10 @@
-package hugant.starclipse_android.Infrastructure;
-
-import android.widget.Button;
+package hugant.starclipse_android.infrastructure;
 
 import java.util.ArrayList;
 
-import hugant.starclipse_android.Building;
-import hugant.starclipse_android.building.*;
+import hugant.starclipse_android.building.Building;
+import hugant.starclipse_android.building.items.Warehouse;
 import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Subject;
 
 public class Infrastructure {

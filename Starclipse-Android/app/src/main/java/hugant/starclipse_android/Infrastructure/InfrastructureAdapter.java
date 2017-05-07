@@ -1,5 +1,7 @@
-package hugant.starclipse_android.Infrastructure;
+package hugant.starclipse_android.infrastructure;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -15,10 +17,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import hugant.starclipse_android.Building;
-import hugant.starclipse_android.BuildingActivity;
+import hugant.starclipse_android.building.Building;
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
+import hugant.starclipse_android.building.BuildingFragment;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.ScaleNumber;
 import hugant.starclipse_android.common.Subject;
@@ -29,16 +31,16 @@ import hugant.starclipse_android.common.Subject;
  */
 
 public class InfrastructureAdapter extends BaseAdapter {
-    public final static String BUILDING_INTENT = "Building";
 
 	private Context context;
     private LayoutInflater layoutInflater;
-    private Map<Building, Button> buildingsMap = new HashMap<Building, Button>();
     private ArrayList<Building> buildings;
-    protected boolean inWork = false;
+    private Resources resources;
+    private static boolean inWork = false;
 
-    public InfrastructureAdapter(Context context, ArrayList<Building> buildings) {
-        this.context = context;
+    public InfrastructureAdapter(Context context, ArrayList<Building> buildings, Resources resources) {
+	    this.context = context;
+        this.resources = resources;
         this.buildings = buildings;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.inWork = true;
@@ -90,47 +92,53 @@ public class InfrastructureAdapter extends BaseAdapter {
 
         final Button button = (Button) view.findViewById(R.id.button);
 
-        try {
-            button.setText(building.getTimer());
-        } catch (UnsupportedOperationException e) {
-            button.setText("Build");
-        }
+	    view.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View e) {
+			    BuildingFragment fragment = new BuildingFragment(building);
+			    FragmentTransaction fragmentTransaction = ((Activity) context).getFragmentManager().beginTransaction();
+			    fragmentTransaction.replace(R.id.content, fragment);
+			    fragmentTransaction.addToBackStack(null);
+			    fragmentTransaction.commit();
+		    }
+	    });
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View e) {
-                Intent intent = new Intent(context, BuildingActivity.class);
-                intent.putExtra(BUILDING_INTENT, building);
-                e.getContext().startActivity(intent);
-            }
-        });
+	    if (!building.getName().equals("Warehouse")) {
+		    try {
+			    button.setText(building.getTimer());
+		    } catch (UnsupportedOperationException e) {
+			    button.setText("Build");
+		    }
 
-        button.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View e) {
-                try {
-                    if (building.getTimer().equals("Start")) {
-                        building.startWork();
-                    } else if (building.getTimer().equals("Claim")) {
-                        MainActivity.getRes().add(building.claim());
-                    }
-                } catch (UnsupportedOperationException ex) {
-                    building.build();
-                }
+		    button.setOnClickListener( new View.OnClickListener() {
+			    @Override
+			    public void onClick(View e) {
+				    try {
+					    if (building.getTimer().equals("Start")) {
+						    building.startWork();
+					    } else if (building.getTimer().equals("Claim")) {
+						    resources.add(building.claim());
+					    }
+				    } catch (UnsupportedOperationException ex) {
+					    building.build();
+				    }
 
-                try {
-                    button.setText(building.getTimer());
-                } catch (UnsupportedOperationException ex) {}
+				    try {
+					    button.setText(building.getTimer());
+				    } catch (UnsupportedOperationException ex) {}
 
-                MainActivity.updateResources();
-                notifyDataSetChanged();
-            }
-        });
+				    notifyDataSetChanged();
+			    }
+		    });
+	    } else {
+		    button.setVisibility(View.INVISIBLE);
+	    }
 
-        for (Building i : buildings) {
-            buildingsMap.put(i, button);
-        }
 
         return view;
+    }
+
+    public static void setInWork(boolean work) {
+	    inWork = work;
     }
 }

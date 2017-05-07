@@ -1,88 +1,72 @@
 package hugant.starclipse_android;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.view.MenuItem;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.TreeMap;
-
-
-import hugant.starclipse_android.Infrastructure.Infrastructure;
-import hugant.starclipse_android.Infrastructure.InfrastructureActivity;
-import hugant.starclipse_android.Travel.TravelActivity;
+import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.Subject;
+import hugant.starclipse_android.infrastructure.InfrastructureFragment;
+import hugant.starclipse_android.planet.Planet;
+import hugant.starclipse_android.planet.PlanetFragment;
+import hugant.starclipse_android.travel.TravelFragment;
 
-public class MainActivity extends AppCompatActivity {
-    private static final TreeMap<String, TextView> textViews = new TreeMap<String, TextView>();
+public class MainActivity extends Activity {
 
-	private Planet planet;
+	private TravelFragment travelFragment;
+	private PlanetFragment planetFragment;
+	private InfrastructureFragment infrastructureFragment;
+	private SettingsFragment settingsFragment;
 
-    private static Resources GLOBAL_RESOURCES = new Resources();
-    private Button infrastructureButton;
-    private Button travelButton;
-    private TextView planetName;
+	private Planet planet = new Planet("Caroline", new Resources());
 
-    public static Resources getRes() {
-	    return GLOBAL_RESOURCES;
-    }
+	private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+			= new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+		@Override
+		public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+			FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+			switch (item.getItemId()) {
+				case R.id.navigation_travel:
+					fragmentTransaction.replace(R.id.content, travelFragment);
+					fragmentTransaction.commit();
+					return true;
+				case R.id.navigation_planet:
+					fragmentTransaction.replace(R.id.content, planetFragment);
+					fragmentTransaction.commit();
+					return true;
+				case R.id.navigation_infrastructure:
+					fragmentTransaction.replace(R.id.content, infrastructureFragment);
+					fragmentTransaction.commit();
+					return true;
+				case R.id.navigation_settings:
+					fragmentTransaction.replace(R.id.content, settingsFragment);
+					fragmentTransaction.commit();
+					return true;
+			}
+			return false;
+		}
 
-	    planetName = (TextView) findViewById(R.id.planetName);
+	};
 
-	    textViews.put(Subject.RESIDENTS,(TextView) findViewById(R.id.residents));
-	    textViews.put(Subject.OXYGEN,   (TextView) findViewById(R.id.oxygen));
-	    textViews.put(Subject.ENERGY,   (TextView) findViewById(R.id.energy));
-	    textViews.put(Subject.MONEY,    (TextView) findViewById(R.id.money));
-	    textViews.put(Subject.WATER,    (TextView) findViewById(R.id.water));
-	    textViews.put(Subject.STONE,    (TextView) findViewById(R.id.stone));
-	    textViews.put(Subject.GOLD,     (TextView) findViewById(R.id.gold));
-	    textViews.put(Subject.IRON,     (TextView) findViewById(R.id.iron));
-	    textViews.put(Subject.COAL,     (TextView) findViewById(R.id.coal));
-	    textViews.put(Subject.TREE,     (TextView) findViewById(R.id.tree));
-	    textViews.put(Subject.SOIL,     (TextView) findViewById(R.id.soil));
-	    textViews.put(Subject.FOOD,     (TextView) findViewById(R.id.food));
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 
-        infrastructureButton = (Button) findViewById(R.id.infrastructureButton);
-        travelButton = (Button) findViewById(R.id.travel);
+		planet.getInfrastructure().add(new House("small"));
 
-	    planetName.setText("Hugant's planet");
+		travelFragment = new TravelFragment();
+		planetFragment = new PlanetFragment(planet);
+		infrastructureFragment = new InfrastructureFragment(planet);
+		settingsFragment = new SettingsFragment();
 
-        travelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View e) {
-                startActivity(new Intent(MainActivity.this, TravelActivity.class));
-				// travel date in Intent
-            }
-        });
+		BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+		navigation.setSelectedItemId(R.id.navigation_planet);
+	}
 
-        infrastructureButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View e) {
-	            Intent intent = new Intent(MainActivity.this, InfrastructureActivity.class);
-	            intent.putExtra("BuildingsArray", planet.getInfrastructure().getBuildings());
-//	            intent.putParcelableArrayListExtra("BuildingArray", planet.getInfrastructure().getBuildings());
-                startActivity(new Intent(MainActivity.this, InfrastructureActivity.class));
-	            // infrastructure date in Intent
-            }
-        });
-    }
-
-    public static void updateResources() {
-        for (Subject i : GLOBAL_RESOURCES.getSubjects()) {
-            try {
-                textViews.get(i.getType()).setText(" " + GLOBAL_RESOURCES.get(i.getType()).getNumber());
-            } catch (Exception e) {
-                textViews.get(i.getType()).setText(" 0");
-            }
-        }
-    }
 }
