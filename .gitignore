@@ -88,3 +88,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Straclipse-Android-Fragment/app/src/main/res/drawable/ic_home_black_24dp.xml
+Straclipse-Android-Fragment/app/src/main/res/drawable/ic_dashboard_black_24dp.xml
+Straclipse-Android-Fragment/app/src/main/java/com/example/hugant/straclipse_android/Dashboard.java
+Straclipse-Android-Fragment/gradlew
+Straclipse-Android-Fragment/gradle/wrapper/gradle-wrapper.jar
