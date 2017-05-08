@@ -239,7 +239,7 @@ public abstract class Building implements Serializable {
 	public int getDescription() {
 		if (descriptionId == -1) {
 			// TODO: Add to R building_description_not_found
-//			return R.string.building_description_not_found;
+			return R.string.building_description_not_found;
 		}
 		return descriptionId;
 	}
@@ -257,6 +257,10 @@ public abstract class Building implements Serializable {
 	 * @return
 	 */
 	public int getImage() {
+		if (imageId == -1) {
+			//TODO: Find image: not found
+			return R.drawable.ic_dashboard_black_24dp;
+		}
 		return imageId;
 	}
 }
