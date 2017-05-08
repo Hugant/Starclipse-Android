@@ -3,6 +3,7 @@ package hugant.starclipse_android.building;
 
 import java.io.Serializable;
 
+import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.common.Timer;
 import hugant.starclipse_android.common.Subject;
