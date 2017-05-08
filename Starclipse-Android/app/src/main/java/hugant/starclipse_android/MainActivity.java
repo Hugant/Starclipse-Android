@@ -1,7 +1,10 @@
 package hugant.starclipse_android;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
+//import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
