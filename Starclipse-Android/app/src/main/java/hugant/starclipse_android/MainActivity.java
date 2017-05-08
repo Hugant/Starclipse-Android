@@ -92,4 +92,11 @@ public class MainActivity extends Activity {
 		navigation.setSelectedItemId(R.id.navigation_planet);
 	}
 
+	public void setCurrentPlanet(int index) {
+		planet = planets.get(index);
+		planetFragment = new PlanetFragment(planet);
+		infrastructureFragment = new InfrastructureFragment(planet);
+		navigation.setSelectedItemId(R.id.navigation_planet);
+	}
+
 }
