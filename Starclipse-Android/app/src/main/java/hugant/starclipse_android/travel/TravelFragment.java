@@ -19,6 +19,8 @@ import hugant.starclipse_android.planet.Planet;
  */
 public class TravelFragment extends Fragment {
 
+	private ArrayList<Planet> planets;
+	private TravelAdapter adapter;
 
 	public TravelFragment() {
 		// Required empty public constructor
