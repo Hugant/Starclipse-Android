@@ -50,6 +50,7 @@ public class InfrastructureAdapter extends BaseAdapter {
             protected Void doInBackground(Void... unused) {
                 while (inWork) {
                     publishProgress();
+	                android.util.Log.i("Hugant", "tick");
                     SystemClock.sleep(1000);
                 }
                 return null;
