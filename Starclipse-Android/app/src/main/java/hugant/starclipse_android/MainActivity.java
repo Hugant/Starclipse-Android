@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity {
 
 		@Override
 		public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-			FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			switch (item.getItemId()) {
 				case R.id.navigation_travel:
 					fragmentTransaction.replace(R.id.content, travelFragment);
@@ -65,6 +65,8 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		planets = new ArrayList<Planet>();
 		//get date for db
