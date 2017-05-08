@@ -59,12 +59,18 @@ public class TravelAdapter extends BaseAdapter {
 
 		final Button button = (Button) view.findViewById(R.id.button);
 
-		button.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View e) {
-				((MainActivity)context).setCurrentPlanet(position);
-			}
-		});
+		if (position != ((MainActivity)context).getCurrentPlanetIndex()) {
+			button.setText(R.string.travel_adapter_button);
+
+			button.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View e) {
+					((MainActivity)context).setCurrentPlanet(position);
+				}
+			});
+		} else {
+			button.setVisibility(View.INVISIBLE);
+		}
 
 		return view;
 	}
