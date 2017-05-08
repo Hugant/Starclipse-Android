@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 		infrastructureFragment = new InfrastructureFragment(planet);
 		settingsFragment = new SettingsFragment();
 
-		BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+		navigation = (BottomNavigationView) findViewById(R.id.navigation);
 		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 		navigation.setSelectedItemId(R.id.navigation_planet);
 	}
