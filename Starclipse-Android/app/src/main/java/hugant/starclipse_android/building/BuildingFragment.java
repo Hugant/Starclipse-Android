@@ -21,6 +21,8 @@ import hugant.starclipse_android.common.Resources;
  */
 public class BuildingFragment extends Fragment {
 
+	private Building building;
+	private Resources resources;
 
 	public BuildingFragment(Building building) {
 		// Required empty public constructor
