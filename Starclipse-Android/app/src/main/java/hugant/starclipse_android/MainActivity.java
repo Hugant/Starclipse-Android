@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.infrastructure.InfrastructureFragment;
