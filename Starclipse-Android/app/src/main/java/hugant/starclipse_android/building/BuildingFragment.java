@@ -1,13 +1,20 @@
 package hugant.starclipse_android.building;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import hugant.starclipse_android.R;
+import hugant.starclipse_android.common.Resources;
 
 /**
  * A simple {@link Fragment} subclass.
