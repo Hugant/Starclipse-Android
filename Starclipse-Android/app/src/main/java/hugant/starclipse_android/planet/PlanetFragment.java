@@ -45,7 +45,7 @@ public class PlanetFragment extends Fragment {
 
 		String text = "";
 		for (Subject i : planet.getResources().getSubjects()) {
-			text += i.toString() + "\n";
+			text += i.toString() + " / " + i.getMaxValue() + "\n";
 		}
 		a.setText(text);
 
