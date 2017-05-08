@@ -19,7 +19,7 @@ import hugant.starclipse_android.planet.Planet;
 import hugant.starclipse_android.planet.PlanetFragment;
 import hugant.starclipse_android.travel.TravelFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
 	private BottomNavigationView navigation;
 
