@@ -121,7 +121,7 @@ public class Timer implements Serializable {
 	}
 	
 	/**
-	 * Return true if the timer is running, otherwise return false.
+	 * Return true if the timer is work(time > 0), otherwise return false.
 	 */
 	public boolean isWork() {
 		return (this.finish - new java.util.Date().getTime()) > 0;
