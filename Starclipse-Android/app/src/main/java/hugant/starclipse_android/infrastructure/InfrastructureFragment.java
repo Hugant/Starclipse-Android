@@ -52,57 +52,12 @@ public class InfrastructureFragment extends Fragment {
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		android.util.Log.i("Hugant", "onCreate");
-
 		adapter = new InfrastructureAdapter(getActivity(), infrastructure.getBuildings(), resources);
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		android.util.Log.i("Hugant", "onDestroy");
 		InfrastructureAdapter.setInWork(false);
 	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		android.util.Log.i("Hugant", "onPause");
-		InfrastructureAdapter.setInWork(false);
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		android.util.Log.i("Hugant", "onStart");
-		InfrastructureAdapter.setInWork(true);
-	}
-
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		android.util.Log.i("Hugant", "onDetach");
-	}
-
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		android.util.Log.i("Hugant", "onAttach");
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		android.util.Log.i("Hugant", "onResume");
-		InfrastructureAdapter.setInWork(true);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		android.util.Log.i("Hugant", "onStop");
-		InfrastructureAdapter.setInWork(false);
-	}
-
-
 }
