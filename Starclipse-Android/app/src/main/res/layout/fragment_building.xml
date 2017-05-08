@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/buildingBuildingName"
+            android:id="@+id/buildingName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -23,40 +23,48 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/buildingBuildingName"
+            android:layout_below="@+id/buildingName"
             android:layout_centerHorizontal="true">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_above="@+id/relativeButtons"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_above="@+id/relativeLayout2">
+                android:layout_alignParentTop="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <RelativeLayout
+                        android:id="@+id/relativeLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp">
-
+                        android:layout_height="150dp">
 
                         <Space
+                            android:id="@+id/space"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true"
-                            android:id="@+id/space"/>
+                            android:layout_centerHorizontal="true"/>
 
                         <RelativeLayout
+                            android:id="@+id/relativeImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignEnd="@+id/space"
                             android:layout_alignRight="@+id/space"
-                            android:layout_below="@+id/space"
-                            android:id="@+id/relativeLayout">
+                            android:layout_below="@+id/space">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                app:srcCompat="@drawable/ic_dashboard_black_24dp"/>
 
                         </RelativeLayout>
 
@@ -64,106 +72,90 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/relativeLayout"
-                            android:layout_toRightOf="@+id/relativeLayout">
+                            android:layout_toEndOf="@+id/relativeImageView"
+                            android:layout_toRightOf="@+id/relativeImageView">
 
+                            <TextView
+                                android:id="@+id/subtitleDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:text="@string/building_subtitle_description"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/subtitle_size"/>
+
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_below="@+id/subtitleDescription">
+
+                                <TextView
+                                    android:id="@+id/description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="some text,asdjfalskdhfasjdfhklajsdhflaksjdfhlsakjfhalskdjfhaskldhfaksdjfhlaksjdfhlakjh ksljdhfkja shflkashflkhasdkljf hkasdj hflaks jhfl hksj hflaksjfh lksjhf lksah flaksjhf lkasjdfh lkasj hflkash fksajfd hlk haskdjf halskdfh laskdjfhlaksh flsakdjf hlksdh fklasjf hlaskdf h"/>
+                            </ScrollView>
                         </RelativeLayout>
                     </RelativeLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
-                    </LinearLayout>
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/relativeLayout">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/title_margin_top"
+                            android:textSize="@dimen/title_size"
+                            android:text="@string/building_title_values"/>
+
+
+
+                    </RelativeLayout>
                 </RelativeLayout>
             </ScrollView>
 
             <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayout2">
+                android:id="@+id/relativeButtons"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
-            <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Button"/>
+                <Button
+                    android:id="@+id/upgradeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/button_upgrade"/>
 
-            <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button2"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Button"/>
+                <Button
+                    android:id="@+id/ClaimButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/upgradeButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Button"/>
             </RelativeLayout>
         </RelativeLayout>
-
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_below="@+id/buildingBuildingName"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--android:id="@+id/relativeLayout">-->
-
-            <!--<RelativeLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="70dp"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_alignParentLeft="true"-->
-                <!--android:layout_alignParentStart="true"-->
-                <!--android:id="@+id/relativeLayout2">-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/button2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:layout_alignParentLeft="true"-->
-                    <!--android:layout_alignParentStart="true"-->
-                    <!--android:layout_marginBottom="10dp"-->
-                    <!--android:layout_marginEnd="10dp"-->
-                    <!--android:layout_marginStart="10dp"-->
-                    <!--android:text="Button"/>-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/button3"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignBaseline="@+id/button2"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:layout_alignParentEnd="true"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_marginBottom="10dp"-->
-                    <!--android:layout_marginEnd="10dp"-->
-                    <!--android:layout_marginRight="10dp"-->
-                    <!--android:text="Button"/>-->
-            <!--</RelativeLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:orientation="vertical">-->
-            <!--</LinearLayout>-->
-
-        <!--</RelativeLayout>-->
-
     </RelativeLayout>
 </FrameLayout>
