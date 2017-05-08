@@ -99,4 +99,8 @@ public class MainActivity extends Activity {
 		navigation.setSelectedItemId(R.id.navigation_planet);
 	}
 
+	public int getCurrentPlanetIndex() {
+		return planets.indexOf(planet);
+	}
+
 }
