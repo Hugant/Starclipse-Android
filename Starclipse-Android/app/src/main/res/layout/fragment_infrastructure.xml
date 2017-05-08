@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textSize="24dp"
+            android:layout_marginTop="@dimen/title_margin_top"
+            android:textSize="@dimen/title_size"
             android:text="Infrastructure" />
 
         <ListView
