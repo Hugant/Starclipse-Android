@@ -63,7 +63,24 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		planet.getInfrastructure().add(new House("small"));
+		planets = new ArrayList<Planet>();
+		//get date for db
+
+		//for test
+		planets.add(new Planet("Caroline", new Resources()));
+		planets.add(new Planet("Amine", new Resources()));
+		planets.add(new Planet("Kate", new Resources()));
+
+		planet = planets.get(0);
+
+		//for test
+		for (Planet i: planets) {
+			i.getInfrastructure().add(new House("small"));
+			i.getInfrastructure().add(new House("small"));
+			i.getInfrastructure().add(new House("big"));
+			i.getInfrastructure().add(new House("average"));
+		}
+
 
 		travelFragment = new TravelFragment();
 		planetFragment = new PlanetFragment(planet);
