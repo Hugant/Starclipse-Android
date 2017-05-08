@@ -40,10 +40,10 @@ public class InfrastructureFragment extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_infrastructure, container, false);
 
-		infrastructurePlanetName = (TextView) view.findViewById(R.id.infrastructurePlanetName);
-		infrastructurePlanetName.setText(name);
+		TextView planetName = (TextView) view.findViewById(R.id.infrastructurePlanetName);
+		planetName.setText(name);
 
-		listView = (ListView) view.findViewById(R.id.infrastructureAdapter);
+		ListView listView = (ListView) view.findViewById(R.id.infrastructureAdapter);
 		listView.setAdapter(adapter);
 
 		return view;
