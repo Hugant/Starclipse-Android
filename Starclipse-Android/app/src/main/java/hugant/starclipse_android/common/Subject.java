@@ -322,7 +322,7 @@ public class Subject implements Serializable {
 
 
 	/**
-	 * Return cloned <b>Subject</b>
+	 * Return cloned <b>Subject</b>.
 	 *
 	 * @return Subject
 	 */
