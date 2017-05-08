@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 		}
 
 
-		travelFragment = new TravelFragment();
+		travelFragment = new TravelFragment(planets);
 		planetFragment = new PlanetFragment(planet);
 		infrastructureFragment = new InfrastructureFragment(planet);
 		settingsFragment = new SettingsFragment();
