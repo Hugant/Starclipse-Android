@@ -18,12 +18,16 @@ import hugant.starclipse_android.travel.TravelFragment;
 
 public class MainActivity extends Activity {
 
+	private BottomNavigationView navigation;
+
 	private TravelFragment travelFragment;
 	private PlanetFragment planetFragment;
 	private InfrastructureFragment infrastructureFragment;
 	private SettingsFragment settingsFragment;
 
-	private Planet planet = new Planet("Caroline", new Resources());
+	private ArrayList<Planet> planets;
+
+	private Planet planet;
 
 	private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
 			= new BottomNavigationView.OnNavigationItemSelectedListener() {
