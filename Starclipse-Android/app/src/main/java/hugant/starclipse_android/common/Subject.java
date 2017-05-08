@@ -131,8 +131,7 @@ public class Subject implements Serializable {
 		}
 		
 		if (this.maxValue != null && this.value.compareTo(this.maxValue) == 1) {
-			this.value.minus(subject.value);
-			throw new ArithmeticException("Out of bounds the maximum value");
+			this.value = new ScaleNumber(this.getMaxValue());
 		}
 		
 		return this;
