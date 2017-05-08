@@ -26,10 +26,6 @@ public class InfrastructureFragment extends Fragment {
 	private Resources resources;
 	private Infrastructure infrastructure;
 	private String name;
-	private ListView listView;
-
-	private TextView infrastructurePlanetName;
-
 
 	public InfrastructureFragment(Planet planet) {
 		this.infrastructure = planet.getInfrastructure();
