@@ -1,9 +1,7 @@
 package hugant.starclipse_android.infrastructure;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -14,16 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import hugant.starclipse_android.building.Building;
 import hugant.starclipse_android.MainActivity;
+import hugant.starclipse_android.building.Building;
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.BuildingFragment;
 import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.ScaleNumber;
-import hugant.starclipse_android.common.Subject;
 
 
 /**
