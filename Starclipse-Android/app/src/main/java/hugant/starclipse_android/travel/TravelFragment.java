@@ -22,8 +22,8 @@ public class TravelFragment extends Fragment {
 	private ArrayList<Planet> planets;
 	private TravelAdapter adapter;
 
-	public TravelFragment() {
-		// Required empty public constructor
+	public TravelFragment(ArrayList<Planet> planets) {
+		this.planets = planets;
 	}
 
 
