@@ -90,6 +90,7 @@ public class InfrastructureAdapter extends BaseAdapter {
 	    view.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View e) {
+			    inWork = false;
 			    BuildingFragment fragment = new BuildingFragment(building, resources);
 			    FragmentTransaction fragmentTransaction =
 					    ((MainActivity) context).getSupportFragmentManager().beginTransaction();

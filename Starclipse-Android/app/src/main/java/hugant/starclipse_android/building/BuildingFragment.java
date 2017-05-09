@@ -41,7 +41,7 @@ public class BuildingFragment extends Fragment {
 			protected Void doInBackground(Void... unused) {
 				while (inWork) {
 					publishProgress();
-					android.util.Log.i("Hugant", "tick");
+					android.util.Log.i("Hugant", "tick2");
 					SystemClock.sleep(1000);
 				}
 				return null;
@@ -111,10 +111,8 @@ public class BuildingFragment extends Fragment {
 			}
 		});
 
-
 		return view;
 	}
-
 
 	@Override
 	public void onDestroy() {
