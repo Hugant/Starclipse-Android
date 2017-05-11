@@ -30,6 +30,7 @@ public class BuildingFragment extends Fragment {
 
 	public BuildingFragment(Building building, Resources resources) {
 		this.building = building;
+		this.resources = resources;
 	}
 
 	@Override
