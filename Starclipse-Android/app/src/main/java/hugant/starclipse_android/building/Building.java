@@ -94,7 +94,11 @@ public abstract class Building implements Serializable {
 		this.expenses = expenses.multiply("2");
 		this.income = income.multiply(level * k + "");
 	}
-	
+
+	public Resources getIncome() {
+		return income;
+	}
+
 	/**
 	 * Return name of <b>Building</b>.
 	 * @return
@@ -144,14 +148,6 @@ public abstract class Building implements Serializable {
 			return buildTimer.toString();
 		}
 		return "";
-	}
-
-	/**
-	 * Return current status of this <b>Building</b>.
-	 * @return one of the string: locked, unlocked
-	 */
-	public String getStatus() {
-		return status;
 	}
 
 	/**
