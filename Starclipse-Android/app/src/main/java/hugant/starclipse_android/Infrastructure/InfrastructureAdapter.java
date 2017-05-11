@@ -37,7 +37,9 @@ public class InfrastructureAdapter extends BaseAdapter {
         this.resources = resources;
         this.buildings = buildings;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.inWork = true;
+        inWork = true;
+
+	    android.util.Log.i("Hugant", resources.toString());
 
         class Updater extends AsyncTask<Void, Void, Void> {
             @Override
@@ -90,7 +92,6 @@ public class InfrastructureAdapter extends BaseAdapter {
 	    view.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View e) {
-			    inWork = false;
 			    BuildingFragment fragment = new BuildingFragment(building, resources);
 			    FragmentTransaction fragmentTransaction =
 					    ((MainActivity) context).getSupportFragmentManager().beginTransaction();
@@ -127,6 +128,12 @@ public class InfrastructureAdapter extends BaseAdapter {
 				    notifyDataSetChanged();
 			    }
 		    });
+
+		    try {
+			    resources.subtract(building.getExpenses());
+		    } catch (ArithmeticException e) {
+
+		    }
 	    } else {
 		    button.setVisibility(View.INVISIBLE);
 	    }
