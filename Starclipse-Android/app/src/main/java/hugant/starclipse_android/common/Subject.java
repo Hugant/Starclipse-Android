@@ -80,7 +80,7 @@ public class Subject implements Serializable {
 			this.value = new ScaleNumber(value);
 		}
 		
-		this.type = type == null ? type : type.toLowerCase();
+		this.type = (type == null ? type : type.toLowerCase());
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class Subject implements Serializable {
 			}
 		}
 		
-		this.type = type == null ? type : type.toLowerCase();
+		this.type = (type == null ? type : type.toLowerCase());
 	}
 
 	/**
