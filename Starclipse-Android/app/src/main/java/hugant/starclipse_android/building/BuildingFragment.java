@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.Subject;
 
 /**
  * A simple {@link Fragment} subclass.
