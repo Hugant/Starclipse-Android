@@ -23,7 +23,6 @@ import hugant.starclipse_android.common.Resources;
  */
 public abstract class Building implements Serializable {
 	private String name = "";
-	private String status = "";
 
 	private int descriptionId = -1;
 	private int imageId = -1;
@@ -40,6 +39,7 @@ public abstract class Building implements Serializable {
 	private Resources expenses = null;
 	
 	private boolean start = false;
+
 
 //	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
 //		@Override
