@@ -80,6 +80,22 @@ public class BuildingFragment extends Fragment {
 		image.setImageResource(building.getImage());
 		description.setText(building.getDescription());
 
+		String expensesText = "";
+
+		for (Subject i : building.getExpenses().getSubjects()) {
+			expensesText += i.getType() + "\t" + i.getNumber() + "\n";
+		}
+
+		expenses.setText(expensesText);
+
+		String upgradedText = "";
+
+		for (Subject i : building.getIncome().getSubjects()) {
+			upgradedText += i.getType() + "\t" + i.getNumber() + "\t-> " + i.getNumber() + "\n";
+		}
+
+		upgraded.setText(upgradedText);
+
 		upgrade.setEnabled(false);
 
 		try {
