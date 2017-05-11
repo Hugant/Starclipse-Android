@@ -37,12 +37,14 @@ public class BuildingFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		inWork = true;
 
+		android.util.Log.i("Hugant", resources.toString());
+
 		class Updater1 extends AsyncTask<Void, Void, Void> {
 			@Override
 			protected Void doInBackground(Void... unused) {
 				while (inWork) {
 					publishProgress();
-					android.util.Log.i("Hugant", "tick2");
+//					android.util.Log.i("Hugant", "tick2");
 					SystemClock.sleep(1000);
 				}
 				return null;
