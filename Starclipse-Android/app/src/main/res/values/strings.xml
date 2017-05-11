@@ -12,4 +12,8 @@
     <string name="building_subtitle_upgraded">Upgraded</string>
     <string name="building_subtitle_expenses">Expenses</string>
     <string name="building_description_not_found">Not found</string>
+    <string name="building_small_house_description">This is description of small house! I don\'t
+        know what here to write, and you will know, what i bad speak and write on English. Next
+        sentences will be wried because i should to check this scroll view. It\'s important for me.
+        It\'s work!!!</string>
 </resources>
