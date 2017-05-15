@@ -98,14 +98,6 @@ public abstract class Building implements Serializable {
 	public Resources getIncome() {
 		return income;
 	}
-
-	/**
-	 * Return name of <b>Building</b>.
-	 * @return
-	 */
-	public String getName() {
-		return name;
-	}
 	
 	/**
 	 * Return the <b>Resources</b> which are necessary for the
@@ -130,7 +122,7 @@ public abstract class Building implements Serializable {
 	 * @return residents is number of residents
 	 */
 	public String getResidents() {
-		return residents.getNumber();
+		return residents.getValue();
 	}
 	
 	/**
@@ -154,8 +146,19 @@ public abstract class Building implements Serializable {
 	 * Sets the name of <b>Building</b>.
 	 * @param name is name of <b>Building</b>
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(int nameId) {
+		this.nameId = nameId;
+	}
+
+	/**
+	 * Return name of <b>Building</b>.
+	 * @return
+	 */
+	public int getName() {
+		if (nameId == -1) {
+			return R.string.building_name_not_found;
+		}
+		return nameId;
 	}
 
 	/**
