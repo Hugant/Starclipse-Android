@@ -10,10 +10,16 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import hugant.starclipse_android.building.items.House;
+import hugant.starclipse_android.building.items.TradingStation;
+import hugant.starclipse_android.building.items.industry.ResourcesFactory;
+import hugant.starclipse_android.building.items.industry.StarshipsFactory;
 import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.ScaleNumber;
+import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.infrastructure.InfrastructureFragment;
 import hugant.starclipse_android.planet.Planet;
 import hugant.starclipse_android.planet.PlanetFragment;
@@ -81,9 +87,11 @@ public class MainActivity extends FragmentActivity {
 		//for test
 		for (Planet i: planets) {
 			i.getInfrastructure().add(new House("small"));
-			i.getInfrastructure().add(new House("small"));
-			i.getInfrastructure().add(new House("big"));
 			i.getInfrastructure().add(new House("average"));
+			i.getInfrastructure().add(new House("big"));
+			i.getInfrastructure().add(new TradingStation());
+			i.getInfrastructure().add(new StarshipsFactory());
+			i.getInfrastructure().add(new ResourcesFactory(Subject.GOLD));
 		}
 
 
@@ -95,6 +103,10 @@ public class MainActivity extends FragmentActivity {
 		navigation = (BottomNavigationView) findViewById(R.id.navigation);
 		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 		navigation.setSelectedItemId(R.id.navigation_planet);
+
+
+		ScaleNumber a = new ScaleNumber("1K");
+
 	}
 
 	public void setCurrentPlanet(int index) {
