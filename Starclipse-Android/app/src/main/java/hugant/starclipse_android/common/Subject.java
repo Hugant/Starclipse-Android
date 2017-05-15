@@ -221,10 +221,10 @@ public class Subject implements Serializable {
 	/**
 	 * Return the string in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
 	 * <br>
-	 * <pre><code>  new Subject("145T").getNumber();// "145T"
-	 *  new Subject("1.001V").getNumber();// "1V"
-	 *  new Subject("1.10Z").getNumber();// "1.1Z"
-	 *  new Subject("1.1234J").getNumber();// "1.12J"
+	 * <pre><code>  new Subject("145T").getValue();// "145T"
+	 *  new Subject("1.001V").getValue();// "1V"
+	 *  new Subject("1.10Z").getValue();// "1.1Z"
+	 *  new Subject("1.1234J").getValue();// "1.12J"
 	 * </pre><code>
 	 * @return string in the form <b>ScaleNumber</b>
 	 */
@@ -279,7 +279,7 @@ public class Subject implements Serializable {
 	/**
 	 * Return the string in the form <b>ScaleNumber</b>.
 	 * <br>
-	 * <pre><code> new Subject("gold", "145T", "1J").getNumber();// "1J"
+	 * <pre><code> new Subject("gold", "145T", "1J").getValue();// "1J"
 	 * </pre><code>
 	 * @return string in the form <b>ScaleNumber</b>
 	 */
