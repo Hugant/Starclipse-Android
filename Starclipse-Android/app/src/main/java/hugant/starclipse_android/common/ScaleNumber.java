@@ -85,7 +85,7 @@ public class ScaleNumber implements Serializable {
 	*  ScaleNumber num = new ScaleNumber("1502M");// 1.502B
 	*  ScaleNumber num = new ScaleNumber("0.53B");// 530M
 	* <br>
-	* 
+	*
 	* @throws IllegalArgumentException
 	* @param number the string which will be translated
 	*/
@@ -215,6 +215,7 @@ public class ScaleNumber implements Serializable {
 	 * @param number the <b>ScaleNumber</b>, which you want to divide
 	 */
 	public ScaleNumber divide(ScaleNumber number) {
+		// TODO: Rewrite method
 //		int thisPostfix = Arrays.asList(POSTFIX_MAS).indexOf(this.postfix);
 //		int numberPostfix = Arrays.asList(POSTFIX_MAS).indexOf(number.postfix);
 //		
