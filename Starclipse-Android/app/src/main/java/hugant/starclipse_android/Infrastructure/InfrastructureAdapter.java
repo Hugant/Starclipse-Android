@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,14 +57,14 @@ public class InfrastructureAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
+
         if (view == null) {
             view = layoutInflater.inflate(R.layout.infrastructure_adapter_item, parent, false);
         }
 
-        final Building building = getItem(position);
+	    final Building building = getItem(position);
 
-        ((TextView) view.findViewById(R.id.nameOfBuilding)).setText(building.getName());
-
+	    ((TextView) view.findViewById(R.id.nameOfBuilding)).setText(building.getName());
         final Button button = (Button) view.findViewById(R.id.button);
 
 	    view.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +79,7 @@ public class InfrastructureAdapter extends BaseAdapter {
 		    }
 	    });
 
-	    if (!building.getName().equals("Warehouse")) {
+	    if (!(building.getName() == R.string.building_warehouse_name)) {
 		    try {
 			    button.setText(building.getTimer());
 		    } catch (UnsupportedOperationException e) {
