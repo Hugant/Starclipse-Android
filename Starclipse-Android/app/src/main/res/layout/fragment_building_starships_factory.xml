@@ -1,0 +1,213 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="hugant.starclipse_android.building.BuildingFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/buildingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/title_margin_top"
+            android:text="Name of building"
+            android:textSize="@dimen/title_size"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/buildingName"
+            android:layout_centerHorizontal="true">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/relativeButtons"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Space
+                            android:id="@+id/space"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"/>
+
+                        <RelativeLayout
+                            android:id="@+id/relativeImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignEnd="@+id/space"
+                            android:layout_alignRight="@+id/space"
+                            android:layout_below="@+id/space">
+
+                            <ImageView
+                                android:id="@+id/image"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                app:srcCompat="@drawable/ic_dashboard_black_24dp"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/relativeImageView"
+                            android:layout_toRightOf="@+id/relativeImageView">
+
+                            <TextView
+                                android:id="@+id/subtitleDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:text="@string/building_subtitle_description"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/subtitle_size"/>
+
+                            <TextView
+                                android:id="@+id/description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/subtitleDescription"
+                                android:text="some text,asdjfalskdhfasjdfhklajsdhflaksjdfhlsakjfhalskdjfhaskldhfaksdjfhlaksjdfhlakjh ksljdhfkja shflkashflkhasdkljf hkasdj hflaks jhfl hksj hflaksjfh lksjhf lksah flaksjhf lkasjdfh lkasj hflkash fksajfd hlk haskdjf halskdfh laskdjfhlaksh flsakdjf hlksdh fklasjf hlaskdf h"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/relativeLayout">
+
+                        <TextView
+                            android:id="@+id/titleValues"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/title_margin_top"
+                            android:textSize="@dimen/title_size"
+                            android:text="@string/building_title_values"/>
+
+                        <Space
+                            android:id="@+id/space2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_below="@+id/titleValues"/>
+
+                        <RelativeLayout
+                            android:id="@+id/relativeUpgraded"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignEnd="@+id/space2"
+                            android:layout_alignRight="@+id/space2"
+                            android:layout_below="@+id/space2">
+
+                            <TextView
+                                android:id="@+id/subtitleUpgraded"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="@dimen/subtitle_size"
+                                android:text="@string/building_subtitle_upgraded"/>
+
+                            <TextView
+                                android:id="@+id/upgradedContent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/subtitleUpgraded"
+                                android:layout_centerHorizontal="true"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativeExpenses"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@+id/space2"
+                            android:layout_alignLeft="@+id/space2"
+                            android:layout_below="@+id/space2">
+
+                            <TextView
+                                android:id="@+id/subtitleExpenses"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="@dimen/subtitle_size"
+                                android:text="@string/building_subtitle_expenses"/>
+
+                            <TextView
+                                android:id="@+id/expensesContent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/subtitleExpenses"
+                                android:layout_centerHorizontal="true"/>
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </ScrollView>
+
+            <RelativeLayout
+                android:id="@+id/relativeButtons"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:id="@+id/upgradeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/button_upgrade"/>
+
+                <Button
+                    android:id="@+id/claimButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/upgradeButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Button"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
