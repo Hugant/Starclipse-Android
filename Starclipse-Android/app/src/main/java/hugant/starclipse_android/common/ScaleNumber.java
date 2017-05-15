@@ -386,4 +386,9 @@ public class ScaleNumber implements Serializable {
 		}
 		return out;
 	}
+
+	@Override
+	protected ScaleNumber clone() throws CloneNotSupportedException {
+		return new ScaleNumber(getPrefix() + getPostfix());
+	}
 }
