@@ -84,9 +84,6 @@ public class InfrastructureFragment extends Fragment {
 	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		InfrastructureAdapter.setInWork(false);
 	public void onPause() {
 		super.onPause();
 		updater.stop();
