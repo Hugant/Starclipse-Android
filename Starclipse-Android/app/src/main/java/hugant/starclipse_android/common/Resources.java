@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  *@see hugant.starclipse_android.common.Subject
  */
-public class Resources implements Serializable {
+public class Resources implements Serializable, Cloneable {
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
@@ -42,7 +42,7 @@ public class Resources implements Serializable {
 			this.length++;
 		}
 		this.volume = volume;
-		this.isStorage = new Boolean(true);
+		this.isStorage = Boolean.TRUE;
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public class Resources implements Serializable {
 				this.length++;
 			}
 		}
-		isStorage = new Boolean(false);
+		isStorage = Boolean.FALSE;
 	}
 
 
@@ -118,9 +118,18 @@ public class Resources implements Serializable {
 	 * @return this
 	 */
 	public Resources subtract(Resources res) {
+		// TODO: Rewrite method
 		if (res != null) {
 			for (Subject i : res.subjects) {
-				if (!subjects.contains(i.getType())) {
+				try {
+					this.clone();
+				} catch (CloneNotSupportedException e) {
+					e.printStackTrace();
+				}
+			}
+
+			for (Subject i : res.subjects) {
+				if (!subjects.contains(new Subject(i.getType(), "0"))) {
 					throw new ArithmeticException("No such element exists: " + i.getType());
 				}
 			}
@@ -140,11 +149,13 @@ public class Resources implements Serializable {
 	 * @return this
 	 */
 	public Resources subtract(Subject sub) {
-		if (subjects.contains(sub)) {
+		try {
 			subjects.get(subjects.indexOf(sub)).minus(sub);
 			this.length--;
-		} else {
-			throw new ArithmeticException("No such element exists");
+		} catch (ArithmeticException e) {
+			throw new ArithmeticException(e.getMessage());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			throw new ArrayIndexOutOfBoundsException("No such element exists");
 		}
 		return this;
 	}
@@ -265,5 +276,10 @@ public class Resources implements Serializable {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	protected Resources clone() throws CloneNotSupportedException {
+		return (Resources) super.clone();
 	}
 }
