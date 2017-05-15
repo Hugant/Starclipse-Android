@@ -1,12 +1,15 @@
 package hugant.starclipse_android.infrastructure;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +27,33 @@ public class InfrastructureFragment extends Fragment {
 	private Resources resources;
 	private Infrastructure infrastructure;
 	private String name;
+
+	private Updater updater;
+
+	private class Updater extends AsyncTask<Adapter, Adapter, Void> {
+		private boolean inWork = true;
+
+		@Override
+		protected void onProgressUpdate(Adapter... values) {
+			for (Adapter i : values) {
+				((InfrastructureAdapter)i).notifyDataSetChanged();
+			}
+		}
+
+		@Override
+		protected Void doInBackground(Adapter... params) {
+			inWork = true;
+			while (inWork) {
+				publishProgress(params);
+				SystemClock.sleep(900);
+			}
+			return null;
+		}
+
+		private void stop() {
+			inWork = false;
+		}
+	}
 
 	public InfrastructureFragment(Planet planet) {
 		this.infrastructure = planet.getInfrastructure();
@@ -57,5 +87,14 @@ public class InfrastructureFragment extends Fragment {
 	public void onDestroy() {
 		super.onDestroy();
 		InfrastructureAdapter.setInWork(false);
+	public void onPause() {
+		super.onPause();
+		updater.stop();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		updater = (Updater) new Updater().execute(adapter);
 	}
 }
