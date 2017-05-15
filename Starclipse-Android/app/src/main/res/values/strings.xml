@@ -11,9 +11,34 @@
     <string name="building_title_values">Values</string>
     <string name="building_subtitle_upgraded">Upgraded</string>
     <string name="building_subtitle_expenses">Expenses</string>
+
     <string name="building_description_not_found">Not found</string>
+    <string name="building_name_not_found">No name</string>
+
+    <string name="building_small_house_name">Small House</string>
     <string name="building_small_house_description">This is description of small house! I don\'t
         know what here to write, and you will know, what i bad speak and write on English. Next
         sentences will be wried because i should to check this scroll view. It\'s important for me.
+        It\'s work!!!This is description of small house! I don\'t
+        know what here to write, and you will know, what i bad speak and write on English. Next
+        sentences will be wried because i should to check this scroll view. It\'s important for me.
         It\'s work!!!</string>
+
+    <string name="building_average_house_name">Average House</string>
+    <string name="building_average_house_description">Description of average house</string>
+
+    <string name="building_big_house_name">Big House</string>
+    <string name="building_big_house_description">Description of big house</string>
+
+    <string name="building_warehouse_name">Warehouse</string>
+    <string name="building_warehouse_description">Description of warehouse</string>
+
+    <string name="building_trading_station_name">Trading Station</string>
+    <string name="building_trading_station_description">Description of trading station</string>
+
+    <string name="building_starships_factory_name">Starships Factory</string>
+    <string name="building_starships_factory_description">Description of starships factory</string>
+
+    <string name="building_resources_factory_name">Resources Factory</string>
+    <string name="building_resources_factory_description">Description of resources factory</string>
 </resources>
