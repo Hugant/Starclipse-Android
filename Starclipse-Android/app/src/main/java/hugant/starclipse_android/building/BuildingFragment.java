@@ -9,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import hugant.starclipse_android.R;
@@ -26,7 +28,36 @@ public class BuildingFragment extends Fragment {
 	private Resources resources;
 
 	private Button claim;
-	private boolean inWork = true;
+
+	private Updater updater;
+
+	class Updater extends AsyncTask<Void, Void, Void> {
+		private boolean inWork = true;
+
+		@Override
+		protected Void doInBackground(Void... unused) {
+			inWork = true;
+
+			while (inWork) {
+				publishProgress();
+				SystemClock.sleep(900);
+			}
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
+			try {
+				claim.setText(building.getTimer());
+			} catch (UnsupportedOperationException e) {
+				claim.setText("Build");
+			}
+		}
+
+		private void stop() {
+			inWork = false;
+		}
+	}
 
 	public BuildingFragment(Building building, Resources resources) {
 		this.building = building;
@@ -36,107 +67,156 @@ public class BuildingFragment extends Fragment {
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		inWork = true;
-
-		android.util.Log.i("Hugant", resources.toString());
-
-		class Updater1 extends AsyncTask<Void, Void, Void> {
-			@Override
-			protected Void doInBackground(Void... unused) {
-				while (inWork) {
-					publishProgress();
-//					android.util.Log.i("Hugant", "tick2");
-					SystemClock.sleep(1000);
-				}
-				return null;
-			}
-
-			@Override
-			protected void onProgressUpdate(Void... values) {
-				try {
-					claim.setText(building.getTimer());
-				} catch (UnsupportedOperationException e) {
-					claim.setText("Build");
-				}
-			}
-		}
-
-		new Updater1().execute();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_building, container, false);
+		View view;
+		if (building.getName() == R.string.building_warehouse_name) {
+			view = inflater.inflate(R.layout.fragment_building_warehouse, container, false);
 
-		final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
-		final ImageView image = (ImageView) view.findViewById(R.id.image);
-		final TextView description = (TextView) view.findViewById(R.id.description);
-		final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-		final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
-		final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
-		claim = (Button) view.findViewById(R.id.claimButton);
+			BuildingWarehouseAdapter adapter = new BuildingWarehouseAdapter(getActivity(), resources);
 
-		buildingName.setText(building.getName());
-		image.setImageResource(building.getImage());
-		description.setText(building.getDescription());
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
+//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
+			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
 
-		String expensesText = "";
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
+			listView.setAdapter(adapter);
 
-		for (Subject i : building.getExpenses().getSubjects()) {
-			expensesText += i.getType() + "\t" + i.getNumber() + "\n";
-		}
+		} else if (building.getName() == R.string.building_trading_station_name) {
+			view = inflater.inflate(R.layout.fragment_building_trading_station, container, false);
 
-		expenses.setText(expensesText);
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
+//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 
-		String upgradedText = "";
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
 
-		for (Subject i : building.getIncome().getSubjects()) {
-			upgradedText += i.getType() + "\t" + i.getNumber() + "\t-> " + i.getNumber() + "\n";
-		}
+		} else if (building.getName() == R.string.building_starships_factory_name) {
+			view = inflater.inflate(R.layout.fragment_building_starships_factory, container, false);
 
-		upgraded.setText(upgradedText);
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
+//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 
-		upgrade.setEnabled(false);
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
 
-		try {
-			claim.setText(building.getTimer());
-		} catch (UnsupportedOperationException e) {
-			claim.setText("Build");
-		}
+		} else if (building.getName() == R.string.building_resources_factory_name) {
+			view = inflater.inflate(R.layout.fragment_building_resources_factory, container, false);
 
-		upgrade.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View e) {
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
+//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
+
+		} else {
+			view = inflater.inflate(R.layout.fragment_building, container, false);
+
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
+			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
+			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
+			claim = (Button) view.findViewById(R.id.claimButton);
+
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
+
+			String expensesText = "";
+
+			for (Subject i : building.getExpenses().getSubjects()) {
+				expensesText += i.getType() + "\t" + i.getValue() + "\n";
 			}
-		});
 
-		claim.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View e) {
-				try {
-					if (building.getTimer().equals("Start")) {
-						building.startWork();
-					} else if (building.getTimer().equals("Claim")) {
-						resources.add(building.claim());
-					}
-				} catch (UnsupportedOperationException ex) {
-					building.build();
+			for (int i = 0; i < 40; i++) {
+				expensesText += "\n";
+			}
+
+			expenses.setText(expensesText);
+
+			String upgradedText = "";
+
+			for (Subject i : building.getIncome().getSubjects()) {
+				upgradedText += i.getType() + "\t" + i.getValue() + "\t-> " + i.getValue() + "\n";
+			}
+
+
+			upgraded.setText(upgradedText);
+
+			upgrade.setEnabled(false);
+
+			try {
+				claim.setText(building.getTimer());
+			} catch (UnsupportedOperationException e) {
+				claim.setText("Build");
+			}
+
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View e) {
+
 				}
+			});
 
-				try {
-					claim.setText(building.getTimer());
-				} catch (UnsupportedOperationException ex) {}
-			}
-		});
+			claim.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View e) {
+					try {
+						if (building.getTimer().equals("Start")) {
+							building.startWork();
+						} else if (building.getTimer().equals("Claim")) {
+							resources.add(building.claim());
+						}
+					} catch (UnsupportedOperationException ex) {
+						building.build();
+					}
+
+					try {
+						claim.setText(building.getTimer());
+					} catch (UnsupportedOperationException ex) {}
+				}
+			});
+
+		}
 
 		return view;
 	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		inWork = false;
+	public void onPause() {
+		super.onPause();
+//		updater.stop();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+//		updater = (Updater) new Updater().execute();
 	}
 }
