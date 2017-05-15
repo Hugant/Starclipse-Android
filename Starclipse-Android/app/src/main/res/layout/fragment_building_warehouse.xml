@@ -112,14 +112,19 @@
                             android:textSize="@dimen/title_size"
                             android:text="@string/building_title_values"/>
 
-                        <ListView
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="620dp"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/titleValues"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="12dp"
-                            android:id="@+id/warehouseResourcesAdapter"/>
+                            android:layout_centerHorizontal="true">
 
+                            <ListView
+                                android:layout_width="match_parent"
+                                android:layout_height="620dp"
+                                android:layout_marginTop="12dp"
+                                android:id="@+id/warehouseResourcesAdapter"
+                                tools:ignore="NestedScrolling"/>
+                        </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
             </ScrollView>
