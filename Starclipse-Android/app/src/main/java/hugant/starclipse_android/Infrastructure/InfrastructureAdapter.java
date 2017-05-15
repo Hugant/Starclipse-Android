@@ -30,35 +30,12 @@ public class InfrastructureAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private ArrayList<Building> buildings;
     private Resources resources;
-    private static boolean inWork = false;
 
     public InfrastructureAdapter(Context context, ArrayList<Building> buildings, Resources resources) {
 	    this.context = context;
         this.resources = resources;
         this.buildings = buildings;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inWork = true;
-
-	    android.util.Log.i("Hugant", resources.toString());
-
-        class Updater extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... unused) {
-                while (inWork) {
-                    publishProgress();
-	                android.util.Log.i("Hugant", "tick");
-                    SystemClock.sleep(1000);
-                }
-                return null;
-            }
-
-            @Override
-            protected void onProgressUpdate(Void... values) {
-                notifyDataSetChanged();
-            }
-        }
-
-        new Updater().execute();
     }
 
     @Override
@@ -138,11 +115,6 @@ public class InfrastructureAdapter extends BaseAdapter {
 		    button.setVisibility(View.INVISIBLE);
 	    }
 
-
         return view;
-    }
-
-    public static void setInWork(boolean work) {
-	    inWork = work;
     }
 }
