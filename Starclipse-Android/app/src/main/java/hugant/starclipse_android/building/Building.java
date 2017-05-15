@@ -26,6 +26,7 @@ public abstract class Building implements Serializable {
 
 	private int descriptionId = -1;
 	private int imageId = -1;
+	private int nameId = -1;
 
 	private Timer buildTimer = null;
 	private Timer incomeTimer = null;
