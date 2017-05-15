@@ -7,6 +7,8 @@ import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.ScaleNumber;
 
+
+// TODO: remove extends serializable
 public class ResourcesFactory extends Building {
 	private static final ScaleNumber INCOME_PER_RESIDENT = new ScaleNumber("10");
 	
