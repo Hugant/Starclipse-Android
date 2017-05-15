@@ -127,7 +127,11 @@ public class ScaleNumber implements Serializable {
 	* @param number the <b>ScaleNumber</b>, which you want to add.
 	*/
 	public ScaleNumber add(ScaleNumber number) {
-		this.prefix = number.transferTo(this.postfix).add(this.prefix);
+		try {
+			this.prefix = number.clone().transferTo(this.postfix).add(this.prefix);
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 		this.checkingValidity();
 		return this;
 	}
@@ -149,7 +153,11 @@ public class ScaleNumber implements Serializable {
 	* @param number the <b>ScaleNumber</b>, which you want take.
 	*/
 	public ScaleNumber minus(ScaleNumber number) {
-		this.prefix = this.prefix.subtract(number.transferTo(this.postfix));
+		try {
+			this.prefix = this.prefix.subtract(number.clone().transferTo(this.postfix));
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 		this.checkingValidity();
 		return this;
 	}
@@ -173,14 +181,18 @@ public class ScaleNumber implements Serializable {
 	public ScaleNumber multiply(ScaleNumber number) {
 		int thisPostfix = Arrays.asList(POSTFIX_MAS).indexOf(this.postfix);
 		int numberPostfix = Arrays.asList(POSTFIX_MAS).indexOf(number.postfix);
-		
-		if (thisPostfix > numberPostfix) {
-			this.prefix = this.prefix.multiply(number.transferTo(""));
-		} else if (thisPostfix < numberPostfix) {
-			this.prefix = number.prefix.multiply(this.transferTo(""));
-			this.postfix = number.postfix;
-		} else {
-			this.prefix = this.prefix.multiply(number.transferTo(""));
+
+		try {
+			if (thisPostfix > numberPostfix) {
+				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
+			} else if (thisPostfix < numberPostfix) {
+				this.prefix = number.prefix.multiply(this.clone().transferTo(""));
+				this.postfix = number.postfix;
+			} else {
+				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
+			}
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
 		}
 
 		this.checkingValidity();
