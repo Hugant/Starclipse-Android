@@ -80,7 +80,7 @@ public class Subject implements Serializable {
 			this.value = new ScaleNumber(value);
 		}
 		
-		this.type = (type == null ? type : type.toLowerCase());
+		this.type = (type == null ? null : type.toLowerCase());
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class Subject implements Serializable {
 			}
 		}
 		
-		this.type = (type == null ? type : type.toLowerCase());
+		this.type = (type == null ? null : type.toLowerCase());
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class Subject implements Serializable {
 	 * </pre><code>
 	 * @return string in the form <b>ScaleNumber</b>
 	 */
-	public String getNumber() {
+	public String getValue() {
 		return value.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
 				replaceAll("(\\.00)|(0$)", "") + value.getPostfix();
 	}
@@ -284,7 +284,9 @@ public class Subject implements Serializable {
 	 * @return string in the form <b>ScaleNumber</b>
 	 */
 	public String getMaxValue() {
-		return this.maxValue == null ? null : maxValue.getPrefix() + maxValue.getPostfix();
+		return this.maxValue == null ? null :
+				maxValue.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
+				replaceAll("(\\.00)|(0$)", "") + maxValue.getPostfix();
 	}
 	
 	
@@ -316,7 +318,7 @@ public class Subject implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return (this.type == null ? "no type" : this.type) + " " + this.getNumber();
+		return (this.type == null ? "no type" : this.type) + " " + this.getValue();
 	}
 
 
@@ -327,6 +329,6 @@ public class Subject implements Serializable {
 	 */
 	@Override
 	public Subject clone() throws CloneNotSupportedException {
-		return new Subject(this.type, this.getNumber(), this.getMaxValue());
+		return new Subject(this.type, this.getValue(), this.getMaxValue());
 	}
 }
