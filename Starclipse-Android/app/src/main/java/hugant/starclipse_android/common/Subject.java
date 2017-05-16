@@ -170,7 +170,9 @@ public class Subject {
 	 * an ArithmeticException.
 	 * If the value less than the minimal value or 
 	 * more than maximal value, will generate an ArithmeticException.
-	 * @param subject is a <b>Subject</b> which you want to multiply
+	 *
+	 * @param subject is a <b>Subject</b> which you want to multiply,
+	 *                you can not clone this parameter
 	 * @return this
 	 */
 	public Subject multiply(Subject subject) {
@@ -197,7 +199,9 @@ public class Subject {
 	 * an ArithmeticException.
 	 * If the value less than the minimal value or 
 	 * more than maximal value, will generate an ArithmeticException.
-	 * @param subject is a <b>Subject</b> which you want to divide
+	 *
+	 * @param subject is a <b>Subject</b> which you want to divide,
+	 *                you can not clone this parameter
 	 * @return this
 	 */
 	public Subject divide(Subject subject) {
