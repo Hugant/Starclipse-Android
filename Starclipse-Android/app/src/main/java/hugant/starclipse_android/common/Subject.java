@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  * <pre><code> Subject a = new Subject("tree", "10");
  * Subject b = new Subject("tree", "100");
  * a.add(b);// a = 110
- * b.minus(a);// b = 90
+ * b.subtract(a);// b = 90
  * <br>
  * 
  * @author Hugant MD
@@ -118,7 +118,8 @@ public class Subject {
 	 * an ArithmeticException.
 	 * 
 	 * @throws ArithmeticException
-	 * @param subject is a Subject which you want to add
+	 * @param subject is a Subject which you want to add,
+	 *                you can not clone this parameter
 	 */
 	public Subject add(Subject subject) {
 		if (subject.type == null || this.type == null) {
