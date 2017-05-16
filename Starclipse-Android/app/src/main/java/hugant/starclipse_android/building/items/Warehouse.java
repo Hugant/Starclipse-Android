@@ -13,7 +13,7 @@ import hugant.starclipse_android.common.ScaleNumber;
  */
 public class Warehouse extends Building {
 	
-	private ScaleNumber volume = new ScaleNumber("1K");// the amount of resources per unit
+	private ScaleNumber volume = new ScaleNumber("1K");
 	private Resources store;
 	
 	public Warehouse(ScaleNumber volume, String... cells) {
@@ -22,29 +22,7 @@ public class Warehouse extends Building {
 		super.setName(R.string.building_warehouse_name);
 		super.setResidents("10", "70");
 		super.setImage(R.drawable.buildings);
-		super.setExpenses(new Resources());
-	}
-	
-	public void addToStore(Subject sub) {
-		store.add(sub);
-	}
-	
-	public void addToStore(Resources res) {
-		store.add(res);
-	}
-	
-	public Subject takeFromStore(Subject sub) {
-		store.subtract(sub);
-		return sub;
-	}
-	
-	public Resources takeFromStore(Resources res) {
-		store.subtract(res);
-		return res;
-	}
-	
-	public void fill() {
-		store.fill();
+		super.setExpenses(new Resources(Subject.GOLD, "1K"));
 	}
 
 	public Resources getStore() {
