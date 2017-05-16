@@ -188,8 +188,8 @@ public class ScaleNumber {
 			if (thisPostfix > numberPostfix) {
 				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
 			} else if (thisPostfix < numberPostfix) {
-				this.prefix = number.prefix.multiply(this.clone().transferTo(""));
-				this.postfix = number.postfix;
+				this.prefix = number.clone().prefix.multiply(this.clone().transferTo(""));
+				this.postfix = number.clone().postfix;
 			} else {
 				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
 			}
