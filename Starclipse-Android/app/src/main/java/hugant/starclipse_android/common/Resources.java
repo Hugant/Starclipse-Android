@@ -83,11 +83,32 @@ public class Resources {
 	 */
 	public Resources add(Resources res) {
 		if (res != null) {
-			for (Subject i : res.subjects) {
-				this.add(i);
+			if (canAdd(res)) {
+				for (Subject i : res.subjects) {
+					this.add(i);
+				}
 			}
 		}
 		return this;
+	}
+
+	/**
+	 * TODO: write javadoc
+	 * @param res
+	 * @return
+	 */
+	public boolean canAdd(Resources res) {
+		if (res != null) {
+			try {
+				Resources cloneRes = this.clone();
+				for (Subject i : res.subjects) {
+					cloneRes.add(i);
+				}
+			} catch (ArithmeticException | CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
 	}
 	
 	/**
@@ -98,15 +119,13 @@ public class Resources {
 	 * @return this
 	 */
 	public Resources add(Subject sub) {
-		if (subjects.contains(sub)) {
+		try {
 			subjects.get(subjects.indexOf(sub)).add(sub);
-		} else {
-			try {
-				subjects.add(sub.clone());
-			} catch (CloneNotSupportedException e) {
-				System.out.println(e.getMessage());
-			}
-			this.length++;
+		} catch (ArithmeticException e) {
+			throw new ArithmeticException(e.getMessage());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			subjects.add(sub);
+			length++;
 		}
 		return this;
 	}
@@ -117,27 +136,35 @@ public class Resources {
 	 * @return this
 	 */
 	public Resources subtract(Resources res) {
-		// TODO: Rewrite method
 		if (res != null) {
-			for (Subject i : res.subjects) {
-				try {
-					this.clone();
-				} catch (CloneNotSupportedException e) {
-					e.printStackTrace();
+			if (canSubtract(res)) {
+				for (Subject i : res.subjects) {
+					this.subtract(i);
 				}
-			}
-
-			for (Subject i : res.subjects) {
-				if (!subjects.contains(new Subject(i.getType(), "0"))) {
-					throw new ArithmeticException("No such element exists: " + i.getType());
-				}
-			}
-
-			for (Subject i : res.subjects) {
-				this.subtract(i);
 			}
 		}
 		return this;
+	}
+
+	/**
+	 * TODO: write javadoc
+	 * @param res
+	 * @return
+	 */
+	public boolean canSubtract(Resources res) {
+		if (res != null) {
+			try {
+				Resources cloneRes = this.clone();
+				for (Subject i : res.subjects) {
+					cloneRes.subtract(i);
+				}
+			} catch (ArithmeticException e) {
+				return false;
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
 	}
 	
 	/**
@@ -149,7 +176,7 @@ public class Resources {
 	 */
 	public Resources subtract(Subject sub) {
 		try {
-			subjects.get(subjects.indexOf(sub)).minus(sub);
+			subjects.get(subjects.indexOf(sub)).subtract(sub);
 			this.length--;
 		} catch (ArithmeticException e) {
 			throw new ArithmeticException(e.getMessage());
@@ -271,14 +298,23 @@ public class Resources {
 	 * in the <b>Resources</b>, otherwise return false.
 	 */
 	public boolean hasSubject(String type) {
-		if (subjects.contains(new Subject(type, "0"))) {
-			return true;
-		}
-		return false;
+		return subjects.contains(new Subject(type, "0"));
 	}
 
 	@Override
 	protected Resources clone() throws CloneNotSupportedException {
-		return (Resources) super.clone();
+		super.clone();
+		Resources clone = new Resources();
+
+		clone.subjects = new ArrayList<Subject>(subjects.size());
+		for (Subject i : subjects) {
+			clone.subjects.add(i.clone());
+		}
+
+		clone.isStorage = isStorage;
+		clone.volume = volume == null ? null : volume.clone();
+		clone.length = length;
+
+		return clone;
 	}
 }
