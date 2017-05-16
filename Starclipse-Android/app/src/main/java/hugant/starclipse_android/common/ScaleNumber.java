@@ -121,10 +121,11 @@ public class ScaleNumber {
 	
 	
 	/**
-	* Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
-	* 
-	* @param number the <b>ScaleNumber</b>, which you want to add.
-	*/
+	 * Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
+	 * Parameter <b>number</b> should be cloned.
+	 *
+	 * @param number the <b>ScaleNumber</b>, which you want to add.
+	 */
 	public ScaleNumber add(ScaleNumber number) {
 		try {
 			this.prefix = number.clone().transferTo(this.postfix).add(this.prefix);
@@ -147,11 +148,12 @@ public class ScaleNumber {
 	
 	
 	/**
-	* Takes the <b>ScaleNumber</b> from this <b>ScaleNumber</b>.
-	* 
-	* @param number the <b>ScaleNumber</b>, which you want take.
-	*/
-	public ScaleNumber minus(ScaleNumber number) {
+	 * Takes the <b>ScaleNumber</b> from this <b>ScaleNumber</b>.
+	 * Parameter <b>number</b> should be cloned.
+	 *
+	 * @param number the <b>ScaleNumber</b>, which you want take.
+	 */
+	public ScaleNumber subtract(ScaleNumber number) {
 		try {
 			this.prefix = this.prefix.subtract(number.clone().transferTo(this.postfix));
 		} catch (CloneNotSupportedException e) {
@@ -174,6 +176,7 @@ public class ScaleNumber {
 	
 	/**
 	 * Multiplies the the <b>ScaleNumber</b> with another the <b>ScaleNumber</b>.
+	 * Parameter <b>number</b> should be cloned.
 	 * 
 	 * @param number the <b>ScaleNumber</b>, which you want to multiply
 	 */
@@ -210,6 +213,7 @@ public class ScaleNumber {
 	
 	/**
 	 * Divides a <b>ScaleNumber</b> by another <b>ScaleNumber</b>.
+	 * Parameter <b>number</b> should be cloned.
 	 * 
 	 * @param number the <b>ScaleNumber</b>, which you want to divide
 	 */
