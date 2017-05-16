@@ -29,7 +29,7 @@ public class BuildingFragment extends Fragment {
 
 	private Button claim;
 
-	private Updater updater;
+	private Updater updater = new Updater();
 
 	class Updater extends AsyncTask<Void, Void, Void> {
 		private boolean inWork = true;
