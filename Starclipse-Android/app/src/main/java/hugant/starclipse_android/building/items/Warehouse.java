@@ -7,7 +7,7 @@ import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.ScaleNumber;
 
 /**
- * 
+ * TODO: write javadoc
  * @author Hugant MD
  *
  */
