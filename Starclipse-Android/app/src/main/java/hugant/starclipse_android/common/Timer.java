@@ -1,13 +1,11 @@
 package hugant.starclipse_android.common;
 
-import java.io.Serializable;
-
 /**
  * The Timer class allows you to create a time counter(timer).
  * <br>
  * @author Hugant MD
  */
-public class Timer implements Serializable {
+public class Timer {
 
 	/**The number of milliseconds in the day {@value #DAY}ms*/
 	public static final long DAY = 86400000L;
