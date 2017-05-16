@@ -148,11 +148,11 @@ public class Subject {
 	 * @param subject is a <b>Subject</b> which you want to take,
 	 *                you can not clone this parameter
 	 */
-	public Subject minus(Subject subject) {
+	public Subject subtract(Subject subject) {
 		if (subject.type == null || this.type == null) {
-			this.value.minus(subject.value);
+			this.value.subtract(subject.value);
 		} else if (this.type.equals(subject.type)) {
-			this.value.minus(subject.value);
+			this.value.subtract(subject.value);
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
@@ -261,8 +261,15 @@ public class Subject {
 	 * "Fill" <b>Subject</b> to the maximum value.
 	 */
 	public void fill() {
-		this.value.setPrefix(this.maxValue.getPrefix());
-		this.value.setPostfix(this.maxValue.getPostfix());
+		if (maxValue != null) {
+			this.value.setPrefix(this.maxValue.getPrefix());
+			this.value.setPostfix(this.maxValue.getPostfix());
+		} else {
+			throw new NullPointerException("Max value has not been initialized");
+		}
+
+	}
+
 	/**
 	 * Return the string in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
 	 * <br>
@@ -331,6 +338,7 @@ public class Subject {
 	 */
 	@Override
 	public Subject clone() throws CloneNotSupportedException {
+		super.clone();
 		return new Subject(this.type, this.getValue(), this.getMaxValue());
 	}
 }
