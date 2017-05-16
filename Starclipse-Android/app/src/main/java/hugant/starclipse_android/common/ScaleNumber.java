@@ -142,8 +142,8 @@ public class ScaleNumber {
 	* 
 	* @param number the string, which you want take.
 	*/
-	public ScaleNumber minus(String number) {
-		return this.minus(new ScaleNumber(number));
+	public ScaleNumber subtract(String number) {
+		return this.subtract(new ScaleNumber(number));
 	}
 	
 	
