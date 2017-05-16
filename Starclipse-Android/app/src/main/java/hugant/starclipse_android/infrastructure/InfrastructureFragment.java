@@ -28,7 +28,7 @@ public class InfrastructureFragment extends Fragment {
 	private Infrastructure infrastructure;
 	private String name;
 
-	private Updater updater;
+	private Updater updater = new Updater();
 
 	private class Updater extends AsyncTask<Adapter, Adapter, Void> {
 		private boolean inWork = true;
