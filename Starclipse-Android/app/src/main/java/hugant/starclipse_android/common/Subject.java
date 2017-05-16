@@ -1,6 +1,5 @@
 package hugant.starclipse_android.common;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -25,7 +24,7 @@ import java.math.BigDecimal;
  * 
  * @see hugant.starclipse_android.common.ScaleNumber
  */
-public class Subject implements Serializable {
+public class Subject {
 	public final static String GOLD = "gold";
 	public final static String IRON = "iron";
 	public final static String COAL = "coal";
