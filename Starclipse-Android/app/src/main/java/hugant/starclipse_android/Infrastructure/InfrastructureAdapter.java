@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -64,7 +65,8 @@ public class InfrastructureAdapter extends BaseAdapter {
 
 	    final Building building = getItem(position);
 
-	    ((TextView) view.findViewById(R.id.nameOfBuilding)).setText(building.getName());
+	    ((TextView) view.findViewById(R.id.buildingName)).setText(building.getName());
+	    ((ImageView) view.findViewById(R.id.buildingIcon)).setImageResource(building.getImage());
         final Button button = (Button) view.findViewById(R.id.button);
 
 	    view.setOnClickListener(new View.OnClickListener() {
