@@ -1,6 +1,5 @@
 package hugant.starclipse_android.common;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  *
  *@see hugant.starclipse_android.common.Subject
  */
-public class Resources implements Serializable, Cloneable {
+public class Resources {
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
