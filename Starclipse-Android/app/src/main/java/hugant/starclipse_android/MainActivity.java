@@ -89,7 +89,7 @@ public class MainActivity extends FragmentActivity {
 			i.getInfrastructure().add(new House("small"));
 			i.getInfrastructure().add(new House("average"));
 			i.getInfrastructure().add(new House("big"));
-			i.getInfrastructure().add(new TradingStation());
+			i.getInfrastructure().add(new TradingStation(planet.getResources()));
 			i.getInfrastructure().add(new StarshipsFactory());
 			i.getInfrastructure().add(new ResourcesFactory(Subject.GOLD));
 		}
@@ -103,10 +103,6 @@ public class MainActivity extends FragmentActivity {
 		navigation = (BottomNavigationView) findViewById(R.id.navigation);
 		navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 		navigation.setSelectedItemId(R.id.navigation_planet);
-
-
-		ScaleNumber a = new ScaleNumber("1K");
-
 	}
 
 	public void setCurrentPlanet(int index) {
