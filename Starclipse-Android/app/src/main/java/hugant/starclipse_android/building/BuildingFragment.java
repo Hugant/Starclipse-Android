@@ -31,7 +31,7 @@ public class BuildingFragment extends Fragment {
 
 	private Updater updater = new Updater();
 
-	class Updater extends AsyncTask<Void, Void, Void> {
+	private class Updater extends AsyncTask<Void, Void, Void> {
 		private boolean inWork = true;
 
 		@Override
@@ -50,7 +50,7 @@ public class BuildingFragment extends Fragment {
 			try {
 				claim.setText(building.getTimer());
 			} catch (UnsupportedOperationException e) {
-				claim.setText("Build");
+				claim.setText(R.string.button_build);
 			}
 		}
 
@@ -82,9 +82,14 @@ public class BuildingFragment extends Fragment {
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
 			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
-//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
+
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// new Fragment
+				}
+			});
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
@@ -100,6 +105,23 @@ public class BuildingFragment extends Fragment {
 			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
 //			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
 //			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
+
+			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
+			claim = (Button) view.findViewById(R.id.claimButton);
+
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+				}
+			});
+
+			claim.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					building.claim();
+				}
+			});
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
