@@ -219,22 +219,6 @@ public class Subject {
 	}
 	
 	/**
-	 * Return the string in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
-	 * <br>
-	 * <pre><code>  new Subject("145T").getValue();// "145T"
-	 *  new Subject("1.001V").getValue();// "1V"
-	 *  new Subject("1.10Z").getValue();// "1.1Z"
-	 *  new Subject("1.1234J").getValue();// "1.12J"
-	 * </pre><code>
-	 * @return string in the form <b>ScaleNumber</b>
-	 */
-	public String getValue() {
-		return value.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
-				replaceAll("(\\.00)|(0$)", "") + value.getPostfix();
-	}
-	
-	
-	/**
 	 * Adds the value to the maximum value of this <b>Subject</b>.
 	 * @param subject is a string in the form <b>ScaleNumber</b>
 	 */
@@ -274,6 +258,19 @@ public class Subject {
 	public void fill() {
 		this.value.setPrefix(this.maxValue.getPrefix());
 		this.value.setPostfix(this.maxValue.getPostfix());
+	/**
+	 * Return the string in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
+	 * <br>
+	 * <pre><code>  new Subject("145T").getValue();// "145T"
+	 *  new Subject("1.001V").getValue();// "1V"
+	 *  new Subject("1.10Z").getValue();// "1.1Z"
+	 *  new Subject("1.1234J").getValue();// "1.12J"
+	 * </pre><code>
+	 * @return string in the form <b>ScaleNumber</b>
+	 */
+	public String getValue() {
+		return value.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
+				replaceAll("(\\.00)|(0$)", "") + value.getPostfix();
 	}
 	
 	/**
