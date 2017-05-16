@@ -58,7 +58,7 @@ public class Timer {
 	 * <br>
 	 * If the timer has no starting counting will generated UnsupportedOperationException</b>.
 	 * 
-	 * @exception UnsupportedOperationException
+	 * @throws UnsupportedOperationException
 	 * 
 	 * @return String in the format:<b> <code>(dd)d (hh)h (mm)m (ss)s</code></b>,
 	 * 		   if the timer has finished to count then it will return <i>your phrase</i>,
