@@ -145,7 +145,8 @@ public class Subject {
 	 * an ArithmeticException.
 	 * 
 	 * @throws ArithmeticException
-	 * @param subject is a <b>Subject</b> which you want to take
+	 * @param subject is a <b>Subject</b> which you want to take,
+	 *                you can not clone this parameter
 	 */
 	public Subject minus(Subject subject) {
 		if (subject.type == null || this.type == null) {
