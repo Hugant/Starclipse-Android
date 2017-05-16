@@ -316,7 +316,6 @@ public class Subject {
 			if (this.type.equals(((Subject) o).type)) 
 				return true;
 		}
-
 		return false;
 	}
 	
