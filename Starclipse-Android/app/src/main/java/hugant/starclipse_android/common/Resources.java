@@ -129,6 +129,27 @@ public class Resources {
 		}
 		return this;
 	}
+
+
+	/**
+	 * TODO: write javadoc
+	 * @param sub
+	 * @return
+	 */
+	public boolean canAdd(Subject sub) {
+		if (sub != null) {
+			try {
+				Resources cloneRes = this.clone();
+				cloneRes.add(sub);
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+				return false;
+			} catch (ArithmeticException e) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	/**
 	 * Takes away from the current <b>Resources</b> another <b>Resources</b>.
@@ -166,7 +187,7 @@ public class Resources {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Takes away from the current <b>Resources</b> another <b>Subject</b>.
 	 * If the <b>Subject</b> does not exist, will be generated an 
@@ -185,7 +206,28 @@ public class Resources {
 		}
 		return this;
 	}
-	
+
+	/**
+	 * TODO: write javadoc
+	 * @param sub
+	 * @return
+	 */
+	public boolean canSubtract(Subject sub) {
+		if (sub != null) {
+			try {
+				Resources cloneRes = this.clone();
+				cloneRes.subtract(sub);
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+				return false;
+			} catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+
 	/**
 	 * Multiply each <b>Subject</b> in the <b>Resources</b> on number.
 	 * @param number is a <b>String</b> which presented in the form
