@@ -20,6 +20,7 @@ import hugant.starclipse_android.building.Building;
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.BuildingFragment;
 import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.Subject;
 
 
 /**
@@ -85,7 +86,7 @@ public class InfrastructureAdapter extends BaseAdapter {
 		    try {
 			    button.setText(building.getTimer());
 		    } catch (UnsupportedOperationException e) {
-			    button.setText("Build");
+			    button.setText(R.string.button_build);
 		    }
 
 		    button.setOnClickListener( new View.OnClickListener() {
