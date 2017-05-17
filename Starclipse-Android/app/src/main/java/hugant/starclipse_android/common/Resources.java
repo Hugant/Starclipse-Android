@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  *@see hugant.starclipse_android.common.Subject
  */
-public class Resources {
+public class Resources implements Cloneable {
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
@@ -104,8 +104,11 @@ public class Resources {
 				for (Subject i : res.subjects) {
 					cloneRes.add(i);
 				}
-			} catch (ArithmeticException | CloneNotSupportedException e) {
+			} catch (CloneNotSupportedException e) {
 				e.printStackTrace();
+				return false;
+			} catch (ArithmeticException e) {
+				return false;
 			}
 		}
 		return true;
@@ -183,6 +186,7 @@ public class Resources {
 				return false;
 			} catch (CloneNotSupportedException e) {
 				e.printStackTrace();
+				return false;
 			}
 		}
 		return true;
