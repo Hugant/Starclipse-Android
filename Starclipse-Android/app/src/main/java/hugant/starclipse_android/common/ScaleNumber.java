@@ -24,7 +24,7 @@ import java.util.Arrays;
  * <br>
  * @author Hugant MD
  */
-public class ScaleNumber {
+public class ScaleNumber implements Cloneable {
 	/**
 	* <b>Contains the names of large numbers: <br></b>
 	* K = 1000, <br>
