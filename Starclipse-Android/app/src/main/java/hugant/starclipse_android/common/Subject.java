@@ -24,7 +24,7 @@ import java.math.BigDecimal;
  * 
  * @see hugant.starclipse_android.common.ScaleNumber
  */
-public class Subject {
+public class Subject implements Cloneable {
 	public final static String GOLD = "gold";
 	public final static String IRON = "iron";
 	public final static String COAL = "coal";
@@ -222,7 +222,16 @@ public class Subject {
 		
 		return this;
 	}
-	
+
+	/**
+	 * TODO: write javadoc
+	 * @param subject
+	 * @return
+	 */
+	public int compareTo(Subject subject) {
+		return this.value.compareTo(subject.value);
+	}
+
 	/**
 	 * Adds the value to the maximum value of this <b>Subject</b>.
 	 * @param subject is a string in the form <b>ScaleNumber</b>
