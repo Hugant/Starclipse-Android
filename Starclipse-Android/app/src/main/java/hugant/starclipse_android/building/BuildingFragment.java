@@ -100,12 +100,9 @@ public class BuildingFragment extends Fragment {
 			view = inflater.inflate(R.layout.fragment_building_trading_station, container, false);
 
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
-			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
-//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
-
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
 			claim = (Button) view.findViewById(R.id.claimButton);
 
@@ -159,44 +156,87 @@ public class BuildingFragment extends Fragment {
 			view = inflater.inflate(R.layout.fragment_building, container, false);
 
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
-			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
-			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
+//			final TextView income = (TextView) view.findViewById(R.id.)
+			final TextView residents = (TextView) view.findViewById(R.id.residents);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
-			claim = (Button) view.findViewById(R.id.claimButton);
+			final Button addResident = (Button) view.findViewById(R.id.residentsAddButton);
+			final Button subtractResident = (Button) view.findViewById(R.id.residentsSubtractButton);
+
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
 			description.setText(building.getDescription());
-
-			String expensesText = "";
-
-			for (Subject i : building.getExpenses().getSubjects()) {
-				expensesText += i.getType() + "\t" + i.getValue() + "\n";
-			}
-
-			for (int i = 0; i < 40; i++) {
-				expensesText += "\n";
-			}
-
-			expenses.setText(expensesText);
-
-			String upgradedText = "";
-
-			for (Subject i : building.getIncome().getSubjects()) {
-				upgradedText += i.getType() + "\t" + i.getValue() + "\t-> " + i.getValue() + "\n";
-			}
+			residents.setText(building.getResidents().getValue() + " / "
+					+ building.getResidents().getMaxValue());
 
 
-			upgraded.setText(upgradedText);
+			addResident.setOnLongClickListener(new View.OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View v) {
 
-			upgrade.setEnabled(false);
+//					while (()) {
+//						addResident.callOnClick();
+//						SystemClock.sleep(500);
+//					}
+					return false;
+				}
+			});
+
+			addResident.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (building.getResidents()
+							.compareTo(new Subject(building.getResidents().getMaxValue())) == -1) {
+						if (resources.canSubtract(new Subject(Subject.RESIDENTS, "1"))) {
+							resources.subtract(new Subject(Subject.RESIDENTS, "1"));
+							building.getResidents().add(new Subject("1"));
+							residents.setText(building.getResidents().getValue() + " / "
+									+ building.getResidents().getMaxValue());
+							subtractResident.setEnabled(true);
+						} else {
+							//TODO: To handle the event
+						}
+					}
+
+					if (building.getResidents()
+							.compareTo(new Subject(building.getResidents().getMaxValue())) > -1) {
+						addResident.setEnabled(false);
+					}
+				}
+			});
+
+			subtractResident.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (building.getResidents().compareTo(new Subject("0")) == 1) {
+						resources.add(new Subject(Subject.RESIDENTS, "1"));
+						try {
+							building.getResidents().subtract(new Subject("1"));
+						} catch (ArithmeticException e) {
+							// TODO: To handle the event
+						}
+						residents.setText(building.getResidents().getValue() + " / "
+								+ building.getResidents().getMaxValue());
+						addResident.setEnabled(true);
+					}
+
+					if (building.getResidents()
+							.compareTo(new Subject("0")) < 1) {
+						subtractResident.setEnabled(false);
+					}
+				}
+			});
+
+			claim = (Button) view.findViewById(R.id.claimButton);
+
+
 
 			try {
 				claim.setText(building.getTimer());
 			} catch (UnsupportedOperationException e) {
-				claim.setText("Build");
+				claim.setText(R.string.button_build);
 			}
 
 			upgrade.setOnClickListener(new View.OnClickListener() {
