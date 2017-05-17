@@ -84,6 +84,8 @@ public class MainActivity extends FragmentActivity {
 
 		planet = planets.get(0);
 
+		planet.getResources().add(new Resources(Subject.RESIDENTS, "500"));
+
 		//for test
 		for (Planet i: planets) {
 			i.getInfrastructure().add(new House("small"));
