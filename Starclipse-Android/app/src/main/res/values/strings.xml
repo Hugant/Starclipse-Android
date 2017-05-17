@@ -17,6 +17,8 @@
     <string name="building_subtitle_upgraded">Upgraded</string>
     <string name="building_subtitle_expenses">Expenses</string>
     <string name="building_subtitle_description">Description</string>
+    <string name="building_subtitle_income">Income</string>
+    <string name="building_subtitle_residents">Residents</string>
 
     <string name="building_description_not_found">Not found</string>
     <string name="building_name_not_found">No name</string>
