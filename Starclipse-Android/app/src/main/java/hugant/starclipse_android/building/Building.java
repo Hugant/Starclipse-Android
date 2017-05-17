@@ -111,19 +111,11 @@ public abstract class Building implements Serializable {
 	}
 	
 	/**
-	 * Return the maximum number of residents.
-	 * @return maxResidents is maximum number of residents
-	 */
-	public String getMaxResidents() {
-		return residents.getMaxValue();
-	}
-	
-	/**
-	 * Return the current number of residents.
+	 * Return the <b>Subject</b> of residents.
 	 * @return residents is number of residents
 	 */
-	public String getResidents() {
-		return residents.getValue();
+	public Subject getResidents() {
+		return residents;
 	}
 	
 	/**
