@@ -130,9 +130,6 @@ public class BuildingFragment extends Fragment {
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
-			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
-//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
@@ -144,9 +141,6 @@ public class BuildingFragment extends Fragment {
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
-			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
-//			final TextView upgraded = (TextView) view.findViewById(R.id.upgradedContent);
-//			final TextView expenses = (TextView) view.findViewById(R.id.expensesContent);
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
@@ -157,7 +151,7 @@ public class BuildingFragment extends Fragment {
 
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
 			final TextView description = (TextView) view.findViewById(R.id.description);
-//			final TextView income = (TextView) view.findViewById(R.id.)
+			final TextView income = (TextView) view.findViewById(R.id.income);
 			final TextView residents = (TextView) view.findViewById(R.id.residents);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
@@ -170,6 +164,7 @@ public class BuildingFragment extends Fragment {
 			description.setText(building.getDescription());
 			residents.setText(building.getResidents().getValue() + " / "
 					+ building.getResidents().getMaxValue());
+//			income.setText();
 
 
 			addResident.setOnLongClickListener(new View.OnLongClickListener() {
