@@ -23,7 +23,7 @@ public class ResourcesFactory extends Building {
 											Subject.OXYGEN, "0",
 											Subject.MONEY, 	"0"));
 				super.setIncome(new Resources(
-					Subject.TREE, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+					Subject.TREE, new ScaleNumber(super.getResidents().getValue()).multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 			
 			case Subject.STONE:
@@ -31,7 +31,7 @@ public class ResourcesFactory extends Building {
 											Subject.TREE,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.STONE, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.STONE, new ScaleNumber(super.getResidents().getValue()).multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.COAL:
@@ -39,14 +39,14 @@ public class ResourcesFactory extends Building {
 											Subject.WATER,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.COAL, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.COAL, new ScaleNumber(super.getResidents().getValue()).multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.IRON:
 				expenses.add(new Resources(	Subject.STONE,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.IRON, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.IRON, new ScaleNumber(super.getResidents().getValue()).multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.GOLD:
@@ -54,7 +54,8 @@ public class ResourcesFactory extends Building {
 											Subject.IRON,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.GOLD, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.GOLD, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.ENERGY:
@@ -63,7 +64,8 @@ public class ResourcesFactory extends Building {
 											Subject.FOOD,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.ENERGY, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.ENERGY, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.WATER:
@@ -71,21 +73,24 @@ public class ResourcesFactory extends Building {
 											Subject.SOIL,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.WATER, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.WATER, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.OXYGEN:
 				expenses.add(new Resources(	Subject.WATER,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.OXYGEN, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.OXYGEN, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.FOOD:
 				expenses.add(new Resources(	Subject.SOIL,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.FOOD, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.FOOD, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			case Subject.SOIL:
@@ -94,7 +99,8 @@ public class ResourcesFactory extends Building {
 											Subject.OXYGEN,	"0",
 											Subject.MONEY,	"0"));
 				super.setIncome(new Resources(
-						Subject.SOIL, new ScaleNumber(super.getResidents()).multiply(INCOME_PER_RESIDENT).toString()));
+						Subject.SOIL, new ScaleNumber(super.getResidents().getValue())
+						.multiply(INCOME_PER_RESIDENT).toString()));
 				break;
 				
 			default:
