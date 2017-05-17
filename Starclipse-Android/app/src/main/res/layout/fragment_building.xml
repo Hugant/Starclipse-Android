@@ -132,9 +132,18 @@
                                 android:id="@+id/subtitleIncome"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
                                 android:textAlignment="center"
                                 android:textSize="@dimen/subtitle_size"
                                 android:text="@string/building_subtitle_income"/>
+                            
+                            <TextView
+                                android:id="@+id/income"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/subtitleIncome"
+                                android:textAlignment="center"
+                                android:text="gold 100\niron 500"/>
 
                         </RelativeLayout>
 
