@@ -109,6 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/title_margin_top"
+                            android:layout_marginBottom="10dp"
                             android:textSize="@dimen/title_size"
                             android:text="@string/building_title_values"/>
 
@@ -119,58 +120,76 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:layout_below="@+id/titleValues"/>
-
+                        
                         <RelativeLayout
-                            android:id="@+id/relativeUpgraded"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignEnd="@+id/space2"
                             android:layout_alignRight="@+id/space2"
+                            android:layout_alignEnd="@+id/space2"
                             android:layout_below="@+id/space2">
 
                             <TextView
-                                android:id="@+id/subtitleUpgraded"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/subtitleIncome"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginBottom="10dp"
+                                android:textAlignment="center"
                                 android:textSize="@dimen/subtitle_size"
-                                android:text="@string/building_subtitle_upgraded"/>
-
-                            <TextView
-                                android:id="@+id/upgradedContent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/subtitleUpgraded"
-                                android:layout_centerHorizontal="true"/>
+                                android:text="@string/building_subtitle_income"/>
 
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:id="@+id/relativeExpenses"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignStart="@+id/space2"
                             android:layout_alignLeft="@+id/space2"
+                            android:layout_alignStart="@+id/space2"
                             android:layout_below="@+id/space2">
 
                             <TextView
-                                android:id="@+id/subtitleExpenses"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/subtitleResidents"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginBottom="10dp"
+                                android:textAlignment="center"
                                 android:textSize="@dimen/subtitle_size"
-                                android:text="@string/building_subtitle_expenses"/>
+                                android:text="@string/building_subtitle_residents"/>
 
                             <TextView
-                                android:id="@+id/expensesContent"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/residents"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/subtitleExpenses"
-                                android:layout_centerHorizontal="true"/>
+                                android:layout_below="@+id/subtitleResidents"
+                                android:layout_marginTop="20dp"
+                                android:textAlignment="center"
+                                android:textSize="20sp"
+                                android:text="23 / 100"/>
+                            
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/residents"
+                                android:layout_marginTop="10dp">
+
+                                <Button
+                                    android:id="@+id/residentsSubtractButton"
+                                    android:layout_width="70dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:text="-"/>
+
+                                <Button
+                                    android:id="@+id/residentsAddButton"
+                                    android:layout_width="70dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_alignBaseline="@+id/residentsSubtractButton"
+                                    android:text="+"/>
+
+                            </RelativeLayout>
 
                         </RelativeLayout>
+                        
                     </RelativeLayout>
                 </RelativeLayout>
             </ScrollView>
