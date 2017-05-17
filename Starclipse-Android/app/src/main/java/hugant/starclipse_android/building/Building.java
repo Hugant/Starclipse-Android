@@ -82,7 +82,7 @@ public abstract class Building implements Serializable {
 		if (incomeTimer != null) {
 			incomeTimer.start();
 		}
-		return this.income;
+		return income;
 	}
 
 	/**
