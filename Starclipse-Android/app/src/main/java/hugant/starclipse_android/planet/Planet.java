@@ -1,5 +1,6 @@
 package hugant.starclipse_android.planet;
 
+import hugant.starclipse_android.R;
 import hugant.starclipse_android.infrastructure.Infrastructure;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
@@ -61,15 +62,11 @@ public class Planet {
 	}
 
 	public Resources getResources() {
-		return resources;//may be clone
-	}
-
-	public Subject getFreeResidents() {
-		return freeResidents;//may be clone
+		return resources;
 	}
 
 	public String getName() {
-		return name;//may be clone
+		return name;
 	}
 
 	public Infrastructure getInfrastructure() {
