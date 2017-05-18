@@ -14,9 +14,9 @@
     <string name="button_build">Build</string>
 
     <string name="building_title_values">Values</string>
-    <string name="building_subtitle_upgraded">Upgraded</string>
-    <string name="building_subtitle_expenses">Expenses</string>
-    <string name="building_subtitle_description">Description</string>
+    <string name="subtitle_upgraded">Upgraded</string>
+    <string name="subtitle_expenses">Expenses</string>
+    <string name="subtitle_description">Description</string>
     <string name="building_subtitle_income">Income</string>
     <string name="building_subtitle_residents">Residents</string>
 
