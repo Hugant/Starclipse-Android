@@ -39,15 +39,19 @@ public class Planet {
 	private Resources effect;
 	
 	private Infrastructure infrastructure;
-	private Subject freeResidents;
-	
+
 	private String name;
 	private boolean defend = false;
+
+	private int image = -1;
+	private int description = -1;
 	
 	
-	public Planet(String name, Resources effect) {
+	public Planet(String name, Resources effect, int image, int description) {
 		this.name = name;
+		this.image = image;
 		this.effect = effect;
+		this.description = description;
 		this.infrastructure = new Infrastructure();
 		this.resources = infrastructure.getResources();
 	}
