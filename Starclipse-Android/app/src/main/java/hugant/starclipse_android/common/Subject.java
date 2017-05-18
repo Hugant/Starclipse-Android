@@ -37,6 +37,18 @@ public class Subject implements Cloneable {
 	public final static String MONEY = "money";
 	public final static String SOIL = "soil";
 
+	private final static int GOLD_IMAGE = R.drawable.subject_gold_30dp;
+	private final static int IRON_IMAGE = R.drawable.subject_iron_30dp;
+	private final static int COAL_IMAGE = R.drawable.subject_coal_30dp;
+	private final static int TREE_IMAGE = R.drawable.subject_tree_30dp;
+	private final static int STONE_IMAGE = R.drawable.subject_stone_30dp;
+	private final static int WATER_IMAGE = R.drawable.subject_water_30dp;
+	private final static int OXYGEN_IMAGE = R.drawable.subject_oxygen_30dp;
+	private final static int ENERGY_IMAGE = R.drawable.subject_energy_30dp;
+	private final static int FOOD_IMAGE = R.drawable.subject_food_30dp;
+	private final static int MONEY_IMAGE = R.drawable.subject_money_30dp;
+	private final static int SOIL_IMAGE = R.drawable.subject_soil_30dp;
+
 	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
 													ENERGY, FOOD, MONEY, SOIL};
 
@@ -327,7 +339,36 @@ public class Subject implements Cloneable {
 		}
 		return false;
 	}
-	
+
+	public int getImage() {
+		switch (this.type) {
+			case GOLD:
+				return GOLD_IMAGE;
+			case IRON:
+				return IRON_IMAGE;
+			case COAL:
+				return COAL_IMAGE;
+			case TREE:
+				return TREE_IMAGE;
+			case STONE:
+				return STONE_IMAGE;
+			case WATER:
+				return WATER_IMAGE;
+			case OXYGEN:
+				return OXYGEN_IMAGE;
+			case ENERGY:
+				return ENERGY_IMAGE;
+			case FOOD:
+				return FOOD_IMAGE;
+			case MONEY:
+				return MONEY_IMAGE;
+			case SOIL:
+				return SOIL_IMAGE;
+		}
+
+		return -1;
+	}
+
 	/**
 	 * Return the string in the form: type + " " + number.
 	 * <pre><code> new Subject("oxygen", "10B").toString();// oxygen 10B
