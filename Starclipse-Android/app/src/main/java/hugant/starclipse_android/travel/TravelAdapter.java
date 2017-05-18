@@ -3,6 +3,7 @@ package hugant.starclipse_android.travel;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -56,7 +57,9 @@ class TravelAdapter extends BaseAdapter {
 
 		final Planet planet = getItem(position);
 
+
 		((TextView) view.findViewById(R.id.nameOfPlanet)).setText(planet.getName());
+		((ImageView) view.findViewById(R.id.planetIcon)).setImageResource(planet.getImage());
 
 		final Button button = (Button) view.findViewById(R.id.button);
 
