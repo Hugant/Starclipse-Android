@@ -2,10 +2,12 @@ package hugant.starclipse_android.common;
 
 import java.math.BigDecimal;
 
+import hugant.starclipse_android.R;
+
 /**
  * The class <b>Subject</b> creates the subject with its type, quantity and maximum value.
  * <p>
- * You can create a subject which will have only the value, value and type, 
+ * You can create a subject which will have only the value, value and type,
  * value and type and maximum value.
  * <pre><code> Subject a = new Subject("100V");
  * Subject b = new Subject("gold", "10B");
@@ -19,9 +21,9 @@ import java.math.BigDecimal;
  * a.add(b);// a = 110
  * b.subtract(a);// b = 90
  * <br>
- * 
+ *
  * @author Hugant MD
- * 
+ *
  * @see hugant.starclipse_android.common.ScaleNumber
  */
 public class Subject implements Cloneable {
@@ -57,13 +59,13 @@ public class Subject implements Cloneable {
 	private ScaleNumber value = null;
 	private ScaleNumber maxValue = null;
 	private String type = null;
-	
-	
+
+
 	/**
 	* Create a <b>Subject</b> which have only value.
-	* If value less than zero, will be generated 
+	* If value less than zero, will be generated
 	* an IllegalArgumentException.
-	* 
+	*
 	* @throws IllegalArgumentException
 	* @param value is the amount of a subject
 	*/
@@ -74,12 +76,12 @@ public class Subject implements Cloneable {
 			this.value = new ScaleNumber(value);
 		}
 	}
-	
+
 	/**
 	* Create a <b>Subject</b> which have type and value.
-	* If value less than zero, will be generated 
+	* If value less than zero, will be generated
 	* an IllegalArgumentException.
-	* 
+	*
 	* @throws IllegalArgumentException
 	* @param type is the type of a subject
 	* @param value is the amount of a subject
@@ -90,15 +92,15 @@ public class Subject implements Cloneable {
 		} else {
 			this.value = new ScaleNumber(value);
 		}
-		
+
 		this.type = (type == null ? null : type.toLowerCase());
 	}
-	
+
 	/**
 	* Create a <b>Subject</b> which have type, value and maximum value.
-	* If value or maxValue less than zero, will be generated 
+	* If value or maxValue less than zero, will be generated
 	* an IllegalArgumentException.
-	* 
+	*
 	* @throws IllegalArgumentException
 	* @param type is the type of a subject
 	* @param value is the amount of a subject
@@ -118,7 +120,7 @@ public class Subject implements Cloneable {
 				this.maxValue = new ScaleNumber(maxValue);
 			}
 		}
-		
+
 		this.type = (type == null ? null : type.toLowerCase());
 	}
 
@@ -128,7 +130,7 @@ public class Subject implements Cloneable {
 	 * an ArithmeticException.
 	 * If the value exceeds the maximum value, will generate
 	 * an ArithmeticException.
-	 * 
+	 *
 	 * @throws ArithmeticException
 	 * @param subject is a Subject which you want to add,
 	 *                you can not clone this parameter
@@ -141,11 +143,11 @@ public class Subject implements Cloneable {
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
-		
+
 		if (this.maxValue != null && this.value.compareTo(this.maxValue) == 1) {
 			this.value = new ScaleNumber(this.getMaxValue());
 		}
-		
+
 		return this;
 	}
 
@@ -155,7 +157,7 @@ public class Subject implements Cloneable {
 	 * an ArithmeticException.
 	 * If the value less than the minimal value, will generate
 	 * an ArithmeticException.
-	 * 
+	 *
 	 * @throws ArithmeticException
 	 * @param subject is a <b>Subject</b> which you want to take,
 	 *                you can not clone this parameter
@@ -168,20 +170,20 @@ public class Subject implements Cloneable {
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
-		
+
 		if (this.value.compareTo("0") == -1) {
 			this.value.add(subject.value);
 			throw new ArithmeticException("Out of bounds the minimum value");
 		}
-		
+
 		return this;
 	}
-	
+
 	/**
 	 * Multiply a <b>Subject</b> to the <b>Subject</b>.
 	 * If the have a different type will generate
 	 * an ArithmeticException.
-	 * If the value less than the minimal value or 
+	 * If the value less than the minimal value or
 	 * more than maximal value, will generate an ArithmeticException.
 	 *
 	 * @param subject is a <b>Subject</b> which you want to multiply,
@@ -196,13 +198,13 @@ public class Subject implements Cloneable {
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
-		
+
 		if (this.value.compareTo("0") == -1) {
 			throw new ArithmeticException("Out of bounds the minimum value");
 		} else if (this.maxValue != null && this.value.compareTo(this.maxValue) == 1) {
 			throw new ArithmeticException("Out of bounds the maximum value");
 		}
-		
+
 		return this;
 	}
 
@@ -210,7 +212,7 @@ public class Subject implements Cloneable {
 	 * Divide a <b>Subject</b> to the <b>Subject</b>.
 	 * If the have a different type will generate
 	 * an ArithmeticException.
-	 * If the value less than the minimal value or 
+	 * If the value less than the minimal value or
 	 * more than maximal value, will generate an ArithmeticException.
 	 *
 	 * @param subject is a <b>Subject</b> which you want to divide,
@@ -225,13 +227,13 @@ public class Subject implements Cloneable {
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
-		
+
 		if (this.value.compareTo("0") == -1) {
 			throw new ArithmeticException("Out of bounds the minimum value");
 		} else if (this.maxValue != null && this.value.compareTo(this.maxValue) == 1) {
 			throw new ArithmeticException("Out of bounds the maximum value");
 		}
-		
+
 		return this;
 	}
 
@@ -251,7 +253,7 @@ public class Subject implements Cloneable {
 	public void addToMaxValue(String subject) {
 		this.addToMaxValue(new Subject(subject));
 	}
-	
+
 	/**
 	 * Adds the Subject to the maximum value of this <b>Subject</b>.
 	 * @param subject is a <b>Subject</b>
@@ -259,8 +261,8 @@ public class Subject implements Cloneable {
 	public void addToMaxValue(Subject subject) {
 		this.maxValue.add(subject.value);
 	}
-	
-	
+
+
 	/**
 	 * Set the maximum value.
 	 * @param subject is a string in the form <b>ScaleNumber</b>
@@ -268,7 +270,7 @@ public class Subject implements Cloneable {
 	public void setMaxValue(String subject) {
 		this.setMaxValue(new Subject(subject));
 	}
-	
+
 	/**
 	 * Set the maximum value.
 	 * @param subject is a <b>Subject</b>
@@ -277,7 +279,7 @@ public class Subject implements Cloneable {
 		this.maxValue.setPrefix(subject.value.getPrefix());
 		this.maxValue.setPostfix(subject.value.getPostfix());
 	}
-	
+
 	/**
 	 * "Fill" <b>Subject</b> to the maximum value.
 	 */
@@ -305,7 +307,7 @@ public class Subject implements Cloneable {
 		return value.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
 				replaceAll("(\\.00)|(0$)", "") + value.getPostfix();
 	}
-	
+
 	/**
 	 * Return the string in the form <b>ScaleNumber</b>.
 	 * <br>
@@ -318,8 +320,8 @@ public class Subject implements Cloneable {
 				maxValue.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
 				replaceAll("(\\.00)|(0$)", "") + maxValue.getPostfix();
 	}
-	
-	
+
+
 	/**
 	 * Return the string the type of this object.
 	 * @return string the type of this object
@@ -327,14 +329,14 @@ public class Subject implements Cloneable {
 	public String getType() {
 		return this.type == null ? "no type" : this.type;
 	}
-	
+
 	/**
 	 * Compares <b>Subject</b>'s by name.
 	 */
 	@Override
 	public boolean equals(Object o) {
 		if (o != null && o instanceof Subject) {
-			if (this.type.equals(((Subject) o).type)) 
+			if (this.type.equals(((Subject) o).type))
 				return true;
 		}
 		return false;
@@ -378,7 +380,6 @@ public class Subject implements Cloneable {
 	public String toString() {
 		return (this.type == null ? "no type" : this.type) + " " + this.getValue();
 	}
-
 
 	/**
 	 * Return cloned <b>Subject</b>.
