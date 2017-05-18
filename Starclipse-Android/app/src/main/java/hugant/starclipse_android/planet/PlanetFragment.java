@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import hugant.starclipse_android.R;
@@ -19,8 +20,6 @@ import hugant.starclipse_android.common.Subject;
 public class PlanetFragment extends Fragment {
 
 	private Planet planet;
-
-	private TextView planetTitleName;
 
 	public PlanetFragment(Planet planet) {
 		this.planet = planet;
@@ -38,8 +37,8 @@ public class PlanetFragment extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_planet, container, false);
 
-		planetTitleName = (TextView) view.findViewById(R.id.planetTitleName);
-		planetTitleName.setText(planet.getName());
+		((TextView) view.findViewById(R.id.planetName)).setText(planet.getName());
+		((ImageView) view.findViewById(R.id.image)).setImageResource(planet.getImage());
 
 		TextView a = (TextView) view.findViewById(R.id.textView);
 
