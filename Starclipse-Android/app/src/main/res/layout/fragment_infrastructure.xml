@@ -4,27 +4,30 @@
              android:layout_height="match_parent"
              tools:context=".infrastructure.InfrastructureFragment">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/infrastructurePlanetName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/title_margin_top"
-            android:textSize="@dimen/title_size"
-            android:text="Infrastructure" />
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+                android:id="@+id/planetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/title_size"
+                android:text="Name Of Planet" />
+
+        </RelativeLayout>
 
         <ListView
+            android:id="@+id/infrastructureAdapter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/infrastructurePlanetName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:id="@+id/infrastructureAdapter" />
+            android:layout_below="@+id/header"/>
     </RelativeLayout>
 </FrameLayout>

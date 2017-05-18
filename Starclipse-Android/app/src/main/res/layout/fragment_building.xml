@@ -83,7 +83,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
-                                android:text="@string/building_subtitle_description"
+                                android:text="@string/subtitle_description"
                                 android:textAlignment="center"
                                 android:textSize="@dimen/subtitle_size"/>
 
