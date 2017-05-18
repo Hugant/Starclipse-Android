@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class BuildingWarehouseAdapter extends BaseAdapter {
 		}
 		final Subject subject = getItem(position);
 
-		((ImageView) view.findViewById(R.id.resourceIcon)).setImageResource(R.drawable.ic_home_black_24dp);
+		((ImageView) view.findViewById(R.id.resourceIcon)).setImageResource(subject.getImage());
 		((TextView) view.findViewById(R.id.nameOfResource))
 				.setText(subject.getType().substring(0, 1).toUpperCase()
 						+ subject.getType().substring(1));
