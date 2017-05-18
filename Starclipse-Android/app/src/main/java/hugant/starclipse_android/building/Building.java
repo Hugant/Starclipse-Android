@@ -22,11 +22,9 @@ import hugant.starclipse_android.common.Resources;
  * @see House
  */
 public abstract class Building implements Serializable {
-	private String name = "";
-
-	private int descriptionId = -1;
-	private int imageId = -1;
-	private int nameId = -1;
+	private int description = -1;
+	private int image = -1;
+	private int name = -1;
 
 	private Timer buildTimer = null;
 	private Timer incomeTimer = null;
@@ -140,7 +138,7 @@ public abstract class Building implements Serializable {
 	 * @param name is name of <b>Building</b>
 	 */
 	public void setName(int nameId) {
-		this.nameId = nameId;
+		this.name = nameId;
 	}
 
 	/**
@@ -148,10 +146,10 @@ public abstract class Building implements Serializable {
 	 * @return
 	 */
 	public int getName() {
-		if (nameId == -1) {
+		if (name == -1) {
 			return R.string.building_name_not_found;
 		}
-		return nameId;
+		return name;
 	}
 
 	/**
@@ -221,7 +219,7 @@ public abstract class Building implements Serializable {
 	 * @param descriptionId
 	 */
 	public void setDescription(int descriptionId) {
-		this.descriptionId = descriptionId;
+		this.description = descriptionId;
 	}
 
 	/**
@@ -229,11 +227,11 @@ public abstract class Building implements Serializable {
 	 * @return
 	 */
 	public int getDescription() {
-		if (descriptionId == -1) {
+		if (description == -1) {
 			// TODO: Add to R building_description_not_found
 			return R.string.building_description_not_found;
 		}
-		return descriptionId;
+		return description;
 	}
 
 	/**
@@ -241,7 +239,7 @@ public abstract class Building implements Serializable {
 	 * @param imageId
 	 */
 	public void setImage(int imageId) {
-		this.imageId = imageId;
+		this.image = imageId;
 	}
 
 	/**
@@ -249,10 +247,10 @@ public abstract class Building implements Serializable {
 	 * @return
 	 */
 	public int getImage() {
-		if (imageId == -1) {
+		if (image == -1) {
 			//TODO: Find image: not found
 			return R.drawable.ic_dashboard_black_24dp;
 		}
-		return imageId;
+		return image;
 	}
 }
