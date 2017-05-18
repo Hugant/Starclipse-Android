@@ -41,4 +41,12 @@ public class Planet {
 	public Infrastructure getInfrastructure() {
 		return infrastructure;
 	}
+
+	public int getImage() {
+		return image;
+	}
+
+	public int getDescription() {
+		return description;
+	}
 }
