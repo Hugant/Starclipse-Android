@@ -10,8 +10,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.building.items.TradingStation;
@@ -78,9 +82,11 @@ public class MainActivity extends FragmentActivity {
 		//get date for db
 
 		//for test
-		planets.add(new Planet("Caroline", new Resources()));
-		planets.add(new Planet("Amine", new Resources()));
-		planets.add(new Planet("Kate", new Resources()));
+//		planets.add(new Planet("Caroline", new Resources(), 0));
+//		planets.add(new Planet("Amine", new Resources(), 0));
+//		planets.add(new Planet("Kate", new Resources(), 0));
+
+		planets.addAll(Arrays.asList(Planet.PLANETS));
 
 		planet = planets.get(0);
 
