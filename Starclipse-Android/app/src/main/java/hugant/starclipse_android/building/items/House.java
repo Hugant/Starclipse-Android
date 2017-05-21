@@ -27,7 +27,7 @@ public class House extends Building {
 	public House(String type) {
 		switch (type.toLowerCase()) {
 			case "big":
-				super.setResidents("0", "100");
+				super.setResidents("0", "1M");
 				super.setName(R.string.building_big_house_name);
 				super.setBuildTimer(Timer.MINUTE * 30, "Start");
 				super.setIncomeTimer(Timer.SECOND * 20, "Claim");
