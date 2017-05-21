@@ -90,11 +90,18 @@
                         android:layout_below="@+id/titleValues"
                         android:layout_centerHorizontal="true">
 
-                        <ListView
+                        <LinearLayout
+                            android:id="@+id/linear"
                             android:layout_width="match_parent"
-                            android:layout_height="620dp"
-                            android:id="@+id/warehouseResourcesAdapter"
-                            tools:ignore="NestedScrolling"/>
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        </LinearLayout>
+                        <!--<ListView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="620dp"-->
+                            <!--android:id="@+id/warehouseResourcesAdapter"-->
+                            <!--tools:ignore="NestedScrolling"/>-->
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
