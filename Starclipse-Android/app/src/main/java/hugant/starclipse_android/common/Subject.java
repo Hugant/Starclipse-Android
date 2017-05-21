@@ -50,7 +50,7 @@ public class Subject implements Cloneable {
 	private final static int FOOD_IMAGE = R.drawable.subject_food_30dp;
 	private final static int MONEY_IMAGE = R.drawable.subject_money_30dp;
 	private final static int SOIL_IMAGE = R.drawable.subject_soil_30dp;
-	private final static int RESIDENTS_IMAGE = R.drawable.social;
+	private final static int RESIDENTS_IMAGE = R.drawable.subject_residents_30dp;
 
 	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
 													ENERGY, FOOD, MONEY, SOIL};
