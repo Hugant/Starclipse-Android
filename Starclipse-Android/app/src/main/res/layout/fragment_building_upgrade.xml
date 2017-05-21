@@ -4,4 +4,25 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            style="@style/Header">
+
+            <TextView
+                android:id="@+id/buildingName"
+                style="@style/HeaderTitle"/>
+        </RelativeLayout>
+        
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header">
+
+        </ScrollView>
+    </RelativeLayout>
+
 </LinearLayout>

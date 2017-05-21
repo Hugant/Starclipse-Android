@@ -10,17 +10,11 @@
 
         <RelativeLayout
             android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="70dp">
+            style="@style/Header">
             
             <TextView
                 android:id="@+id/planetName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/title_size"
-                android:text="Name of planet"/>
+                style="@style/HeaderTitle"/>
         </RelativeLayout>
 
         <ScrollView
@@ -30,12 +24,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
                 <RelativeLayout
+                    android:id="@+id/wrapDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:layout_height="wrap_content">
 
                     <Space
                         android:id="@+id/space"
@@ -47,13 +42,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/space"
-                        android:layout_toStartOf="@+id/space">
+                        android:layout_toStartOf="@+id/space"
+                        android:layout_below="@+id/space">
 
                         <ImageView
                             android:id="@+id/image"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_centerInParent="true"/>
+                            android:contentDescription="null"
+                            style="@style/ContentImage"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -63,21 +58,35 @@
                         android:layout_toEndOf="@+id/space">
 
                         <TextView
+                            android:id="@+id/titleDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_description"
+                            style="@style/ContentTitle"/>
+
+                        <TextView
                             android:id="@+id/description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/subtitle_size"
-                            android:text="@string/subtitle_description"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/description"
+                            android:layout_below="@+id/titleDescription"
                             android:layout_marginTop="10dp"
-                            android:text="asdfasdfasdfasdf"/>
+                            android:text="some text"/>
 
                     </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wrapDescription"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/titleStarships"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/planet_title_starships"
+                        style="@style/ContentTitle"/>
                 </RelativeLayout>
 
                 <TextView

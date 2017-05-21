@@ -10,17 +10,11 @@
 
         <RelativeLayout
             android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="70dp">
+            style="@style/Header">
 
             <TextView
                 android:id="@+id/planetName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/title_size"
-                android:text="Name Of Planet" />
+                style="@style/HeaderTitle"/>
 
         </RelativeLayout>
 
