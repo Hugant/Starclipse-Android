@@ -38,6 +38,7 @@ public class PlanetFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_planet, container, false);
 
 		((TextView) view.findViewById(R.id.planetName)).setText(planet.getName());
+		((TextView) view.findViewById(R.id.description)).setText(planet.getDescription());
 		((ImageView) view.findViewById(R.id.image)).setImageResource(planet.getImage());
 
 		TextView a = (TextView) view.findViewById(R.id.textView);
