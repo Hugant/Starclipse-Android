@@ -13,15 +13,15 @@
     <string name="button_claim">Claim</string>
     <string name="button_build">Build</string>
 
-    <string name="building_title_values">Values</string>
-    <string name="subtitle_upgraded">Upgraded</string>
-    <string name="subtitle_expenses">Expenses</string>
-    <string name="subtitle_description">Description</string>
+    <string name="title_values">Values</string>
+    <string name="title_upgraded">Upgraded</string>
+    <string name="title_expenses">Expenses</string>
+    <string name="title_description">Description</string>
     <string name="building_subtitle_income">Income</string>
     <string name="building_subtitle_residents">Residents</string>
 
-    <string name="building_description_not_found">Not found</string>
-    <string name="building_name_not_found">No name</string>
+    <string name="description_not_found">Not found</string>
+    <string name="name_not_found">No name</string>
 
     <string name="building_small_house_name">Small House</string>
     <string name="building_small_house_description">This is description of small house! I don\'t
@@ -49,4 +49,6 @@
 
     <string name="building_resources_factory_name">Resources Factory</string>
     <string name="building_resources_factory_description">Description of resources factory</string>
+
+    <string name="planet_title_starships">Starships</string>
 </resources>
