@@ -74,10 +74,16 @@ public class Planet {
 	}
 
 	public int getImage() {
+		if (image == -1) {
+			return R.drawable.ic_dashboard_black_24dp;
+		}
 		return image;
 	}
 
 	public int getDescription() {
+		if (description == -1) {
+			return R.string.description_not_found;
+		}
 		return description;
 	}
 }
