@@ -116,8 +116,8 @@ public class Starship {
 		 * <b>Resources</b>.
 		 * @param res is a <b>Resources</b> which you will take
 		 */
-		public void minus(Resources res) {
-			this.resources.add(res);
+		public void subtract(Resources res) {
+			this.resources.subtract(res);
 		}
 	}
 	
@@ -133,11 +133,10 @@ public class Starship {
 	private int passengerCompartment = 0;
 	
 	private String name = "";
-	private String owner = "";// ???????????
-	
-	private Subject residents = new Subject(Subject.RESIDENTS, "25", "25");
+
+	private Subject residents = new Subject(Subject.RESIDENTS, "0", "25");
 	private Subject passenger = null;
-	private ScaleNumber passengerValume = new ScaleNumber("10");
+	private ScaleNumber passengerVolume = new ScaleNumber("10");
 	
 	
 	private Storage storage = null;
@@ -172,11 +171,11 @@ public class Starship {
 				case "passenger": 
 					this.passengerCompartment++;
 					expenses.add(new Subject(
-							Subject.OXYGEN, OXYGEN_FOR_ONE_PASSENGER.multiply(passengerValume).toString()));
+							Subject.OXYGEN, OXYGEN_FOR_ONE_PASSENGER.multiply(passengerVolume).toString()));
 					expenses.add(new Subject(
-							Subject.FOOD, FOOD_FOR_ONE_PASSENGER.multiply(passengerValume).toString()));
+							Subject.FOOD, FOOD_FOR_ONE_PASSENGER.multiply(passengerVolume).toString()));
 					expenses.add(new Subject(
-							Subject.MONEY, MONEY_FOR_ONE_PASSENGER.multiply(passengerValume).toString()));
+							Subject.MONEY, MONEY_FOR_ONE_PASSENGER.multiply(passengerVolume).toString()));
 					break;
 				
 				case "storage":
@@ -198,7 +197,7 @@ public class Starship {
 		
 		;
 		this.passenger = new Subject(Subject.RESIDENTS, "0",
-				passengerValume.multiply(new ScaleNumber(passengerCompartment + "")).toString());
+				passengerVolume.multiply(new ScaleNumber(passengerCompartment + "")).toString());
 		
 		if (name != null && !name.equals("")) {
 			this.name = name;
@@ -220,14 +219,6 @@ public class Starship {
 	 */
 	public String getName() {
 		return this.name;
-	}
-	
-	/**
-	 * Return owner of the <b>Starship</b>.
-	 * @return
-	 */
-	public String getOwner() {
-		return this.owner;
 	}
 	
 	/**
@@ -279,12 +270,12 @@ public class Starship {
 		this.passenger.subtract(new Subject(number));
 	}
 	
-	public void setPassengerValume(String number) {
-		this.passengerValume = new ScaleNumber(number);
+	public void setPassengerVolume(String number) {
+		this.passengerVolume = new ScaleNumber(number);
 	}
 	
-	public void setPassengerValume(ScaleNumber number) {
-		this.passengerValume = number;
+	public void setPassengerVolume(ScaleNumber number) {
+		this.passengerVolume = number;
 	}
 	
 	public void defend(Starship starhips) {
