@@ -147,7 +147,7 @@ public abstract class Building implements Serializable {
 	 */
 	public int getName() {
 		if (name == -1) {
-			return R.string.building_name_not_found;
+			return R.string.name_not_found;
 		}
 		return name;
 	}
@@ -229,7 +229,7 @@ public abstract class Building implements Serializable {
 	public int getDescription() {
 		if (description == -1) {
 			// TODO: Add to R building_description_not_found
-			return R.string.building_description_not_found;
+			return R.string.description_not_found;
 		}
 		return description;
 	}
