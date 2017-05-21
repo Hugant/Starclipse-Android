@@ -5,9 +5,9 @@ import java.io.Serializable;
 
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.items.House;
-import hugant.starclipse_android.common.Timer;
-import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.common.Resources;
+import hugant.starclipse_android.common.Subject;
+import hugant.starclipse_android.common.Timer;
 
 
 /**
@@ -39,18 +39,6 @@ public abstract class Building implements Serializable {
 	
 	private boolean start = false;
 
-
-//	public View.OnClickListener UpgradeOnClick = new View.OnClickListener() {
-//		@Override
-//		public void onClick(View e) {
-//			try {
-//				MainActivity.getRes().subtract(expenses);
-//				upgrade();
-//			} catch (ArithmeticException ex) {
-//
-//			}
-//		}
-//	};
 
 	/**
 	 * Begins to build the <b>Building</b>.
@@ -135,7 +123,7 @@ public abstract class Building implements Serializable {
 
 	/**
 	 * Sets the name of <b>Building</b>.
-	 * @param name is name of <b>Building</b>
+	 * @param nameId is name of <b>Building</b>
 	 */
 	public void setName(int nameId) {
 		this.name = nameId;
@@ -248,9 +236,30 @@ public abstract class Building implements Serializable {
 	 */
 	public int getImage() {
 		if (image == -1) {
-			//TODO: Find image: not found
 			return R.drawable.ic_dashboard_black_24dp;
 		}
 		return image;
+	}
+
+	public void addResidents(Resources resources, String amount) {
+		if (residents.compareTo(new Subject(residents.getMaxValue())) == -1) {
+			if (resources.canSubtract(new Subject(Subject.RESIDENTS, amount))) {
+				resources.subtract(new Subject(Subject.RESIDENTS, amount));
+				residents.add(new Subject(amount));
+			} else {
+				throw new ArithmeticException("Insufficient number of residents");
+			}
+		} else {
+			throw new ArithmeticException("Number of residents equals maximum");
+		}
+	}
+
+	public void takeResidents(Resources resources, String amount) {
+		if (residents.compareTo(new Subject("0")) == 1) {
+			residents.subtract(new Subject(amount));
+			resources.add(new Subject(Subject.RESIDENTS, amount));
+		} else {
+			throw new ArithmeticException("Number of residents equals minimum");
+		}
 	}
 }
