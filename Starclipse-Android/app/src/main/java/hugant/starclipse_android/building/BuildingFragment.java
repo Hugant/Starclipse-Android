@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
@@ -32,7 +34,6 @@ public class BuildingFragment extends Fragment {
 	private Resources resources;
 
 	private Button claim;
-	Button addResident = null;
 	private Updater updater = new Updater();
 
 	private class Updater extends AsyncTask<Void, Void, Void> {
@@ -76,6 +77,7 @@ public class BuildingFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
+
 		View view;
 		if (building.getName() == R.string.building_warehouse_name) {
 			view = inflater.inflate(R.layout.fragment_building_warehouse, container, false);
@@ -85,8 +87,12 @@ public class BuildingFragment extends Fragment {
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final TextView description = (TextView) view.findViewById(R.id.description);
-			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+//			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
+			final LinearLayout linear = (LinearLayout) view.findViewById(R.id.linear);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
+
+			View child = inflater.inflate(R.layout.warehouse_adapter_item, linear, false);
+
 
 			upgrade.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -103,7 +109,7 @@ public class BuildingFragment extends Fragment {
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
 			description.setText(building.getDescription());
-			listView.setAdapter(adapter);
+//			listView.setAdapter(adapter);
 
 
 		} else if (building.getName() == R.string.building_trading_station_name) {
@@ -112,7 +118,6 @@ public class BuildingFragment extends Fragment {
 			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
 			final TextView description = (TextView) view.findViewById(R.id.description);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
-			final ListView listView = (ListView) view.findViewById(R.id.warehouseResourcesAdapter);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
 			claim = (Button) view.findViewById(R.id.claimButton);
 
@@ -170,8 +175,8 @@ public class BuildingFragment extends Fragment {
 			final TextView residents = (TextView) view.findViewById(R.id.residents);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
-			addResident = (Button) view.findViewById(R.id.residentsAddButton);
-			final Button subtractResident = (Button) view.findViewById(R.id.residentsSubtractButton);
+			final Button addButton = (Button) view.findViewById(R.id.residentsAddButton);
+			final Button subtractButton = (Button) view.findViewById(R.id.residentsSubtractButton);
 
 
 			buildingName.setText(building.getName());
@@ -181,82 +186,115 @@ public class BuildingFragment extends Fragment {
 					+ building.getResidents().getMaxValue());
 //			income.setText();
 
-			addResident.setOnTouchListener(new View.OnTouchListener() {
-				boolean pressed = false;
-
+			addButton.setOnTouchListener(new View.OnTouchListener() {
 				Handler handler = new Handler();
 
-				Runnable runnableCode = new Runnable() {
+				Runnable addRunnable = new Runnable() {
 					@Override
 					public void run() {
-						int delay = 100;
-						addResident.callOnClick();
-						delay -= 10;
-						handler.postDelayed(runnableCode, delay);
+						subtractButton.setEnabled(true);
+
+						try {
+							building.addResidents(resources, "1");
+						} catch (ArithmeticException e) {
+							addButton.setEnabled(false);
+						}
+
+						residents.setText(building.getResidents().getValue() + " / "
+								+ building.getResidents().getMaxValue());
+
+						if (addButton.isEnabled()) {
+							handler.post(addRunnable);
+						}
 					}
 				};
 
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
-					if (!pressed) {
-						handler.post(runnableCode);
-						pressed = false;
-					} else {
-						handler.removeCallbacks(runnableCode);
-						pressed = true;
+					switch (event.getAction()) {
+						case MotionEvent.ACTION_DOWN:
+							handler.postDelayed(addRunnable, 500);
+							return false;
+
+						case MotionEvent.ACTION_UP:
+							handler.removeCallbacks(addRunnable);
+							return false;
 					}
+
 					return false;
 				}
 			});
 
-			addResident.setOnClickListener(new View.OnClickListener() {
+			addButton.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					if (building.getResidents()
-							.compareTo(new Subject(building.getResidents().getMaxValue())) == -1) {
-						if (resources.canSubtract(new Subject(Subject.RESIDENTS, "1"))) {
-							resources.subtract(new Subject(Subject.RESIDENTS, "1"));
-							building.getResidents().add(new Subject("1"));
-							residents.setText(building.getResidents().getValue() + " / "
-									+ building.getResidents().getMaxValue());
-							subtractResident.setEnabled(true);
-						} else {
-							//TODO: To handle the event
-						}
+					try {
+						building.addResidents(resources, "1");
+						subtractButton.setEnabled(true);
+					} catch (ArithmeticException e) {
+						addButton.setEnabled(false);
 					}
 
-					if (building.getResidents()
-							.compareTo(new Subject(building.getResidents().getMaxValue())) > -1) {
-						addResident.setEnabled(false);
-					}
+					residents.setText(building.getResidents().getValue() + " / "
+							+ building.getResidents().getMaxValue());
 				}
 			});
 
-			subtractResident.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if (building.getResidents().compareTo(new Subject("0")) == 1) {
-						resources.add(new Subject(Subject.RESIDENTS, "1"));
+			subtractButton.setOnTouchListener(new View.OnTouchListener() {
+				Handler handler = new Handler();
+
+				Runnable subtractRunnable = new Runnable() {
+					@Override
+					public void run() {
+						addButton.setEnabled(true);
+
 						try {
-							building.getResidents().subtract(new Subject("1"));
+							building.takeResidents(resources, "1");
 						} catch (ArithmeticException e) {
-							// TODO: To handle the event
+							subtractButton.setEnabled(false);
 						}
+
 						residents.setText(building.getResidents().getValue() + " / "
 								+ building.getResidents().getMaxValue());
-						addResident.setEnabled(true);
+
+						if (subtractButton.isEnabled()) {
+							handler.postDelayed(subtractRunnable, 0);
+						}
+					}
+				};
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					switch (event.getAction()) {
+						case MotionEvent.ACTION_DOWN:
+							handler.postDelayed(subtractRunnable, 500);
+							return false;
+
+						case MotionEvent.ACTION_UP:
+							handler.removeCallbacks(subtractRunnable);
+							return false;
 					}
 
-					if (building.getResidents()
-							.compareTo(new Subject("0")) < 1) {
-						subtractResident.setEnabled(false);
+					return false;
+				}
+			});
+
+			subtractButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					try {
+						building.takeResidents(resources, "1");
+						addButton.setEnabled(true);
+					} catch (ArithmeticException e) {
+						subtractButton.setEnabled(false);
 					}
+
+					residents.setText(building.getResidents().getValue() + " / "
+							+ building.getResidents().getMaxValue());
 				}
 			});
 
 			claim = (Button) view.findViewById(R.id.claimButton);
-
-
 
 			try {
 				claim.setText(building.getTimer());
@@ -310,9 +348,5 @@ public class BuildingFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 //		updater = (Updater) new Updater().execute();
-	}
-
-	public boolean getPressed() {
-		return addResident.isPressed();
 	}
 }
