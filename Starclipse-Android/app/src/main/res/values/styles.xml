@@ -8,4 +8,71 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+
+    <style name="HeaderTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:text">Name of Something</item>
+    </style>
+
+    <style name="ContentWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="ContentTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="ContentSubtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ContentImage">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="Footer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="FooterLeftButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="FooterRightButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
 </resources>
