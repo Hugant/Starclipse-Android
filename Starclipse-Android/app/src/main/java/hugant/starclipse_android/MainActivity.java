@@ -20,6 +20,7 @@ import java.util.List;
 import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.building.items.TradingStation;
 import hugant.starclipse_android.building.items.industry.ResourcesFactory;
+import hugant.starclipse_android.building.items.industry.Starship;
 import hugant.starclipse_android.building.items.industry.StarshipsFactory;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.ScaleNumber;
@@ -39,6 +40,7 @@ public class MainActivity extends FragmentActivity {
 	private SettingsFragment settingsFragment;
 
 	private ArrayList<Planet> planets;
+	private ArrayList<Starship> starships;
 
 	private Planet planet;
 
@@ -78,13 +80,7 @@ public class MainActivity extends FragmentActivity {
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		planets = new ArrayList<Planet>();
-		//get date for db
-
-		//for test
-//		planets.add(new Planet("Caroline", new Resources(), 0));
-//		planets.add(new Planet("Amine", new Resources(), 0));
-//		planets.add(new Planet("Kate", new Resources(), 0));
+		planets = new ArrayList<>();
 
 		planets.addAll(Arrays.asList(Planet.PLANETS));
 
@@ -98,7 +94,7 @@ public class MainActivity extends FragmentActivity {
 			i.getInfrastructure().add(new House("average"));
 			i.getInfrastructure().add(new House("big"));
 			i.getInfrastructure().add(new TradingStation(planet.getResources()));
-			i.getInfrastructure().add(new StarshipsFactory());
+			i.getInfrastructure().add(new StarshipsFactory(starships));
 			i.getInfrastructure().add(new ResourcesFactory(Subject.GOLD));
 		}
 
