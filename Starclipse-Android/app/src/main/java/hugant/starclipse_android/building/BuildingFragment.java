@@ -3,18 +3,22 @@ package hugant.starclipse_android.building;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
@@ -28,12 +32,12 @@ public class BuildingFragment extends Fragment {
 	private Resources resources;
 
 	private Button claim;
-
+	Button addResident = null;
 	private Updater updater = new Updater();
 
 	private class Updater extends AsyncTask<Void, Void, Void> {
 		private boolean inWork = true;
-
+		boolean first = false;
 		@Override
 		protected Void doInBackground(Void... unused) {
 			inWork = true;
@@ -87,7 +91,12 @@ public class BuildingFragment extends Fragment {
 			upgrade.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					// new Fragment
+					FragmentTransaction fragmentTransaction =
+							((MainActivity)getContext()).getSupportFragmentManager().beginTransaction();
+					fragmentTransaction.replace(R.id.content,
+							new UpgradeFragment(building, resources));
+					fragmentTransaction.addToBackStack(null);
+					fragmentTransaction.commit();
 				}
 			});
 
@@ -95,6 +104,7 @@ public class BuildingFragment extends Fragment {
 			image.setImageResource(building.getImage());
 			description.setText(building.getDescription());
 			listView.setAdapter(adapter);
+
 
 		} else if (building.getName() == R.string.building_trading_station_name) {
 			view = inflater.inflate(R.layout.fragment_building_trading_station, container, false);
@@ -109,7 +119,12 @@ public class BuildingFragment extends Fragment {
 			upgrade.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-
+					FragmentTransaction fragmentTransaction =
+							((MainActivity)getContext()).getSupportFragmentManager().beginTransaction();
+					fragmentTransaction.replace(R.id.content,
+							new UpgradeFragment(building, resources));
+					fragmentTransaction.addToBackStack(null);
+					fragmentTransaction.commit();
 				}
 			});
 
@@ -155,7 +170,7 @@ public class BuildingFragment extends Fragment {
 			final TextView residents = (TextView) view.findViewById(R.id.residents);
 			final ImageView image = (ImageView) view.findViewById(R.id.image);
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
-			final Button addResident = (Button) view.findViewById(R.id.residentsAddButton);
+			addResident = (Button) view.findViewById(R.id.residentsAddButton);
 			final Button subtractResident = (Button) view.findViewById(R.id.residentsSubtractButton);
 
 
@@ -166,15 +181,30 @@ public class BuildingFragment extends Fragment {
 					+ building.getResidents().getMaxValue());
 //			income.setText();
 
+			addResident.setOnTouchListener(new View.OnTouchListener() {
+				boolean pressed = false;
 
-			addResident.setOnLongClickListener(new View.OnLongClickListener() {
+				Handler handler = new Handler();
+
+				Runnable runnableCode = new Runnable() {
+					@Override
+					public void run() {
+						int delay = 100;
+						addResident.callOnClick();
+						delay -= 10;
+						handler.postDelayed(runnableCode, delay);
+					}
+				};
+
 				@Override
-				public boolean onLongClick(View v) {
-
-//					while (()) {
-//						addResident.callOnClick();
-//						SystemClock.sleep(500);
-//					}
+				public boolean onTouch(View v, MotionEvent event) {
+					if (!pressed) {
+						handler.post(runnableCode);
+						pressed = false;
+					} else {
+						handler.removeCallbacks(runnableCode);
+						pressed = true;
+					}
 					return false;
 				}
 			});
@@ -237,7 +267,12 @@ public class BuildingFragment extends Fragment {
 			upgrade.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View e) {
-
+					FragmentTransaction fragmentTransaction =
+							((MainActivity)getContext()).getSupportFragmentManager().beginTransaction();
+					fragmentTransaction.replace(R.id.content,
+							new UpgradeFragment(building, resources));
+					fragmentTransaction.addToBackStack(null);
+					fragmentTransaction.commit();
 				}
 			});
 
@@ -275,5 +310,9 @@ public class BuildingFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 //		updater = (Updater) new Updater().execute();
+	}
+
+	public boolean getPressed() {
+		return addResident.isPressed();
 	}
 }
