@@ -351,19 +351,8 @@ public class Resources implements Cloneable, Serializable {
 	}
 
 	@Override
-	protected Resources clone() throws CloneNotSupportedException {
+	public Resources clone() throws CloneNotSupportedException {
 		super.clone();
-		Resources clone = new Resources();
-
-		clone.subjects = new ArrayList<Subject>(subjects.size());
-		for (Subject i : subjects) {
-			clone.subjects.add(i.clone());
-		}
-
-		clone.isStorage = isStorage;
-		clone.volume = volume == null ? null : volume.clone();
-		clone.length = length;
-
-		return clone;
+		return (Resources) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
