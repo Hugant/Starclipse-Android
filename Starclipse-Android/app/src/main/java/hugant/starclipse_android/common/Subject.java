@@ -29,7 +29,7 @@ import hugant.starclipse_android.R;
  *
  * @see hugant.starclipse_android.common.ScaleNumber
  */
-public class Subject implements Cloneable {
+public class Subject implements Cloneable, Serializable {
 	public final static String GOLD = "gold";
 	public final static String IRON = "iron";
 	public final static String COAL = "coal";

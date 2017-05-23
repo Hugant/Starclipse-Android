@@ -9,7 +9,7 @@ import org.apache.commons.lang.SerializationUtils;
  * <br>
  * @author Hugant MD
  */
-public class Timer {
+public class Timer implements Cloneable, Serializable {
 
 	/**The number of milliseconds in the day {@value #DAY}ms*/
 	public static final long DAY = 86400000L;
