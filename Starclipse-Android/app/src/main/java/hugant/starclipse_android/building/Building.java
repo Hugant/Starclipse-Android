@@ -289,4 +289,9 @@ public abstract class Building implements Serializable, Cloneable {
 			throw new ArithmeticException("Number of residents equals minimum");
 		}
 	}
+	@Override
+	public Building clone() throws CloneNotSupportedException {
+		super.clone();
+		return (Building) SerializationUtils.deserialize(SerializationUtils.serialize(this));
+	}
 }
