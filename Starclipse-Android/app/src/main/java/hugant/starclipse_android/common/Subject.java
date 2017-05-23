@@ -395,6 +395,6 @@ public class Subject implements Cloneable, Serializable {
 	@Override
 	public Subject clone() throws CloneNotSupportedException {
 		super.clone();
-		return new Subject(this.type, this.getValue(), this.getMaxValue());
+		return (Subject) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
