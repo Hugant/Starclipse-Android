@@ -81,10 +81,20 @@ public abstract class Building implements Serializable, Cloneable {
 	 * @return income is <b>Resources</b> which was extracted
 	 */
 	public Resources claim() {
+		Resources cloneIncome = null;
+
 		if (incomeTimer != null) {
 			incomeTimer.start();
 		}
-		return income;
+
+		try {
+			cloneIncome = income.clone().multiply(lastResidents.getValue());
+			lastResidents = residents.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+
+		return cloneIncome;
 	}
 
 	/**
