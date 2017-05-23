@@ -1,6 +1,9 @@
 package hugant.starclipse_android.common;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+
+import org.apache.commons.lang.SerializationUtils;
 
 import hugant.starclipse_android.R;
 

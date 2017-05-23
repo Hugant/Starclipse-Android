@@ -1,5 +1,9 @@
 package hugant.starclipse_android.common;
 
+import java.io.Serializable;
+
+import org.apache.commons.lang.SerializationUtils;
+
 /**
  * The Timer class allows you to create a time counter(timer).
  * <br>
