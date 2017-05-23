@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import hugant.starclipse_android.building.Building;
 import hugant.starclipse_android.building.items.House;
 import hugant.starclipse_android.building.items.TradingStation;
 import hugant.starclipse_android.building.items.industry.ResourcesFactory;
@@ -97,7 +98,6 @@ public class MainActivity extends FragmentActivity {
 			i.getInfrastructure().add(new StarshipsFactory(starships));
 			i.getInfrastructure().add(new ResourcesFactory(Subject.GOLD));
 		}
-
 
 		travelFragment = new TravelFragment(planets);
 		planetFragment = new PlanetFragment(planet);
