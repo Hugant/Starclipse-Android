@@ -1,7 +1,16 @@
 package hugant.starclipse_android.building;
 
 
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import org.apache.commons.lang.SerializationUtils;
 
 import hugant.starclipse_android.R;
 import hugant.starclipse_android.building.items.House;
