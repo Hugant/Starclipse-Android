@@ -39,7 +39,8 @@ public abstract class Building implements Serializable, Cloneable {
 	private Timer incomeTimer = null;
 	
 	private Subject residents = null;
-	private int level = 0;
+	private Subject lastResidents = null;
+	private int level = 1;
 	private float k = 1.5f;
 
 	
