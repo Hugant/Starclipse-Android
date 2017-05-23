@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import hugant.starclipse_android.R;
@@ -41,13 +42,19 @@ public class PlanetFragment extends Fragment {
 		((TextView) view.findViewById(R.id.description)).setText(planet.getDescription());
 		((ImageView) view.findViewById(R.id.image)).setImageResource(planet.getImage());
 
-		TextView a = (TextView) view.findViewById(R.id.textView);
+		final LinearLayout starhipsList = (LinearLayout) view.findViewById(R.id.starshipsList);
+		final LinearLayout resourcesList = (LinearLayout) view.findViewById(R.id.resourcesList);
 
-		String text = "";
 		for (Subject i : planet.getResources().getSubjects()) {
-			text += i.toString() + " / " + i.getMaxValue() + "\n";
+			View linearChild = inflater.inflate(R.layout.resources_item, resourcesList, false);
+
+			((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+			((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
+			((TextView) linearChild.findViewById(R.id.values))
+					.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+			resourcesList.addView(linearChild);
 		}
-		a.setText(text);
 
 		return view;
 	}
