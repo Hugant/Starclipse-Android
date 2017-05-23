@@ -14,7 +14,8 @@
     <string name="button_build">Build</string>
 
     <string name="title_values">Values</string>
-    <string name="title_upgraded">Upgraded</string>
+    <string name="title_upgraded">Upgraded income</string>
+    <string name="title_current">Current income</string>
     <string name="title_expenses">Expenses</string>
     <string name="title_description">Description</string>
     <string name="building_subtitle_income">Income</string>
@@ -24,13 +25,7 @@
     <string name="name_not_found">No name</string>
 
     <string name="building_small_house_name">Small House</string>
-    <string name="building_small_house_description">This is description of small house! I don\'t
-        know what here to write, and you will know, what i bad speak and write on English. Next
-        sentences will be wried because i should to check this scroll view. It\'s important for me.
-        It\'s work!!!This is description of small house! I don\'t
-        know what here to write, and you will know, what i bad speak and write on English. Next
-        sentences will be wried because i should to check this scroll view. It\'s important for me.
-        It\'s work!!!</string>
+    <string name="building_small_house_description">Description of small house</string>
 
     <string name="building_average_house_name">Average House</string>
     <string name="building_average_house_description">Description of average house</string>
