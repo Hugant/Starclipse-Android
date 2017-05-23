@@ -289,6 +289,61 @@ public abstract class Building implements Serializable, Cloneable {
 			throw new ArithmeticException("Number of residents equals minimum");
 		}
 	}
+
+	public static void fillList(Context context, LinearLayout list, int item, Building building, String type) {
+		list.removeAllViews();
+
+		try {
+			building = building.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+
+		switch (type.toLowerCase()) {
+			case "income":
+				for (Subject i : building.getIncome()
+						.multiply(building.getResidents().getValue()).getSubjects()) {
+					View linearChild = View.inflate(context, item, null);
+
+					((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+					((TextView) linearChild.findViewById(R.id.values))
+							.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+					list.addView(linearChild);
+				}
+				return;
+
+			case "upgraded income":
+				for (Subject i : building.upgrade().getIncome()
+						.multiply(building.getResidents().getValue()).getSubjects()) {
+					View linearChild = View.inflate(context, item, null);
+
+					((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+					((TextView) linearChild.findViewById(R.id.values))
+							.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+					list.addView(linearChild);
+				}
+				return;
+
+			case "expenses":
+				for (Subject i : building.getExpenses().getSubjects()) {
+					View linearChild = View.inflate(context, item, null);
+
+					((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+					((TextView) linearChild.findViewById(R.id.values))
+							.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+					list.addView(linearChild);
+				}
+				return;
+
+			default:
+				throw new UnsupportedOperationException("");
+		}
+
+	}
+
 	@Override
 	public Building clone() throws CloneNotSupportedException {
 		super.clone();
