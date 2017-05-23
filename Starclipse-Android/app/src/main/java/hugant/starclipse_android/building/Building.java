@@ -66,6 +66,12 @@ public abstract class Building implements Serializable, Cloneable {
 		if (incomeTimer != null) {
 			incomeTimer.start();
 			start = true;
+
+			try {
+				lastResidents = residents.clone();
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
