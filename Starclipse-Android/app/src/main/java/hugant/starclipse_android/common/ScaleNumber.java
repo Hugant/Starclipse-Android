@@ -1,7 +1,10 @@
 package hugant.starclipse_android.common;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
+
+import org.apache.commons.lang.SerializationUtils;
 
 /**
  * The class <b>ScaleNumber</b> allows you to translate number in a more convenient
