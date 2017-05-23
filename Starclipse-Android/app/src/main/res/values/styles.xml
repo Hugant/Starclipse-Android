@@ -52,6 +52,12 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
+    <style name="ContentLinearList">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <style name="Footer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">70dp</item>
