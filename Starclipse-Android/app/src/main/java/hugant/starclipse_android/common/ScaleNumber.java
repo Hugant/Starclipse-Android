@@ -27,7 +27,7 @@ import org.apache.commons.lang.SerializationUtils;
  * <br>
  * @author Hugant MD
  */
-public class ScaleNumber implements Cloneable {
+public class ScaleNumber implements Cloneable, Serializable {
 	/**
 	* <b>Contains the names of large numbers: <br></b>
 	* K = 1000, <br>
