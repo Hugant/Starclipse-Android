@@ -65,7 +65,7 @@ public class House extends Building {
 				super.setIncomeTimer(Timer.SECOND * 5, "Claim");
 				super.setDescription(R.string.building_small_house_description);
 				super.setImage(R.drawable.building_small_house_150dp);
-				super.setIncome(new Resources(Subject.RESIDENTS, "500", Subject.MONEY, "500"));
+				super.setIncome(new Resources(Subject.RESIDENTS, "2", Subject.MONEY, "25"));
 				super.setExpenses(new Resources(Subject.STONE,  "12", 
 												Subject.TREE,   "6", 
 											  	Subject.MONEY,  "125",
