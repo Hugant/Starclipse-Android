@@ -102,10 +102,11 @@ public abstract class Building implements Serializable, Cloneable {
 	 * maximum number of residents, expenses <b>Resources</b> for next upgrade
 	 * and income <b>Resources</b>
 	 */
-	public void upgrade() {
-		this.residents.addToMaxValue("10");
-		this.expenses = expenses.multiply("2");
+	public Building upgrade() {
+		this.expenses = expenses.multiply("1.2");
 		this.income = income.multiply(level * k + "");
+		this.level++;
+		return this;
 	}
 
 	public Resources getIncome() {
