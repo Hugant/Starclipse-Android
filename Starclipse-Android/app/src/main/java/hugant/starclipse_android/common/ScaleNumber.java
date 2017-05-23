@@ -394,8 +394,10 @@ public class ScaleNumber implements Cloneable, Serializable {
 		return out;
 	}
 
+
 	@Override
-	protected ScaleNumber clone() throws CloneNotSupportedException {
-		return new ScaleNumber(getPrefix() + getPostfix());
+	public ScaleNumber clone() throws CloneNotSupportedException {
+		super.clone();
+		return (ScaleNumber) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
