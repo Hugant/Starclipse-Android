@@ -144,4 +144,10 @@ public class Timer implements Cloneable, Serializable {
 	private long getSeconds(long time) {
 		return (((time % DAY) % HOUR) % MINUTE) / SECOND;
 	}
+
+	@Override
+	public Timer clone() throws CloneNotSupportedException {
+		super.clone();
+		return (Timer) SerializationUtils.deserialize(SerializationUtils.serialize(this));
+	}
 }
