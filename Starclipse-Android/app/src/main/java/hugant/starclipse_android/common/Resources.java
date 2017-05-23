@@ -1,6 +1,9 @@
 package hugant.starclipse_android.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.SerializationUtils;
 
 /**
  * Allows you to store an array of <b>Subjects</b> and to work with them.
