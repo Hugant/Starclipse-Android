@@ -24,13 +24,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/wrapDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    style="@style/ContentWrap">
 
                     <Space
                         android:id="@+id/space"
@@ -76,10 +76,11 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/starshipsWrap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/wrapDescription"
-                    android:layout_marginTop="10dp">
+                    style="@style/ContentWrap">
 
                     <TextView
                         android:id="@+id/titleStarships"
@@ -87,16 +88,36 @@
                         android:layout_height="wrap_content"
                         android:text="@string/planet_title_starships"
                         style="@style/ContentTitle"/>
+
+
+                    <LinearLayout
+                        android:id="@+id/starshipsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/titleStarships"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="500dp"
-                    android:text="TextView"/>
+                    android:layout_below="@+id/starshipsWrap"
+                    style="@style/ContentWrap">
 
+                    <TextView
+                        android:id="@+id/titleValues"
+                        android:text="@string/title_values"
+                        style="@style/ContentTitle"/>
+
+                    <LinearLayout
+                        android:id="@+id/resourcesList"
+                        android:layout_below="@+id/titleValues"
+                        style="@style/ContentLinearList">
+
+                    </LinearLayout>
+                </RelativeLayout>
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>

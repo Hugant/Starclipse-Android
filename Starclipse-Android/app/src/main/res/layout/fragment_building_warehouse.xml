@@ -84,25 +84,12 @@
                         android:text="@string/title_values"
                         style="@style/ContentTitle"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/resourcesList"
                         android:layout_below="@+id/titleValues"
-                        android:layout_centerHorizontal="true">
+                        style="@style/ContentLinearList">
 
-                        <LinearLayout
-                            android:id="@+id/linear"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                        </LinearLayout>
-                        <!--<ListView-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="620dp"-->
-                            <!--android:id="@+id/warehouseResourcesAdapter"-->
-                            <!--tools:ignore="NestedScrolling"/>-->
-                    </RelativeLayout>
+                    </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>

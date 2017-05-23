@@ -22,7 +22,79 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/header">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/upgradeInfoWrap"
+                    style="@style/ContentWrap">
+
+                    <Space
+                        android:id="@+id/space"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/space"
+                        android:layout_toStartOf="@+id/space">
+
+                        <TextView
+                            android:id="@+id/titleCurrent"
+                            android:text="@string/title_current"
+                            style="@style/ContentTitle"/>
+
+                        <LinearLayout
+                            android:id="@+id/currentResourcesList"
+                            android:layout_below="@+id/titleCurrent"
+                            style="@style/ContentLinearList" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/space"
+                        android:layout_toEndOf="@+id/space">
+
+                        <TextView
+                            android:id="@+id/titleUpgraded"
+                            android:text="@string/title_upgraded"
+                            style="@style/ContentTitle"/>
+
+                        <LinearLayout
+                            android:id="@+id/upgradedResourcesList"
+                            android:layout_below="@+id/titleUpgraded"
+                            style="@style/ContentLinearList" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/upgradeInfoWrap"
+                    style="@style/ContentWrap">
+
+                    <TextView
+                        android:id="@+id/titleExpenses"
+                        android:text="@string/title_expenses"
+                        style="@style/ContentTitle"/>
+
+                    <LinearLayout
+                        android:id="@+id/expensesResourcesList"
+                        android:layout_below="@+id/titleExpenses"
+                        style="@style/ContentLinearList"/>
+
+                    <Button
+                        android:id="@+id/upgradeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/expensesResourcesList"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20pt"
+                        android:text="@string/button_upgrade"/>
+                </RelativeLayout>
+            </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
-
 </LinearLayout>
