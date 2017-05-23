@@ -30,7 +30,7 @@ import hugant.starclipse_android.common.Timer;
  * @see hugant.starclipse_android.common.Resources
  * @see House
  */
-public abstract class Building implements Serializable {
+public abstract class Building implements Serializable, Cloneable {
 	private int description = -1;
 	private int image = -1;
 	private int name = -1;
