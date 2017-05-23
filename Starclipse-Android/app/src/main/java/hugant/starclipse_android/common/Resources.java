@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  *@see hugant.starclipse_android.common.Subject
  */
-public class Resources implements Cloneable {
+public class Resources implements Cloneable, Serializable {
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
