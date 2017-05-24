@@ -12,12 +12,15 @@
     <string name="button_upgrade">Upgrade</string>
     <string name="button_claim">Claim</string>
     <string name="button_build">Build</string>
+    <string name="button_find">Find</string>
 
     <string name="title_values">Values</string>
     <string name="title_upgraded">Upgraded income</string>
     <string name="title_current">Current income</string>
     <string name="title_expenses">Expenses</string>
     <string name="title_description">Description</string>
+    <string name="title_current_capacity">Current capacity</string>
+    <string name="title_upgraded_capacity">Upgraded capacity</string>
     <string name="building_subtitle_income">Income</string>
     <string name="building_subtitle_residents">Residents</string>
 
@@ -46,4 +49,6 @@
     <string name="building_resources_factory_description">Description of resources factory</string>
 
     <string name="planet_title_starships">Starships</string>
+
+    <string name="travel_find_planet">To find the planet</string>
 </resources>
