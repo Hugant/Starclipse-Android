@@ -30,7 +30,7 @@ import hugant.starclipse_android.common.Timer;
  * @see hugant.starclipse_android.common.Resources
  * @see House
  */
-public abstract class Building implements Serializable, Cloneable {
+public class Building implements Serializable, Cloneable {
 	private int description = -1;
 	private int image = -1;
 	private int name = -1;
@@ -49,6 +49,7 @@ public abstract class Building implements Serializable, Cloneable {
 	
 	private boolean start = false;
 
+	public Building() {}
 
 	/**
 	 * Begins to build the <b>Building</b>.
@@ -293,11 +294,7 @@ public abstract class Building implements Serializable, Cloneable {
 	public static void fillList(Context context, LinearLayout list, int item, Building building, String type) {
 		list.removeAllViews();
 
-		try {
-			building = building.clone();
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
+		building = building.clone();
 
 		switch (type.toLowerCase()) {
 			case "income":
@@ -345,8 +342,12 @@ public abstract class Building implements Serializable, Cloneable {
 	}
 
 	@Override
-	public Building clone() throws CloneNotSupportedException {
-		super.clone();
+	public Building clone() {
+		try {
+			super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 		return (Building) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
