@@ -109,12 +109,6 @@ public class InfrastructureAdapter extends BaseAdapter {
 				    notifyDataSetChanged();
 			    }
 		    });
-
-		    try {
-			    resources.subtract(building.getExpenses());
-		    } catch (ArithmeticException e) {
-
-		    }
 	    } else {
 		    button.setVisibility(View.INVISIBLE);
 	    }

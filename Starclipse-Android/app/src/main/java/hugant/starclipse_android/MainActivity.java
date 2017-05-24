@@ -1,37 +1,36 @@
 package hugant.starclipse_android;
 
-import android.app.Activity;
-//import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 
-import hugant.starclipse_android.building.Building;
-import hugant.starclipse_android.building.items.House;
-import hugant.starclipse_android.building.items.TradingStation;
-import hugant.starclipse_android.building.items.industry.ResourcesFactory;
+import org.apache.commons.lang.SerializationUtils;
+
+import java.util.ArrayList;
+
 import hugant.starclipse_android.building.items.industry.Starship;
-import hugant.starclipse_android.building.items.industry.StarshipsFactory;
-import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.ScaleNumber;
-import hugant.starclipse_android.common.Subject;
 import hugant.starclipse_android.infrastructure.InfrastructureFragment;
 import hugant.starclipse_android.planet.Planet;
 import hugant.starclipse_android.planet.PlanetFragment;
+import hugant.starclipse_android.planet.PlanetWrapper;
 import hugant.starclipse_android.travel.TravelFragment;
 
+
 public class MainActivity extends FragmentActivity {
+	public static final String APP_PREFERENCE_NAME = "Starclipse";
+	public static final String APP_PREFERENCE_PLANETS = "Planets";
+
 
 	private BottomNavigationView navigation;
 
@@ -62,10 +61,12 @@ public class MainActivity extends FragmentActivity {
 					return true;
 				case R.id.navigation_infrastructure:
 					fragmentTransaction.replace(R.id.content, infrastructureFragment);
+					fragmentTransaction.disallowAddToBackStack();
 					fragmentTransaction.commit();
 					return true;
 				case R.id.navigation_settings:
 					fragmentTransaction.replace(R.id.content, settingsFragment);
+					fragmentTransaction.disallowAddToBackStack();
 					fragmentTransaction.commit();
 					return true;
 			}
@@ -81,22 +82,19 @@ public class MainActivity extends FragmentActivity {
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		planets = new ArrayList<>();
+		SharedPreferences sharedPreferences =
+				getSharedPreferences(APP_PREFERENCE_NAME, Context.MODE_PRIVATE);
 
-		planets.addAll(Arrays.asList(Planet.PLANETS));
+//		Gson gson = new Gson();
 
-		planet = planets.get(0);
-
-		planet.getResources().add(new Resources(Subject.RESIDENTS, "500"));
-
-		//for test
-		for (Planet i: planets) {
-			i.getInfrastructure().add(new House("small"));
-			i.getInfrastructure().add(new House("average"));
-			i.getInfrastructure().add(new House("big"));
-			i.getInfrastructure().add(new TradingStation(planet.getResources()));
-			i.getInfrastructure().add(new StarshipsFactory(starships));
-			i.getInfrastructure().add(new ResourcesFactory(Subject.GOLD));
+		if (sharedPreferences.contains(APP_PREFERENCE_PLANETS)) {
+			PlanetWrapper wrapper = new Gson().fromJson(sharedPreferences.getString(APP_PREFERENCE_PLANETS, ""), PlanetWrapper.class);
+			planets = wrapper.getPlanets();
+			planet = planets.get(0);
+		} else {
+			planets = new ArrayList<>();
+			planets.add(Planet.PLANETS[(int) Math.round(Math.random() * (Planet.PLANETS.length - 1))]);
+			planet = planets.get(0);
 		}
 
 		travelFragment = new TravelFragment(planets);
@@ -120,4 +118,51 @@ public class MainActivity extends FragmentActivity {
 		return planets.indexOf(planet);
 	}
 
+	public Planet getNewPlanet() {
+		int counter = 0;
+		boolean isRandom = true;
+		Planet randomPlanet = null;
+
+		while (isRandom) {
+			isRandom = false;
+			randomPlanet = Planet.PLANETS[(int) Math.round(Math.random() * (Planet.PLANETS.length - 1))];
+			for (Planet i : planets) {
+				if (i.getName().equals(randomPlanet.getName()))
+					isRandom = true;
+			}
+			counter++;
+			if (counter == Planet.PLANETS.length) {
+				return null;
+			}
+		}
+
+		return randomPlanet;
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+//		byte[] a = SerializationUtils.serialize(planets);
+//		String c = a.toString();
+//		byte[] b = a;
+
+//		android.util.Log.i("Hugant", a + "");
+//		android.util.Log.i("Hugant", c);
+//		android.util.Log.i("Hugant", b + "");
+
+
+//		Gson gson = new Gson();
+//		JsonElement element = gson.toJsonTree(new TypeToken<ArrayList<Planet>>(){}.getType());
+//		JsonArray jsonArray = element.getAsJsonArray();
+//		android.util.Log.i("Hugant", jsonArray.toString());
+//
+//		fro
+		Gson gson = new Gson();
+		String json = gson.toJson(new PlanetWrapper(planets));
+		SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCE_NAME,MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putString(APP_PREFERENCE_PLANETS, json);
+		editor.apply();
+
+	}
 }

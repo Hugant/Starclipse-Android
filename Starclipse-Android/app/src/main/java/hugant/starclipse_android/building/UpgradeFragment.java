@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 import hugant.starclipse_android.R;
+import hugant.starclipse_android.building.items.Warehouse;
 import hugant.starclipse_android.common.Resources;
 import hugant.starclipse_android.common.Subject;
 
@@ -46,74 +49,153 @@ public class UpgradeFragment extends Fragment {
 		final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
 
 		((TextView) view.findViewById(R.id.buildingName)).setText(building.getName());
+		((TextView) view.findViewById(R.id.titleCurrent)).setText(R.string.title_current_capacity);
+		((TextView) view.findViewById(R.id.titleUpgraded)).setText(R.string.title_upgraded_capacity);
 
-		Building.fillList(getContext(), currentResourcesList,
-				R.layout.resources_item_minimal, building, "income");
+		if (building.getName() == R.string.building_warehouse_name) {
+			final Warehouse warehouse = (Warehouse) building;
 
-		Building.fillList(getContext(), upgradedResourcesList,
-				R.layout.resources_item_minimal, building, "upgraded income");
+			for (Subject i : warehouse.clone().getStore().getSubjects()) {
+				if (!i.getType().equals(Subject.RESIDENTS)) {
+					View linearChild = inflater.inflate(R.layout.resources_item_minimal, currentResourcesList, false);
 
-		Building.fillList(getContext(), expensesResourcesList,
-				R.layout.resources_item_minimal, building, "expenses");
+					((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+					((TextView) linearChild.findViewById(R.id.values)).setText(i.getMaxValue());
 
-		if (!resources.canSubtract(building.getExpenses())) {
-			upgrade.setEnabled(false);
-		}
-
-			upgrade.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (resources.canSubtract(building.getExpenses())) {
-					building.upgrade();
-
-					Building.fillList(getContext(), currentResourcesList,
-							R.layout.resources_item_minimal, building, "income");
-
-					Building.fillList(getContext(), upgradedResourcesList,
-							R.layout.resources_item_minimal, building, "upgraded income");
-
-					Building.fillList(getContext(), expensesResourcesList,
-							R.layout.resources_item_minimal, building, "expenses");
-				} else {
-					upgrade.setEnabled(false);
+					currentResourcesList.addView(linearChild);
 				}
 			}
-		});
+
+			for (Subject i : warehouse.clone().upgrade().getStore().getSubjects()) {
+				if (!i.getType().equals(Subject.RESIDENTS)) {
+					View linearChild = inflater.inflate(R.layout.resources_item_minimal, upgradedResourcesList, false);
+
+					((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+					((TextView) linearChild.findViewById(R.id.values)).setText(i.getMaxValue());
+
+					upgradedResourcesList.addView(linearChild);
+				}
+			}
+
+			for (Subject i : warehouse.clone().getExpenses().getSubjects()) {
+				View linearChild = inflater.inflate(R.layout.resources_item, expensesResourcesList, false);
+
+				((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+				((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
+				((TextView) linearChild.findViewById(R.id.values))
+						.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+				expensesResourcesList.addView(linearChild);
+			}
 
 
-//		for (Subject i : cloneBuilding
-//				.getIncome().multiply(building.getResidents().getValue()).getSubjects()) {
-//			View linearChild = inflater.inflate(R.layout.resources_item_minimal, currentResourcesList, false);
-//
-//			((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
-//			((TextView) linearChild.findViewById(R.id.values))
-//					.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
-//
-//			currentResourcesList.addView(linearChild);
-//		}
+			if (!resources.canSubtract(warehouse.getExpenses())) {
+				upgrade.setEnabled(false);
+			}
 
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (resources.canSubtract(warehouse.getExpenses())) {
+						resources.subtract(warehouse.getExpenses());
+						warehouse.upgrade();
 
-//		for (Subject i : cloneBuilding.upgrade()
-//				.getIncome().multiply(building.getResidents().getValue()).getSubjects()) {
-//			View linearChild = inflater.inflate(R.layout.resources_item_minimal, upgradedResourcesList, false);
-//
-//			((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
-//			((TextView) linearChild.findViewById(R.id.values))
-//					.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
-//
-//			upgradedResourcesList.addView(linearChild);
-//		}
+						currentResourcesList.removeAllViews();
+						for (Subject i : warehouse.clone().getStore().getSubjects()) {
+							if (!i.getType().equals(Subject.RESIDENTS)) {
+								View linearChild = inflater.inflate(R.layout.resources_item_minimal, currentResourcesList, false);
 
-//		for (Subject i : cloneBuilding.getExpenses().getSubjects()) {
-//			View linearChild = inflater.inflate(R.layout.resources_item, expensesResourcesList, false);
-//
-//			((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
-//			((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
-//			((TextView) linearChild.findViewById(R.id.values))
-//					.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
-//
-//			expensesResourcesList.addView(linearChild);
-//		}
+								((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+								((TextView) linearChild.findViewById(R.id.values)).setText(i.getMaxValue());
+
+								currentResourcesList.addView(linearChild);
+							}
+						}
+
+						upgradedResourcesList.removeAllViews();
+						for (Subject i : warehouse.clone().upgrade().getStore().getSubjects()) {
+							if (!i.getType().equals(Subject.RESIDENTS)) {
+								View linearChild = inflater.inflate(R.layout.resources_item_minimal, upgradedResourcesList, false);
+
+								((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+								((TextView) linearChild.findViewById(R.id.values)).setText(i.getMaxValue());
+
+								upgradedResourcesList.addView(linearChild);
+							}
+						}
+
+						expensesResourcesList.removeAllViews();
+						for (Subject i : warehouse.clone().getExpenses().getSubjects()) {
+							View linearChild = inflater.inflate(R.layout.resources_item, expensesResourcesList, false);
+
+							((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+							((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
+							((TextView) linearChild.findViewById(R.id.values))
+									.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+							expensesResourcesList.addView(linearChild);
+						}
+					}
+
+					if (!resources.canSubtract(warehouse.getExpenses())) {
+						upgrade.setEnabled(false);
+					}
+				}
+			});
+		} else {
+			Building.fillList(getContext(), currentResourcesList,
+					R.layout.resources_item_minimal, building, "income");
+
+			Building.fillList(getContext(), upgradedResourcesList,
+					R.layout.resources_item_minimal, building, "upgraded income");
+
+			for (Subject i : building.clone().getExpenses().getSubjects()) {
+				View linearChild = inflater.inflate(R.layout.resources_item, expensesResourcesList, false);
+
+				((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+				((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
+				((TextView) linearChild.findViewById(R.id.values))
+						.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+				expensesResourcesList.addView(linearChild);
+			}
+
+			if (!resources.canSubtract(building.getExpenses())) {
+				upgrade.setEnabled(false);
+			}
+
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (resources.canSubtract(building.getExpenses())) {
+						resources.subtract(building.getExpenses());
+						building.upgrade();
+
+						Building.fillList(getContext(), currentResourcesList,
+								R.layout.resources_item_minimal, building, "income");
+
+						Building.fillList(getContext(), upgradedResourcesList,
+								R.layout.resources_item_minimal, building, "upgraded income");
+
+						expensesResourcesList.removeAllViews();
+						for (Subject i : building.clone().getExpenses().getSubjects()) {
+							View linearChild = inflater.inflate(R.layout.resources_item, expensesResourcesList, false);
+
+							((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
+							((TextView) linearChild.findViewById(R.id.resourceName)).setText(i.getType());
+							((TextView) linearChild.findViewById(R.id.values))
+									.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
+
+							expensesResourcesList.addView(linearChild);
+						}
+					}
+
+					if (!resources.canSubtract(building.getExpenses())) {
+						upgrade.setEnabled(false);
+					}
+				}
+			});
+		}
 
 
 		return view;

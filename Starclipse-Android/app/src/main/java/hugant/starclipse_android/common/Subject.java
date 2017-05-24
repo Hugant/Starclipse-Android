@@ -30,17 +30,17 @@ import hugant.starclipse_android.R;
  * @see hugant.starclipse_android.common.ScaleNumber
  */
 public class Subject implements Cloneable, Serializable {
-	public final static String GOLD = "gold";
-	public final static String IRON = "iron";
-	public final static String COAL = "coal";
-	public final static String TREE = "tree";
-	public final static String STONE = "stone";
-	public final static String WATER = "water";
-	public final static String OXYGEN = "oxygen";
-	public final static String ENERGY = "energy";
-	public final static String FOOD = "food";
-	public final static String MONEY = "money";
-	public final static String SOIL = "soil";
+	public final static String GOLD = "Gold";
+	public final static String IRON = "Iron";
+	public final static String COAL = "Coal";
+	public final static String TREE = "Tree";
+	public final static String STONE = "Stone";
+	public final static String WATER = "Water";
+	public final static String OXYGEN = "Oxygen";
+	public final static String ENERGY = "Energy";
+	public final static String FOOD = "Food";
+	public final static String MONEY = "Money";
+	public final static String SOIL = "Soil";
 
 	private final static int GOLD_IMAGE = R.drawable.subject_gold_30dp;
 	private final static int IRON_IMAGE = R.drawable.subject_iron_30dp;
@@ -58,7 +58,7 @@ public class Subject implements Cloneable, Serializable {
 	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
 													ENERGY, FOOD, MONEY, SOIL};
 
-	public final static String RESIDENTS = "residents";
+	public final static String RESIDENTS = "Residents";
 
 	private ScaleNumber value = null;
 	private ScaleNumber maxValue = null;
@@ -97,7 +97,7 @@ public class Subject implements Cloneable, Serializable {
 			this.value = new ScaleNumber(value);
 		}
 
-		this.type = (type == null ? null : type.toLowerCase());
+		this.type = type;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class Subject implements Cloneable, Serializable {
 			}
 		}
 
-		this.type = (type == null ? null : type.toLowerCase());
+		this.type = type;
 	}
 
 	/**
