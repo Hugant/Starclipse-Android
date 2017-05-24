@@ -104,13 +104,10 @@
                             android:text="@string/building_subtitle_income"
                             style="@style/ContentSubtitle"/>
 
-                        <TextView
-                            android:id="@+id/income"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/incomeResourcesList"
                             android:layout_below="@+id/subtitleIncome"
-                            android:textAlignment="center"
-                            android:text="gold 100\niron 500"/>
+                            style="@style/ContentLinearList"/>
 
                     </RelativeLayout>
 

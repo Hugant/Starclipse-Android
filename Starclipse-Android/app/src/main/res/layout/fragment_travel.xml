@@ -19,12 +19,31 @@
 
         </RelativeLayout>
 
-        <ListView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/header"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/travelAdapter" />
+            android:layout_below="@id/header"
+            android:layout_above="@id/footer">
+
+            <ListView
+                android:id="@+id/travelAdapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/searchPlanetList"
+                style="@style/ContentLinearList"/>
+        </RelativeLayout>
+
+
     </RelativeLayout>
 
 </FrameLayout>
