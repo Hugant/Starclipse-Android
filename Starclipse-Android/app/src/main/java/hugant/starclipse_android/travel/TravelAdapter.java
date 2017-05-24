@@ -11,6 +11,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import hugant.starclipse_android.infrastructure.InfrastructureFragment;
 import hugant.starclipse_android.planet.Planet;
 import hugant.starclipse_android.MainActivity;
 import hugant.starclipse_android.R;
@@ -56,7 +57,6 @@ class TravelAdapter extends BaseAdapter {
 		}
 
 		final Planet planet = getItem(position);
-
 
 		((TextView) view.findViewById(R.id.nameOfPlanet)).setText(planet.getName());
 		((ImageView) view.findViewById(R.id.planetIcon)).setImageResource(planet.getImage());
