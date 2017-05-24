@@ -35,7 +35,7 @@ public class BuildingFragment extends Fragment {
 
 	private class Updater extends AsyncTask<Void, Void, Void> {
 		private boolean inWork = true;
-		boolean first = false;
+
 		@Override
 		protected Void doInBackground(Void... unused) {
 			inWork = true;
@@ -171,172 +171,8 @@ public class BuildingFragment extends Fragment {
 			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
 			final Button addButton = (Button) view.findViewById(R.id.residentsAddButton);
 			final Button subtractButton = (Button) view.findViewById(R.id.residentsSubtractButton);
-
-			buildingName.setText(building.getName());
-			image.setImageResource(building.getImage());
-			description.setText(building.getDescription());
-			residents.setText(building.getResidents().getValue() + " / "
-					+ building.getResidents().getMaxValue());
-
-			addButton.setOnTouchListener(new View.OnTouchListener() {
-				Handler handler = new Handler();
-
-				Runnable addRunnable = new Runnable() {
-					@Override
-					public void run() {
-						subtractButton.setEnabled(true);
-
-						try {
-							building.addResidents(resources, "1");
-						} catch (ArithmeticException e) {
-							addButton.setEnabled(false);
-						}
-
-						residents.setText(building.getResidents().getValue() + " / "
-								+ building.getResidents().getMaxValue());
-
-						if (addButton.isEnabled()) {
-							handler.post(addRunnable);
-						}
-					}
-				};
-
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
-					switch (event.getAction()) {
-						case MotionEvent.ACTION_DOWN:
-							handler.postDelayed(addRunnable, 500);
-							return false;
-
-						case MotionEvent.ACTION_UP:
-							handler.removeCallbacks(addRunnable);
-							return false;
-					}
-
-					return false;
-				}
-			});
-
-			addButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					try {
-						building.addResidents(resources, "1");
-						subtractButton.setEnabled(true);
-					} catch (ArithmeticException e) {
-						addButton.setEnabled(false);
-					}
-
-					residents.setText(building.getResidents().getValue() + " / "
-							+ building.getResidents().getMaxValue());
-				}
-			});
-
-			subtractButton.setOnTouchListener(new View.OnTouchListener() {
-				Handler handler = new Handler();
-
-				Runnable subtractRunnable = new Runnable() {
-					@Override
-					public void run() {
-						addButton.setEnabled(true);
-
-						try {
-							building.takeResidents(resources, "1");
-						} catch (ArithmeticException e) {
-							subtractButton.setEnabled(false);
-						}
-
-						residents.setText(building.getResidents().getValue() + " / "
-								+ building.getResidents().getMaxValue());
-
-						if (subtractButton.isEnabled()) {
-							handler.postDelayed(subtractRunnable, 0);
-						}
-					}
-				};
-
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
-					switch (event.getAction()) {
-						case MotionEvent.ACTION_DOWN:
-							handler.postDelayed(subtractRunnable, 500);
-							return false;
-
-						case MotionEvent.ACTION_UP:
-							handler.removeCallbacks(subtractRunnable);
-							return false;
-					}
-
-					return false;
-				}
-			});
-
-			subtractButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					try {
-						building.takeResidents(resources, "1");
-						addButton.setEnabled(true);
-					} catch (ArithmeticException e) {
-						subtractButton.setEnabled(false);
-					}
-
-					residents.setText(building.getResidents().getValue() + " / "
-							+ building.getResidents().getMaxValue());
-				}
-			});
-
-			claim = (Button) view.findViewById(R.id.claimButton);
-
-			try {
-				claim.setText(building.getTimer());
-			} catch (UnsupportedOperationException e) {
-				claim.setText(R.string.button_build);
-			}
-
-			upgrade.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View e) {
-					FragmentTransaction fragmentTransaction =
-							((MainActivity)getContext()).getSupportFragmentManager().beginTransaction();
-					fragmentTransaction.replace(R.id.content,
-							new UpgradeFragment(building, resources));
-					fragmentTransaction.addToBackStack(null);
-					fragmentTransaction.commit();
-				}
-			});
-
-			claim.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View e) {
-					try {
-						if (building.getTimer().equals("Start")) {
-							building.startWork();
-						} else if (building.getTimer().equals("Claim")) {
-							resources.add(building.claim());
-						}
-					} catch (UnsupportedOperationException ex) {
-						building.build();
-					}
-
-					try {
-						claim.setText(building.getTimer());
-					} catch (UnsupportedOperationException ex) {}
-				}
-			});
-
-		} else {
-/////////////////////////////////// HOUSES
-			view = inflater.inflate(R.layout.fragment_building, container, false);
-
-			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
-			final TextView description = (TextView) view.findViewById(R.id.description);
-			final TextView residents = (TextView) view.findViewById(R.id.residents);
-			final ImageView image = (ImageView) view.findViewById(R.id.image);
-			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
-			final Button addButton = (Button) view.findViewById(R.id.residentsAddButton);
-			final Button subtractButton = (Button) view.findViewById(R.id.residentsSubtractButton);
-			final LinearLayout incomeResourcesList = (LinearLayout) view.findViewById(R.id.incomeResourcesList);
+			final LinearLayout incomeResourcesList =
+					(LinearLayout) view.findViewById(R.id.incomeResourcesList);
 
 			buildingName.setText(building.getName());
 			image.setImageResource(building.getImage());
@@ -346,16 +182,6 @@ public class BuildingFragment extends Fragment {
 
 			Building.fillList(getContext(), incomeResourcesList,
 					R.layout.resources_item_minimal, building, "income");
-//			for (Subject i : building.getIncome().getSubjects()) {
-//				View linearChild = inflater.inflate(R.layout.resources_item_minimal, incomeResourcesList, false);
-//
-//				((ImageView) linearChild.findViewById(R.id.resourceIcon)).setImageResource(i.getImage());
-//				((TextView) linearChild.findViewById(R.id.values))
-//						.setText(i.getValue() + (i.getMaxValue() == null ? "" : " / " + i.getMaxValue()));
-//
-//				incomeResourcesList.addView(linearChild);
-//			}
-
 
 			addButton.setOnTouchListener(new View.OnTouchListener() {
 				Handler handler = new Handler();
@@ -439,6 +265,188 @@ public class BuildingFragment extends Fragment {
 
 						if (subtractButton.isEnabled()) {
 							handler.postDelayed(subtractRunnable, 0);
+						}
+					}
+				};
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					switch (event.getAction()) {
+						case MotionEvent.ACTION_DOWN:
+							handler.postDelayed(subtractRunnable, 500);
+							return false;
+
+						case MotionEvent.ACTION_UP:
+							handler.removeCallbacks(subtractRunnable);
+							return false;
+					}
+
+					return false;
+				}
+			});
+
+			subtractButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					try {
+						building.takeResidents(resources, "1");
+						addButton.setEnabled(true);
+					} catch (ArithmeticException e) {
+						subtractButton.setEnabled(false);
+					}
+
+					residents.setText(building.getResidents().getValue() + " / "
+							+ building.getResidents().getMaxValue());
+
+					Building.fillList(getContext(), incomeResourcesList,
+							R.layout.resources_item_minimal, building, "income");
+				}
+			});
+
+			claim = (Button) view.findViewById(R.id.claimButton);
+
+			try {
+				claim.setText(building.getTimer());
+			} catch (UnsupportedOperationException e) {
+				claim.setText(R.string.button_build);
+			}
+
+			upgrade.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View e) {
+					FragmentTransaction fragmentTransaction =
+							((MainActivity)getContext()).getSupportFragmentManager().beginTransaction();
+					fragmentTransaction.replace(R.id.content,
+							new UpgradeFragment(building, resources));
+					fragmentTransaction.addToBackStack(null);
+					fragmentTransaction.commit();
+				}
+			});
+
+			claim.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View e) {
+					try {
+						if (building.getTimer().equals("Start")) {
+							building.startWork();
+						} else if (building.getTimer().equals("Claim")) {
+							resources.add(building.claim());
+						}
+					} catch (UnsupportedOperationException ex) {
+						building.build();
+					}
+
+					try {
+						claim.setText(building.getTimer());
+					} catch (UnsupportedOperationException ex) {}
+				}
+			});
+
+		} else {
+/////////////////////////////////// HOUSES
+			view = inflater.inflate(R.layout.fragment_building, container, false);
+
+			final TextView buildingName = (TextView) view.findViewById(R.id.buildingName);
+			final TextView description = (TextView) view.findViewById(R.id.description);
+			final TextView residents = (TextView) view.findViewById(R.id.residents);
+			final ImageView image = (ImageView) view.findViewById(R.id.image);
+			final Button upgrade = (Button) view.findViewById(R.id.upgradeButton);
+			final Button addButton = (Button) view.findViewById(R.id.residentsAddButton);
+			final Button subtractButton = (Button) view.findViewById(R.id.residentsSubtractButton);
+			final LinearLayout incomeResourcesList = (LinearLayout) view.findViewById(R.id.incomeResourcesList);
+
+			buildingName.setText(building.getName());
+			image.setImageResource(building.getImage());
+			description.setText(building.getDescription());
+			residents.setText(building.getResidents().getValue() + " / "
+					+ building.getResidents().getMaxValue());
+
+			Building.fillList(getContext(), incomeResourcesList,
+					R.layout.resources_item_minimal, building, "income");
+
+
+			addButton.setOnTouchListener(new View.OnTouchListener() {
+				Handler handler = new Handler();
+
+				Runnable addRunnable = new Runnable() {
+					@Override
+					public void run() {
+						subtractButton.setEnabled(true);
+
+						try {
+							building.addResidents(resources, "1");
+						} catch (ArithmeticException e) {
+							addButton.setEnabled(false);
+						}
+
+						residents.setText(building.getResidents().getValue() + " / "
+								+ building.getResidents().getMaxValue());
+
+						Building.fillList(getContext(), incomeResourcesList,
+								R.layout.resources_item_minimal, building, "income");
+
+						if (addButton.isEnabled()) {
+							handler.post(addRunnable);
+						}
+					}
+				};
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					switch (event.getAction()) {
+						case MotionEvent.ACTION_DOWN:
+							handler.postDelayed(addRunnable, 500);
+							return false;
+
+						case MotionEvent.ACTION_UP:
+							handler.removeCallbacks(addRunnable);
+							return false;
+					}
+
+					return false;
+				}
+			});
+
+			addButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					try {
+						building.addResidents(resources, "1");
+						subtractButton.setEnabled(true);
+					} catch (ArithmeticException e) {
+						addButton.setEnabled(false);
+					}
+
+					residents.setText(building.getResidents().getValue() + " / "
+							+ building.getResidents().getMaxValue());
+
+					Building.fillList(getContext(), incomeResourcesList,
+							R.layout.resources_item_minimal, building, "income");
+				}
+			});
+
+			subtractButton.setOnTouchListener(new View.OnTouchListener() {
+				Handler handler = new Handler();
+
+				Runnable subtractRunnable = new Runnable() {
+					@Override
+					public void run() {
+						addButton.setEnabled(true);
+
+						try {
+							building.takeResidents(resources, "1");
+						} catch (ArithmeticException e) {
+							subtractButton.setEnabled(false);
+						}
+
+						residents.setText(building.getResidents().getValue() + " / "
+								+ building.getResidents().getMaxValue());
+
+						Building.fillList(getContext(), incomeResourcesList,
+								R.layout.resources_item_minimal, building, "income");
+
+						if (subtractButton.isEnabled()) {
+							handler.post(subtractRunnable);
 						}
 					}
 				};
