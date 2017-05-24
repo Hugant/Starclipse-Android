@@ -31,4 +31,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'org.mod4j.org.apache.commons:lang:2.1.0'
+    //    compile 'com.google.code.gson:gson:2.6.1'
+    compile 'com.google.code.gson:gson:2.8.0'
 }
