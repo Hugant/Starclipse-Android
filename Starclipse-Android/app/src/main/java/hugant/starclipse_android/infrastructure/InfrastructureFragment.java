@@ -45,7 +45,7 @@ public class InfrastructureFragment extends Fragment {
 			inWork = true;
 			while (inWork) {
 				publishProgress(params);
-				SystemClock.sleep(900);
+				SystemClock.sleep(1000);
 			}
 			return null;
 		}
