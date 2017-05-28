@@ -146,8 +146,7 @@ public class Timer implements Cloneable, Serializable {
 	}
 
 	@Override
-	public Timer clone() throws CloneNotSupportedException {
-		super.clone();
+	protected Timer clone() {
 		return (Timer) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
