@@ -1,10 +1,10 @@
 package hugant.starclipse_android.building.items;
 
-import hugant.starclipse_android.R;
-import hugant.starclipse_android.building.Building;
-import hugant.starclipse_android.common.Resources;
-import hugant.starclipse_android.common.Subject;
-import hugant.starclipse_android.common.ScaleNumber;
+	import hugant.starclipse_android.R;
+	import hugant.starclipse_android.building.Building;
+	import hugant.starclipse_android.common.Resources;
+	import hugant.starclipse_android.common.Subject;
+	import hugant.starclipse_android.common.ScaleNumber;
 
 /**
  * TODO: write javadoc
