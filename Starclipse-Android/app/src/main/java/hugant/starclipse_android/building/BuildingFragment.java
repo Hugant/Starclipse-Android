@@ -42,7 +42,7 @@ public class BuildingFragment extends Fragment {
 
 			while (inWork) {
 				publishProgress();
-				SystemClock.sleep(900);
+				SystemClock.sleep(1000);
 			}
 			return null;
 		}
