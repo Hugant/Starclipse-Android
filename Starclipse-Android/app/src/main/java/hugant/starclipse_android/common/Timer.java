@@ -5,19 +5,20 @@ import java.io.Serializable;
 import org.apache.commons.lang.SerializationUtils;
 
 /**
- * The Timer class allows you to create a time counter(timer).
- * <br>
+ * The Timer class allows you to create a time counter.
+ *
  * @author Hugant MD
+ * @version 1.1
  */
 public class Timer implements Cloneable, Serializable {
 
-	/**The number of milliseconds in the day {@value #DAY}ms*/
+	/**The number of milliseconds in the day: {@value}*/
 	public static final long DAY = 86400000L;
-	/**The number of milliseconds in the hour {@value #HOUR}ms*/
+	/**The number of milliseconds in the hour: {@value}*/
 	public static final long HOUR = 3600000L;
-	/**The number of milliseconds in the minute {@value #MINUTE}ms*/
+	/**The number of milliseconds in the minute: {@value}*/
 	public static final long MINUTE = 60000L;
-	/**The number of milliseconds in the second {@value #SECOND}ms*/
+	/**The number of milliseconds in the second: {@value}*/
 	public static final long SECOND = 1000L;
 	
 	private long duration = 0;
@@ -26,20 +27,11 @@ public class Timer implements Cloneable, Serializable {
 	
 	/**
      * Creates a timer a certain amount of time specified in the parameters. 
-     * 
-     * <p>
-     * <strong>Parameters: </strong>
-     * <pre>  <b>duration</b> the number of the milliseconds.
-     *  <b>phrase</b> the phrase which will be returned at the end of the timer.</pre>
-     * 
-     * <p>
-     * <strong>Examples: </strong>
-     * <pre>
-     * <code> Timer timer = new Timer(1000, "Claim");// 1s
-     *  Timer timer = new Timer(Timer.HOUR * 4, "Claim");// 4h
-     *  Timer timer = new Timer(Timer.DAY * 2 + Timer.MINUTE * 50, "Claim");// 2d 50m
-     *  Timer timer = new Timer(Timer.HOUR * 48, "Claim");// 2d 
-     * </code></pre>
+     *
+	 * @param duration The number of the milliseconds the timer is working
+	 *
+	 * @param phrase The <b>String</b> which will be returned at he end of
+	 *               the timer
      */
 	public Timer(long duration, String phrase) {
 		this.duration = duration;
@@ -48,7 +40,7 @@ public class Timer implements Cloneable, Serializable {
 	
 	
 	/**
-	 * Starts counting timer.
+	 * Starts the <b>Timer</b>.
 	 */
 	public void start() {
 		this.finish = new java.util.Date().getTime() + this.duration;
@@ -57,16 +49,12 @@ public class Timer implements Cloneable, Serializable {
 	
 	/**
 	 * Return the remaining of the timer in the format <b><code>1d 9h 31m 5s</code></b>.
-	 * <br>
-	 * If the timer has finished the counting will return <b><code><i>your phrase</i></code></b>.
-	 * <br>
-	 * If the timer has no starting counting will generated UnsupportedOperationException</b>.
+	 * If the timer has finished the counting will return your <b>phrase</b>.
 	 * 
-	 * @throws UnsupportedOperationException
+	 * @throws UnsupportedOperationException If you did not start the timer
 	 * 
-	 * @return String in the format:<b> <code>(dd)d (hh)h (mm)m (ss)s</code></b>,
-	 * 		   if the timer has finished to count then it will return <i>your phrase</i>,
-	 * 		   if you did not start the timer, pop up UnsupportedOperationException.
+	 * @return <b>String</b> in the format:<b><code>(dd)d (hh)h (mm)m (ss)s</code></b>,
+	 * 		   if the timer has finished to count then it will return your <b>phrase</b>
 	 */
 	@Override
 	public String toString() {
@@ -87,24 +75,14 @@ public class Timer implements Cloneable, Serializable {
 	
 	/**
 	 * Return the remaining of the timer in the your format.
-	 * <p>
-	 * dd - days<br>
-	 * hh - hours<br>
-	 * mm - minutes<br>
-	 * ss - seconds<br>
-	 * 
-	 * <p>
-	 * <strong>Example:</strong>
-	 * <pre>
-	 * <code> new Timer(1000).toString(seconds: ss);// seconds: 1
-	 *  new Timer(Timer.Day + Timer.MINUTE * 30).toString(ddd hhh mmm sss);// 1d 0h 30m 0s
-	 *  </code></pre>
-	 * <br>
-	 * @param format is your format of the output
-	 * <br>
-	 * @return String in your <b><code>format</code></b>,
-	 * 		   if the timer has finished to count then it will return <i>your phrase</i>,
-	 * 		   if you did not start the timer, pop up UnsupportedOperationException.
+	 *
+	 * @param format is your format of the output. dd - days, hh - hours, mm - minutes
+	 *               ss - seconds
+	 *
+	 * @throws UnsupportedOperationException If you did not start the timer
+	 *
+	 * @return <b>String</b> in your format, if the timer has finished to count then it
+	 *         will return your <b>phrase</b>
 	 */
 	public String toString(String format) {
 		final long timer = this.finish - new java.util.Date().getTime();
@@ -145,6 +123,12 @@ public class Timer implements Cloneable, Serializable {
 		return (((time % DAY) % HOUR) % MINUTE) / SECOND;
 	}
 
+	/**
+	 * Clone the <b>Timer</b>.
+	 *
+	 * @return a clone of this instance.
+	 */
+	// FIXME: 27.05.2017
 	@Override
 	protected Timer clone() {
 		return (Timer) SerializationUtils.deserialize(SerializationUtils.serialize(this));
