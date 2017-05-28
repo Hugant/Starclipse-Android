@@ -13,7 +13,7 @@ import org.apache.commons.lang.SerializationUtils;
  * <p>
  * <strong>What number is converted: </strong>
  * <br>
- * <pre>  1000 = 1K;
+ * <pre>    1000 = 1K;
  *  1000K = 1M;// Million
  *  1000M = 1B;// Billion
  *  1000B = 1T;// Trillion
@@ -23,8 +23,15 @@ import org.apache.commons.lang.SerializationUtils;
  *  1000J = 1BaM;// BaMillion
  *  1000BaM = 1BaB;// BaBillion
  *  ...
- *  1000GaZ = 1GaJ;// GaJillion
- * <br>
+ *  1000BaJ = 1CaM// CaMillion
+ *  ...
+ *  1000CaJ = 1DaM// DaMillion
+ *  ...
+ *  ...
+ *  ...
+ *  1000VaZ = 1ZaJ;// ZaJillion
+ *  The number more than 100ZaJ not be converted.
+ *
  * @author Hugant MD
  */
 public class ScaleNumber implements Cloneable, Serializable {
@@ -69,6 +76,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 													         "TaM", "TaB", "TaT", "TaV", "TaZ", "TaJ",
 													         "VaM", "VaB", "VaT", "VaV", "VaZ", "VaJ",
 													         "ZaM", "ZaV", "ZaT", "ZaV", "ZaZ", "ZaJ"};
+
 	private static final String PATTERN_PREFIX = getPrefixPattern();
 	private static final String PATTERN_POSTFIX = getPostfixPattern();
 	
@@ -77,19 +85,10 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 	/**
 	* Create number type of <b>ScaleNumber</b> and convert it to the form
-	* prefix + postfix. If number has an irregular form, will generate
-	* an IllegalArgumentException.
+	* prefix + postfix.
 	*
-	* <p>
-	* <strong>Example:</strong>
-	* <pre><code>  ScaleNumber num = new ScaleNumber("1000");// 1K
-	*  ScaleNumber num = new ScaleNumber("45M");// 45M
-	*  ScaleNumber num = new ScaleNumber("1502M");// 1.502B
-	*  ScaleNumber num = new ScaleNumber("0.53B");// 530M
-	* <br>
-	*
-	* @throws IllegalArgumentException
-	* @param number the string which will be translated
+	* @throws IllegalArgumentException If number has an irregular form
+	* @param number the <b>String</b> in the form: number[postfix]("1M", "1B", "0.24T")
 	*/
 	public ScaleNumber(String number) {
 		if (number != null && number.matches("^-?(\\d+|\\d+[.]\\d+)(([" + PATTERN_PREFIX + "]a)"
@@ -116,7 +115,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 	/**
 	* Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
 	* 
-	* @param number the string, which you want to add.
+	* @param number the <b>String</b>, which you want to add.
 	*/
 	public ScaleNumber add(String number) {
 		return this.add(new ScaleNumber(number));
@@ -125,7 +124,6 @@ public class ScaleNumber implements Cloneable, Serializable {
 	
 	/**
 	 * Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
-	 * Parameter <b>number</b> should be cloned.
 	 *
 	 * @param number the <b>ScaleNumber</b>, which you want to add.
 	 */
