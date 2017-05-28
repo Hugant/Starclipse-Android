@@ -128,7 +128,6 @@ public class Timer implements Cloneable, Serializable {
 	 *
 	 * @return a clone of this instance.
 	 */
-	// FIXME: 27.05.2017
 	@Override
 	protected Timer clone() {
 		return (Timer) SerializationUtils.deserialize(SerializationUtils.serialize(this));
