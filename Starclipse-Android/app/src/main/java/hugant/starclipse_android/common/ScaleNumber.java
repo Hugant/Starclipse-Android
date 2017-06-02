@@ -209,8 +209,8 @@ public class ScaleNumber implements Cloneable, Serializable {
 	private BigDecimal transferTo(String system) {
 		// number * 10^(this.postfix - system) * 3
 		this.prefix = this.prefix.multiply(
-				BigDecimal.valueOf(Math.pow(10, (Arrays.asList(POSTFIX_MAS).indexOf(this.postfix) - 
-						Arrays.asList(POSTFIX_MAS).indexOf(system)) * 3)));
+				BigDecimal.valueOf(10).pow((Arrays.asList(POSTFIX_MAS).indexOf(this.postfix) -
+						Arrays.asList(POSTFIX_MAS).indexOf(system)) * 3));
 		this.postfix = system;
 
 		return this.prefix;
