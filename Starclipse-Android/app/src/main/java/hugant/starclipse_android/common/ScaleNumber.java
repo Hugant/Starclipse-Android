@@ -127,12 +127,8 @@ public class ScaleNumber implements Cloneable, Serializable {
 	 *
 	 * @param number the <b>ScaleNumber</b>, which you want to add.
 	 */
-	public ScaleNumber add(ScaleNumber number) {
-		try {
-			this.prefix = number.clone().transferTo(this.postfix).add(this.prefix);
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
+	public ScaleNumber plus(ScaleNumber number) {
+		this.prefix = number.clone().transferTo(this.postfix).add(this.prefix);
 		this.checkingValidity();
 		return this;
 	}
@@ -155,11 +151,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 	 * @param number the <b>ScaleNumber</b>, which you want take.
 	 */
 	public ScaleNumber subtract(ScaleNumber number) {
-		try {
-			this.prefix = this.prefix.subtract(number.clone().transferTo(this.postfix));
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
+		this.prefix = this.prefix.subtract(number.clone().transferTo(this.postfix));
 		this.checkingValidity();
 		return this;
 	}
@@ -182,22 +174,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 	 * @param number the <b>ScaleNumber</b>, which you want to multiply
 	 */
 	public ScaleNumber multiply(ScaleNumber number) {
-		int thisPostfix = Arrays.asList(POSTFIX_MAS).indexOf(this.postfix);
-		int numberPostfix = Arrays.asList(POSTFIX_MAS).indexOf(number.postfix);
-
-		try {
-			if (thisPostfix > numberPostfix) {
-				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
-			} else if (thisPostfix < numberPostfix) {
-				this.prefix = number.clone().prefix.multiply(this.clone().transferTo(""));
-				this.postfix = number.clone().postfix;
-			} else {
-				this.prefix = this.prefix.multiply(number.clone().transferTo(""));
-			}
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-
+		this.prefix = this.prefix.multiply(number.clone().transferTo(POSTFIX_MAS[0]));
 		this.checkingValidity();
 		return this;
 	}
@@ -219,21 +196,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 	 * @param number the <b>ScaleNumber</b>, which you want to divide
 	 */
 	public ScaleNumber divide(ScaleNumber number) {
-		// TODO: Rewrite method
-//		int thisPostfix = Arrays.asList(POSTFIX_MAS).indexOf(this.postfix);
-//		int numberPostfix = Arrays.asList(POSTFIX_MAS).indexOf(number.postfix);
-//		
-//		if (thisPostfix > numberPostfix) {
-//			this.prefix = this.transferTo(number.postfix).divide(number.prefix);
-//			//this.postfix = number.postfix;
-//		} else if (thisPostfix < numberPostfix) {
-//			this.prefix = number.transferTo(this.postfix).multiply(this.prefix);
-//			//this.postfix = number.postfix;
-//		} else {
-//			this.prefix = this.prefix.multiply(number.transferTo(""));
-//		}
-		
-		this.prefix = this.transferTo("").divide(number.transferTo(""));
+		this.prefix = this.transferTo(POSTFIX_MAS[0]).divide(number.clone().transferTo(POSTFIX_MAS[0]));
 		this.checkingValidity();
 		return this;
 	}
@@ -270,13 +233,12 @@ public class ScaleNumber implements Cloneable, Serializable {
 	* @param number the <b>ScaleNumber</b> to compare with.
 	*/
 	public int compareTo(ScaleNumber number) {
-		String numberPost = number.postfix;
+		number = number.clone();
 		number.transferTo(this.postfix);
+
 		if (this.prefix.compareTo(number.prefix) == -1){
-			number.transferTo(numberPost);
 			return -1;
 		} else if(this.prefix.compareTo(number.prefix) == 1) {
-			number.transferTo(numberPost);
 			return 1;
 		}
 		return 0;
@@ -293,7 +255,8 @@ public class ScaleNumber implements Cloneable, Serializable {
 	 * <br>
 	 */
 	private void checkingValidity() {
-		while (this.prefix.abs().compareTo(BigDecimal.valueOf(1)) == -1 && !this.postfix.equals("")) {
+		while (this.prefix.abs().compareTo(BigDecimal.valueOf(1)) == -1 &&
+				!this.postfix.equals(POSTFIX_MAS[0])) {
 			this.prefix = this.prefix.multiply(BigDecimal.valueOf(1000));
 			this.postfix = POSTFIX_MAS[Arrays.asList(POSTFIX_MAS).indexOf(this.postfix) - 1];
 		}
@@ -394,8 +357,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 
 	@Override
-	public ScaleNumber clone() throws CloneNotSupportedException {
-		super.clone();
+	public ScaleNumber clone() {
 		return (ScaleNumber) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
