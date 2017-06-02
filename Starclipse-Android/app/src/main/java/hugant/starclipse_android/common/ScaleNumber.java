@@ -115,17 +115,17 @@ public class ScaleNumber implements Cloneable, Serializable {
 	/**
 	* Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
 	* 
-	* @param number the <b>String</b>, which you want to add.
+	* @param number the <b>String</b>, which you want to plus.
 	*/
-	public ScaleNumber add(String number) {
-		return this.add(new ScaleNumber(number));
+	public ScaleNumber plus(String number) {
+		return this.plus(new ScaleNumber(number));
 	}
 	
 	
 	/**
 	 * Add <b>ScaleNumber</b> to this <b>ScaleNumber</b>.
 	 *
-	 * @param number the <b>ScaleNumber</b>, which you want to add.
+	 * @param number the <b>ScaleNumber</b>, which you want to plus.
 	 */
 	public ScaleNumber plus(ScaleNumber number) {
 		this.prefix = number.clone().transferTo(this.postfix).add(this.prefix);
@@ -146,7 +146,6 @@ public class ScaleNumber implements Cloneable, Serializable {
 	
 	/**
 	 * Takes the <b>ScaleNumber</b> from this <b>ScaleNumber</b>.
-	 * Parameter <b>number</b> should be cloned.
 	 *
 	 * @param number the <b>ScaleNumber</b>, which you want take.
 	 */
@@ -169,7 +168,6 @@ public class ScaleNumber implements Cloneable, Serializable {
 	
 	/**
 	 * Multiplies the the <b>ScaleNumber</b> with another the <b>ScaleNumber</b>.
-	 * Parameter <b>number</b> should be cloned.
 	 * 
 	 * @param number the <b>ScaleNumber</b>, which you want to multiply
 	 */
@@ -203,7 +201,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 	/**
 	 * Transfer the <b>ScaleNumber</b> to specified system(prefix).
-	 * @param system
+	 * @param system is system which you want to transfer
 	 * @return <b>ScaleNumber</b> in the specified system(prefix)
 	 */
 	private BigDecimal transferTo(String system) {
@@ -218,20 +216,20 @@ public class ScaleNumber implements Cloneable, Serializable {
 	
 	
 	/**
-	* Compare this <b>ScaleNumber</b> to the string.
-	* 
-	* @param number the string to compare with.
-	*/
+	 * Compare this <b>ScaleNumber</b> to the string.
+	 *
+	 * @param number the string to compare with.
+	 */
 	public int compareTo(String number) {
 		return this.compareTo(new ScaleNumber(number));
 	}
 	
 	
 	/**
-	* Compare this <b>ScaleNumber</b> to the <b>ScaleNumber</b>.
-	* 
-	* @param number the <b>ScaleNumber</b> to compare with.
-	*/
+	 * Compare this <b>ScaleNumber</b> to the <b>ScaleNumber</b>.
+	 *
+	 * @param number the <b>ScaleNumber</b> to compare with.
+	 */
 	public int compareTo(ScaleNumber number) {
 		number = number.clone();
 		number.transferTo(this.postfix);
@@ -246,13 +244,6 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 	/**
 	 * Transfer the <b>ScaleNumber</b> to form NNN.DDD+.
-	 * <p>
-	 * <strong>Example: </strong>
-	 * <br>
-	 * <pre>
-	 *     new ScaleNumber("0.32M").checkingValidity();// 320.00T
-	 *     new ScaleNumber("1.12T").checkingValidity();// 1.12T
-	 * <br>
 	 */
 	private void checkingValidity() {
 		while (this.prefix.abs().compareTo(BigDecimal.valueOf(1)) == -1 &&
@@ -269,52 +260,37 @@ public class ScaleNumber implements Cloneable, Serializable {
 	}
 	
 	/**
-	* Return the BigDecimal number, this prefix.
-	* <br>
-	* <br>
-	* <strong>Example: </strong>
-	* <pre><code> new ScaleNumber("55B").getPrefix();// 55
-	* </pre></code>
-	*/
+	 * Return the <b>BigDecimal</b> number, this prefix.
+	 *
+	 * @return prefix of this <b>ScaleNumber</b>
+	 */
 	public BigDecimal getPrefix() {
 		return this.prefix;	
 	}
 	
 	/**
-	* Return the system of the number, this postfix.
-	* <br>
-	* <br>
-	* <strong>Example: </strong>
-	* <pre><code> new ScaleNumber("324M").getPostfix();// M
-	*/
+	 * Return the system of the number, this postfix.
+	 *
+	 * @return postfix of this <b>ScaleNumber</b>
+	 */
 	public String getPostfix() {
 		return this.postfix;
 	}
 	
 	/**
-	* Set prefix to this <b>ScaleNumber</b>.
-	* <br>
-	* <br>
-	* <strong>Example: </strong>
-	* <pre><code> new ScaleNumber("23B").setPrefix(BigDecimal.valueOf(132));// 132B
-	* <br>
-	* 
-	* @param prefix the number, which replaced this prefix.
-	*/
+	 * Set prefix to this <b>ScaleNumber</b>.
+	 *
+	 * @param prefix the number, which replaced this prefix.
+	 */
 	public void setPrefix(BigDecimal prefix) {
 		this.prefix = prefix;
 	}
 	
 	/**
-	* Set postfix to this <b>ScaleNumber</b>.
-	* <br>
-	* <br>
-	* <strong>Example: </strong>
-	* <pre><code> new ScaleNumber("43B").setPostfix("J");// 43J
-	* <br>
-	* 
-	* @param postfix the string, which replaced this postfix.
-	*/	
+	 * Set postfix to this <b>ScaleNumber</b>.
+	 *
+	 * @param postfix the string, which replaced this postfix.
+	 */
 	public void setPostfix(String postfix) {
 		this.postfix = postfix;
 	}
@@ -329,7 +305,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 	/**
 	 * Patterns for regular expressions.
-	 * @return
+	 * @return prefix pattern
 	 */
 	private static String getPrefixPattern() {
 		String out = "";
@@ -343,7 +319,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 
 	/**
 	 * Patterns for regular expressions.
-	 * @return
+	 * @return postfix pattern
 	 */
 	private static String getPostfixPattern() {
 		String out = "";
@@ -356,6 +332,11 @@ public class ScaleNumber implements Cloneable, Serializable {
 	}
 
 
+	/**
+	 * Clone the <b>ScaleNumber</b>.
+	 *
+	 * @return a clone of this instance.
+	 */
 	@Override
 	public ScaleNumber clone() {
 		return (ScaleNumber) SerializationUtils.deserialize(SerializationUtils.serialize(this));
