@@ -48,7 +48,7 @@ public class TradingStation extends Building {
 
 	@Override
 	public Resources claim() {
-//		resources.add(offer * amountOFTrades);
+//		resources.plus(offer * amountOFTrades);
 		return null;
 	}
 

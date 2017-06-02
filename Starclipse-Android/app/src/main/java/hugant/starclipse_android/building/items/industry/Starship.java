@@ -87,7 +87,7 @@ public class Starship {
 		/**
 		 * Adds to the <b>Resources</b> of this <b>Storage</b>
 		 * <b>Subject</b>.
-		 * @param sub is a <b>Subject</b> which you will to add
+		 * @param sub is a <b>Subject</b> which you will to plus
 		 */
 		public void add(Subject sub) {
 			this.resources.add(sub);
@@ -96,7 +96,7 @@ public class Starship {
 		/**
 		 * Adds to the <b>Resources</b> of this <b>Storage</b>
 		 * <b>Resources</b>.
-		 * @param res is a <b>Resources</b> which you will to add
+		 * @param res is a <b>Resources</b> which you will to plus
 		 */
 		public void add(Resources res) {
 			this.resources.add(res);

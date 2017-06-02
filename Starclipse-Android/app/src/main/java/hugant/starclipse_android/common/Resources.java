@@ -81,7 +81,7 @@ public class Resources implements Cloneable, Serializable {
 
 	/**
 	 * Adds to the current <b>Resources</b> another <b>Resources</b>.
-	 * @param res is a <b>Resources</b> which you want to add
+	 * @param res is a <b>Resources</b> which you want to plus
 	 * @return this
 	 */
 	public Resources add(Resources res) {
@@ -121,7 +121,7 @@ public class Resources implements Cloneable, Serializable {
 	 * Adds to the current <b>Resources</b> another <b>Subject</b>.
 	 * If the <b>Subject</b> does not exist, will be generated an 
 	 * ArithmeticException.
-	 * @param sub is a <b>Subject</b> which you want to add
+	 * @param sub is a <b>Subject</b> which you want to plus
 	 * @return this
 	 */
 	public Resources add(Subject sub) {

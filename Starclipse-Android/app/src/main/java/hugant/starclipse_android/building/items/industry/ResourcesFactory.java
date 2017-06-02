@@ -26,7 +26,7 @@ public class ResourcesFactory extends Building {
 		
 //		switch (type) {
 //			case Subject.TREE:
-//				expenses.add(new Resources(	Subject.SOIL, 	"0",
+//				expenses.plus(new Resources(	Subject.SOIL, 	"0",
 //											Subject.WATER, 	"0",
 //											Subject.OXYGEN, "0",
 //											Subject.MONEY, 	"0"));
@@ -35,7 +35,7 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.STONE:
-//				expenses.add(new Resources(	Subject.SOIL,	"0",
+//				expenses.plus(new Resources(	Subject.SOIL,	"0",
 //											Subject.TREE,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
@@ -43,7 +43,7 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.COAL:
-//				expenses.add(new Resources(	Subject.STONE,	"0",
+//				expenses.plus(new Resources(	Subject.STONE,	"0",
 //											Subject.WATER,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
@@ -51,14 +51,14 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.IRON:
-//				expenses.add(new Resources(	Subject.STONE,	"0",
+//				expenses.plus(new Resources(	Subject.STONE,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
 //						Subject.IRON, "100"));
 //				break;
 //
 //			case Subject.GOLD:
-//				expenses.add(new Resources( Subject.STONE,	"0",
+//				expenses.plus(new Resources( Subject.STONE,	"0",
 //											Subject.IRON,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
@@ -66,7 +66,7 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.ENERGY:
-//				expenses.add(new Resources(	Subject.OXYGEN,	"0",
+//				expenses.plus(new Resources(	Subject.OXYGEN,	"0",
 //											Subject.WATER,	"0",
 //											Subject.FOOD,	"0",
 //											Subject.MONEY,	"0"));
@@ -75,7 +75,7 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.WATER:
-//				expenses.add(new Resources(	Subject.OXYGEN,	"0",
+//				expenses.plus(new Resources(	Subject.OXYGEN,	"0",
 //											Subject.SOIL,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
@@ -83,21 +83,21 @@ public class ResourcesFactory extends Building {
 //				break;
 //
 //			case Subject.OXYGEN:
-//				expenses.add(new Resources(	Subject.WATER,	"0",
+//				expenses.plus(new Resources(	Subject.WATER,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
 //						Subject.OXYGEN, "100"));
 //				break;
 //
 //			case Subject.FOOD:
-//				expenses.add(new Resources(	Subject.SOIL,	"0",
+//				expenses.plus(new Resources(	Subject.SOIL,	"0",
 //											Subject.MONEY,	"0"));
 //				super.setIncome(new Resources(
 //						Subject.FOOD, "100"));
 //				break;
 //
 //			case Subject.SOIL:
-//				expenses.add(new Resources(	Subject.STONE, 	"0",
+//				expenses.plus(new Resources(	Subject.STONE, 	"0",
 //											Subject.WATER,	"0",
 //											Subject.OXYGEN,	"0",
 //											Subject.MONEY,	"0"));
