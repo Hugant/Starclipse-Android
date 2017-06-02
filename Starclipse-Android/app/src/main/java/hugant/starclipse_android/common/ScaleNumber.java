@@ -348,7 +348,7 @@ public class ScaleNumber implements Cloneable, Serializable {
 	private static String getPostfixPattern() {
 		String out = "";
 		for (String i : POSTFIX_MAS) {
-			if (!i.equals("") && !out.contains(i.charAt(i.length() - 1) + "")) {
+			if (!i.equals(POSTFIX_MAS[0]) && !out.contains(i.charAt(i.length() - 1) + "")) {
 				out += i.charAt(i.length() - 1);
 			}
 		}
