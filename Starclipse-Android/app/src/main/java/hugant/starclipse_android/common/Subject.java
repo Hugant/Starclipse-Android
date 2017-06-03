@@ -41,6 +41,7 @@ public class Subject implements Cloneable, Serializable {
 	public final static String FOOD = "Food";
 	public final static String MONEY = "Money";
 	public final static String SOIL = "Soil";
+	public final static String RESIDENTS = "Residents";
 
 	private final static int GOLD_IMAGE = R.drawable.subject_gold_30dp;
 	private final static int IRON_IMAGE = R.drawable.subject_iron_30dp;
@@ -57,9 +58,7 @@ public class Subject implements Cloneable, Serializable {
 
 	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
 													ENERGY, FOOD, MONEY, SOIL};
-
-	public final static String RESIDENTS = "Residents";
-
+	
 	private ScaleNumber value = null;
 	private ScaleNumber maxValue = null;
 	private String type = null;
