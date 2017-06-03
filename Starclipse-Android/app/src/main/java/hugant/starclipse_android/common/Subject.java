@@ -141,9 +141,9 @@ public class Subject implements Cloneable, Serializable {
 	 */
 	public Subject add(Subject subject) {
 		if (subject.type == null || this.type == null) {
-			this.value.add(subject.value);
+			this.value.plus(subject.value);
 		} else if (this.type.equals(subject.type)) {
-			this.value.add(subject.value);
+			this.value.plus(subject.value);
 		} else {
 			throw new ArithmeticException("Arithmetic operations can only be done with the same material");
 		}
@@ -176,7 +176,7 @@ public class Subject implements Cloneable, Serializable {
 		}
 
 		if (this.value.compareTo("0") == -1) {
-			this.value.add(subject.value);
+			this.value.plus(subject.value);
 			throw new ArithmeticException("Out of bounds the minimum value");
 		}
 
@@ -263,7 +263,7 @@ public class Subject implements Cloneable, Serializable {
 	 * @param subject is a <b>Subject</b>
 	 */
 	public void addToMaxValue(Subject subject) {
-		this.maxValue.add(subject.value);
+		this.maxValue.plus(subject.value);
 	}
 
 
