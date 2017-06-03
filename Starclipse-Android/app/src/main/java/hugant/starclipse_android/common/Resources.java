@@ -13,7 +13,7 @@ import org.apache.commons.lang.SerializationUtils;
  *@see hugant.starclipse_android.common.Subject
  */
 public class Resources implements Cloneable, Serializable {
-	private ArrayList<Subject> subjects = new ArrayList<Subject>();
+	private ArrayList<Subject> subjects = new ArrayList<>();
 	private Boolean isStorage = null;
 	private ScaleNumber volume = null;
 	private int length = 0;
