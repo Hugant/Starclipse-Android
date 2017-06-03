@@ -10,7 +10,7 @@ import org.apache.commons.lang.SerializationUtils;
  * 
  * @author Hugant MD
  *
- *@see hugant.starclipse_android.common.Subject
+ * @see hugant.starclipse_android.common.Subject
  */
 public class Resources implements Cloneable, Serializable {
 	private ArrayList<Subject> subjects = new ArrayList<>();
@@ -22,16 +22,9 @@ public class Resources implements Cloneable, Serializable {
 	 * Create <b>Resources</b>(Storage) in which all <b>Subjects</b> will have
 	 * a maximal size volume. If the <b>Subjects</b> are repeat, it will be
 	 * added to the previous current.
-	 * 
-	 * <p>
-	 * <strong>Example: </strong>
-	 * <pre><code> Resources a = new Resources(new ScaleNumber("100"), "iron",
-	 * 	"tree", "gold");// maxValue of iron = 100, tree = 100, gold = 100
-	 * Resources a = new Resources(new ScaleNumber("100"), "iron", "iron",
-	 * 	"tree", "gold");// maxValue of iron = 200, tree = 100, gold = 100
-	 * </code></pre>
+	 *
 	 * @param volume is a <b>ScaleNumber</b> the future maximal size of each <b>Subject</b>.
-	 * @param res is a array of string where each string is the type of <b>Subject</b>.
+	 * @param res is a array of <b>String</b>'s where each <b>String</b> is the type of <b>Subject</b>.
 	 */
 	public Resources(ScaleNumber volume, String... res) {
 		for (String i : res) {
@@ -49,17 +42,12 @@ public class Resources implements Cloneable, Serializable {
 	
 	/**
 	 * Create <b>Resources</b> in which you can specify the size of each <b>Subject</b>.
-	 * If <b>Subject</b> will be repeated then will be generated an IllegalArgumentException.
 	 * 
-	 * <p>
-	 * <strong>Example: </strong>
-	 * <pre><code>Resources a = new Resources("iron", "100B"
-	 *                            "gold", "100K"
-	 *                            "water", "1M");
-	 * //iron = 100B, gold = 100K, water = 1M
-	 * 
-	 * @throws IllegalArgumentException
-	 * @param res
+	 * @throws IllegalArgumentException if <b>Subject</b> will ve repeated
+	 *
+	 * @param res is a array of <b>String</b>'s where
+	 *            1n <b>String</b> type of <b>Subject</b>,
+	 *            2n <b>String</b> value of <b>Subject</b>.
 	 */
 	public Resources(String... res) {
 		if (res.length % 2 != 0) {
@@ -81,7 +69,7 @@ public class Resources implements Cloneable, Serializable {
 
 	/**
 	 * Adds to the current <b>Resources</b> another <b>Resources</b>.
-	 * @param res is a <b>Resources</b> which you want to plus
+	 * @param res is a <b>Resources</b> which you want to add
 	 * @return this
 	 */
 	public Resources add(Resources res) {
