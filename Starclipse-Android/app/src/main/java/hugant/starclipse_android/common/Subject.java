@@ -58,7 +58,7 @@ public class Subject implements Cloneable, Serializable {
 
 	public final static String[] ALL_RESOURCES = {  GOLD, IRON, COAL, TREE, STONE, WATER, OXYGEN,
 													ENERGY, FOOD, MONEY, SOIL};
-	
+
 	private ScaleNumber value = null;
 	private ScaleNumber maxValue = null;
 	private String type = null;
@@ -132,8 +132,7 @@ public class Subject implements Cloneable, Serializable {
 	 * an ArithmeticException.
 	 *
 	 * @throws ArithmeticException if <b>Subject</b>'s have a
-	 *         different type or <b>Subject</b>'s value exceeds the
-	 *         maximum value
+	 *         different type
 	 *
 	 * @param subject is a <b>Subject</b> which you want to plus,
 	 *                you can not clone this parameter
@@ -155,13 +154,11 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Take a <b>Subject</b> to the <b>Subject</b>.
-	 * If the have a different type will generate
-	 * an ArithmeticException.
-	 * If the value less than the minimal value, will generate
-	 * an ArithmeticException.
+	 * Take a <b>Subject</b> from the <b>Subject</b>.
 	 *
-	 * @throws ArithmeticException
+	 * @throws ArithmeticException if <b>Subject</b>'s have a different
+	 *         type or value of <b>Subject</b> less than minimal value
+	 *
 	 * @param subject is a <b>Subject</b> which you want to take,
 	 *                you can not clone this parameter
 	 */
@@ -183,11 +180,11 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Multiply a <b>Subject</b> to the <b>Subject</b>.
-	 * If the have a different type will generate
-	 * an ArithmeticException.
-	 * If the value less than the minimal value or
-	 * more than maximal value, will generate an ArithmeticException.
+	 * Multiply a <b>Subject</b> on the <b>Subject</b>.
+	 *
+	 * @throws ArithmeticException if <b>Subject</b>s have a different
+	 *         or the value of <b>Subject</b> less than minimal value or
+	 *         more than maximal value
 	 *
 	 * @param subject is a <b>Subject</b> which you want to multiply,
 	 *                you can not clone this parameter
@@ -213,10 +210,10 @@ public class Subject implements Cloneable, Serializable {
 
 	/**
 	 * Divide a <b>Subject</b> to the <b>Subject</b>.
-	 * If the have a different type will generate
-	 * an ArithmeticException.
-	 * If the value less than the minimal value or
-	 * more than maximal value, will generate an ArithmeticException.
+	 *
+	 * @throws ArithmeticException if <b>Subject</b>s have a different
+	 *         or the value of <b>Subject</b> less than minimal value or
+	 *         more than maximal value
 	 *
 	 * @param subject is a <b>Subject</b> which you want to divide,
 	 *                you can not clone this parameter
@@ -241,9 +238,13 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * TODO: write javadoc
-	 * @param subject
-	 * @return
+	 * Compare <b>Subject</b> to another <b>Subject</b>
+	 *
+	 * @param subject <b>Subject</b> which you want to compare
+	 *
+	 * @return 1 if value of this <b>Subject</b> more than value of another <b>Subject</b>,
+	 *         0 if value of this <b>Subject</b> and value of another <b>Subject</b> equals,
+	 *         -1 if value of this <b>Subject</b> less than value of another <b>Subject</b>
 	 */
 	public int compareTo(Subject subject) {
 		return this.value.compareTo(subject.value);
@@ -297,14 +298,9 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Return the string in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
-	 * <br>
-	 * <pre><code>  new Subject("145T").getValue();// "145T"
-	 *  new Subject("1.001V").getValue();// "1V"
-	 *  new Subject("1.10Z").getValue();// "1.1Z"
-	 *  new Subject("1.1234J").getValue();// "1.12J"
-	 * </pre><code>
-	 * @return string in the form <b>ScaleNumber</b>
+	 * Return the <b>String</b> in the form <b>ScaleNumber</b> rounded down to the nearest tenth.
+	 *
+	 * @return <b>String</b> in the form <b>ScaleNumber</b>
 	 */
 	public String getValue() {
 		return value.getPrefix().setScale(2, BigDecimal.ROUND_DOWN).toString().
@@ -312,11 +308,9 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Return the string in the form <b>ScaleNumber</b>.
-	 * <br>
-	 * <pre><code> new Subject("gold", "145T", "1J").getValue();// "1J"
-	 * </pre><code>
-	 * @return string in the form <b>ScaleNumber</b>
+	 * Return the <b>String</b> in the form <b>ScaleNumber</b>.
+	 *
+	 * @return <b>String</b> in the form <b>ScaleNumber</b>
 	 */
 	public String getMaxValue() {
 		return this.maxValue == null ? null :
@@ -326,15 +320,16 @@ public class Subject implements Cloneable, Serializable {
 
 
 	/**
-	 * Return the string the type of this object.
-	 * @return string the type of this object
+	 * Return the type of this object.
+	 *
+	 * @return <b>String</b> the type of this object
 	 */
 	public String getType() {
 		return this.type == null ? "no type" : this.type;
 	}
 
 	/**
-	 * Compares <b>Subject</b>'s by name.
+	 * Compares <b>Subject</b>'s by type.
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -345,6 +340,11 @@ public class Subject implements Cloneable, Serializable {
 		return false;
 	}
 
+	/**
+	 * Return id of image of this <b>Subject</b>
+	 *
+	 * @return id of image of this <b>Subject</b>
+	 */
 	public int getImage() {
 		switch (this.type) {
 			case GOLD:
@@ -377,9 +377,7 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Return the string in the form: type + " " + number.
-	 * <pre><code> new Subject("oxygen", "10B").toString();// oxygen 10B
-	 * </pre></code>
+	 * Return the <b>String</b> in the form: type + " " + number.
 	 */
 	@Override
 	public String toString() {
