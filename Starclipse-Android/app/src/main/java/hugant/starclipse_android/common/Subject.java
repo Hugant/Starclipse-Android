@@ -21,7 +21,7 @@ import hugant.starclipse_android.R;
  * have the same types.
  * <pre><code> Subject a = new Subject("tree", "10");
  * Subject b = new Subject("tree", "100");
- * a.add(b);// a = 110
+ * a.plus(b);// a = 110
  * b.subtract(a);// b = 90
  * <br>
  *
@@ -66,13 +66,12 @@ public class Subject implements Cloneable, Serializable {
 
 
 	/**
-	* Create a <b>Subject</b> which have only value.
-	* If value less than zero, will be generated
-	* an IllegalArgumentException.
-	*
-	* @throws IllegalArgumentException
-	* @param value is the amount of a subject
-	*/
+	 * Create a <b>Subject</b> which have only value.
+	 *
+	 * @throws IllegalArgumentException If value less than zero
+	 *
+	 * @param value is the amount of a subject
+	 */
 	public Subject(String value) {
 		if (new ScaleNumber(value).getPrefix().doubleValue() < 0) {
 			throw new IllegalArgumentException("The amount of material cannot be less than zero");
@@ -82,14 +81,13 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	* Create a <b>Subject</b> which have type and value.
-	* If value less than zero, will be generated
-	* an IllegalArgumentException.
-	*
-	* @throws IllegalArgumentException
-	* @param type is the type of a subject
-	* @param value is the amount of a subject
-	*/
+	 * Create a <b>Subject</b> which have type and value.
+	 *
+	 * @throws IllegalArgumentException If value less than zero
+	 *
+	 * @param type is the type of a subject
+	 * @param value is the amount of a subject
+	 */
 	public Subject(String type, String value) {
 		if (new ScaleNumber(value).getPrefix().doubleValue() < 0) {
 			throw new IllegalArgumentException("The amount of material cannot be less than zero");
@@ -101,15 +99,14 @@ public class Subject implements Cloneable, Serializable {
 	}
 
 	/**
-	* Create a <b>Subject</b> which have type, value and maximum value.
-	* If value or maxValue less than zero, will be generated
-	* an IllegalArgumentException.
-	*
-	* @throws IllegalArgumentException
-	* @param type is the type of a subject
-	* @param value is the amount of a subject
-	* @param maxValue is the maximum amount of a subject
-	*/
+	 * Create a <b>Subject</b> which have type, value and maximum value.
+	 *
+	 * @throws IllegalArgumentException If value or maxValue less than zero
+	 *
+	 * @param type is the type of a subject
+	 * @param value is the amount of a subject
+	 * @param maxValue is the maximum amount of a subject
+	 */
 	public Subject(String type, String value, String maxValue) {
 		if (new ScaleNumber(value).getPrefix().doubleValue() < 0) {
 			throw new IllegalArgumentException("The amount of material cannot be less than zero");
@@ -135,8 +132,11 @@ public class Subject implements Cloneable, Serializable {
 	 * If the value exceeds the maximum value, will generate
 	 * an ArithmeticException.
 	 *
-	 * @throws ArithmeticException
-	 * @param subject is a Subject which you want to add,
+	 * @throws ArithmeticException if <b>Subject</b>'s have a
+	 *         different type or <b>Subject</b>'s value exceeds the
+	 *         maximum value
+	 *
+	 * @param subject is a <b>Subject</b> which you want to plus,
 	 *                you can not clone this parameter
 	 */
 	public Subject add(Subject subject) {
