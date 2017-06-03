@@ -138,7 +138,7 @@ public class Subject implements Cloneable, Serializable {
 	 * @param subject is a <b>Subject</b> which you want to plus,
 	 *                you can not clone this parameter
 	 */
-	public Subject add(Subject subject) {
+	public Subject add(Subject subject) throws ArithmeticException {
 		if (subject.type == null || this.type == null) {
 			this.value.plus(subject.value);
 		} else if (this.type.equals(subject.type)) {
@@ -165,7 +165,7 @@ public class Subject implements Cloneable, Serializable {
 	 * @param subject is a <b>Subject</b> which you want to take,
 	 *                you can not clone this parameter
 	 */
-	public Subject subtract(Subject subject) {
+	public Subject subtract(Subject subject) throws ArithmeticException{
 		if (subject.type == null || this.type == null) {
 			this.value.subtract(subject.value);
 		} else if (this.type.equals(subject.type)) {
@@ -193,7 +193,7 @@ public class Subject implements Cloneable, Serializable {
 	 *                you can not clone this parameter
 	 * @return this
 	 */
-	public Subject multiply(Subject subject) {
+	public Subject multiply(Subject subject) throws ArithmeticException {
 		if (subject.type == null || this.type == null) {
 			this.value.multiply(subject.value);
 		} else if (this.type.equals(subject.type)) {
@@ -222,7 +222,7 @@ public class Subject implements Cloneable, Serializable {
 	 *                you can not clone this parameter
 	 * @return this
 	 */
-	public Subject divide(Subject subject) {
+	public Subject divide(Subject subject) throws ArithmeticException {
 		if (subject.type == null || this.type == null) {
 			this.value.divide(subject.value);
 		} else if (this.type.equals(subject.type)) {
@@ -286,12 +286,12 @@ public class Subject implements Cloneable, Serializable {
 	/**
 	 * "Fill" <b>Subject</b> to the maximum value.
 	 */
-	public void fill() {
+	public void fill() throws UnsupportedOperationException {
 		if (maxValue != null) {
 			this.value.setPrefix(this.maxValue.getPrefix());
 			this.value.setPostfix(this.maxValue.getPostfix());
 		} else {
-			throw new NullPointerException("Max value has not been initialized");
+			throw new UnsupportedOperationException("Max value has not been initialized");
 		}
 
 	}
