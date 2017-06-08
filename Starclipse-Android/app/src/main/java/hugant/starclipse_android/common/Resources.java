@@ -95,9 +95,6 @@ public class Resources implements Cloneable, Serializable {
 				for (Subject i : res.subjects) {
 					cloneRes.add(i);
 				}
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-				return false;
 			} catch (ArithmeticException e) {
 				return false;
 			}
@@ -135,9 +132,6 @@ public class Resources implements Cloneable, Serializable {
 			try {
 				Resources cloneRes = this.clone();
 				cloneRes.add(sub);
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-				return false;
 			} catch (ArithmeticException e) {
 				return false;
 			}
@@ -175,9 +169,6 @@ public class Resources implements Cloneable, Serializable {
 				}
 			} catch (ArithmeticException e) {
 				return false;
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-				return false;
 			}
 		}
 		return true;
@@ -212,9 +203,6 @@ public class Resources implements Cloneable, Serializable {
 			try {
 				Resources cloneRes = this.clone();
 				cloneRes.subtract(sub);
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-				return false;
 			} catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
 				return false;
 			}
@@ -309,7 +297,7 @@ public class Resources implements Cloneable, Serializable {
 	 * 
 	 * @return length
 	 */
-	public int length() {
+	public int size() {
 		return length;
 	}
 	
@@ -339,8 +327,7 @@ public class Resources implements Cloneable, Serializable {
 	}
 
 	@Override
-	public Resources clone() throws CloneNotSupportedException {
-		super.clone();
+	public Resources clone() {
 		return (Resources) SerializationUtils.deserialize(SerializationUtils.serialize(this));
 	}
 }
