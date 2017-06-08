@@ -293,7 +293,7 @@ public class Resources implements Cloneable, Serializable {
 	/**
 	 * Return amount of subjects.
 	 * 
-	 * @return length
+	 * @return size
 	 */
 	public int size() {
 		return length;
