@@ -84,9 +84,9 @@ public class Resources implements Cloneable, Serializable {
 	}
 
 	/**
-	 * TODO: write javadoc
-	 * @param res
-	 * @return
+	 * Checks whether it is possible to add a <b>Resources</b>
+	 * @param res <b>Resources</b> which you want to add
+	 * @return true if you can add a <b>Resources</b>, otherwise false
 	 */
 	public boolean canAdd(Resources res) {
 		if (res != null) {
@@ -104,8 +104,8 @@ public class Resources implements Cloneable, Serializable {
 	
 	/**
 	 * Adds to the current <b>Resources</b> another <b>Subject</b>.
-	 * If the <b>Subject</b> does not exist, will be generated an 
-	 * ArithmeticException.
+	 *
+	 * @throws ArithmeticException if the <b>Subject</b> does not exist
 	 * @param sub is a <b>Subject</b> which you want to plus
 	 * @return this
 	 */
@@ -123,9 +123,9 @@ public class Resources implements Cloneable, Serializable {
 
 
 	/**
-	 * TODO: write javadoc
-	 * @param sub
-	 * @return
+	 * Checks whether it is possible to add a <b>Subject</b>
+	 * @param sub <b>Subject</b> which you want to add
+	 * @return true if you can add a <b>Subject</b>, otherwise false
 	 */
 	public boolean canAdd(Subject sub) {
 		if (sub != null) {
@@ -156,9 +156,9 @@ public class Resources implements Cloneable, Serializable {
 	}
 
 	/**
-	 * TODO: write javadoc
-	 * @param res
-	 * @return
+	 * Checks whether it is possible to subtract a <b>Resources</b>
+	 * @param res <b>Resources</b> which you want to subtract
+	 * @return true if you can subtract a <b>Resources</b>, otherwise false
 	 */
 	public boolean canSubtract(Resources res) {
 		if (res != null) {
@@ -176,8 +176,8 @@ public class Resources implements Cloneable, Serializable {
 
 	/**
 	 * Takes away from the current <b>Resources</b> another <b>Subject</b>.
-	 * If the <b>Subject</b> does not exist, will be generated an 
-	 * ArithmeticException.
+	 *
+	 * @throws ArithmeticException if the <b>Subject</b> does not exist
 	 * @param sub is a <b>Subject</b> which you want to take
 	 * @return this
 	 */
@@ -194,9 +194,9 @@ public class Resources implements Cloneable, Serializable {
 	}
 
 	/**
-	 * TODO: write javadoc
-	 * @param sub
-	 * @return
+	 * Checks whether it is possible to add a <b>Subject</b>
+	 * @param sub <b>Subject</b> which you want to add
+	 * @return true if you can subtract a <b>Subject</b>, otherwise false
 	 */
 	public boolean canSubtract(Subject sub) {
 		if (sub != null) {
@@ -239,10 +239,8 @@ public class Resources implements Cloneable, Serializable {
 	
 	/**
 	 * Return <b>Subject</b> with the type you specified.
-	 * If the <b>Subject</b> does not exist, will be generated an
-	 * ArithmeticException
 	 * 
-	 * @throws ArithmeticException
+	 * @throws ArithmeticException if the <b>Subject</b> does not exist
 	 * @param type is a type <b>Subject</b>
 	 * @return Subject with the type you specified
 	 */
